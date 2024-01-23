@@ -1,0 +1,11 @@
+.img {
+  max-width: 100%;
+  max-height: 450px;
+  height: 400px;
+  width: 100% !important;
+  background-color: white;
+  object-fit: contain;
+  object-position: center;
+}
+
+/*# sourceMappingURL=image-gallery-carousel.css.map */

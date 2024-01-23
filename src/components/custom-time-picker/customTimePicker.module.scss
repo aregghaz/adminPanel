@@ -1,0 +1,42 @@
+@import "../../styles/variables";
+
+.container {
+    width: 50%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}
+
+.top {
+    border: inherit;
+    width: 100%;
+    color: $placeholderColor;
+}
+
+.bottom {
+    border: inherit;
+    width: 100%;
+}
+
+.bottom > input {
+    border: 1px solid $placeholderColor;
+    outline: none;
+    border-radius: 5px;
+    width: 55px;
+    height: 35px;
+    font-size: 20px;
+    text-align: center;
+    color: gray;
+}
+
+.bottom > span {
+    font-size: 20px;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+

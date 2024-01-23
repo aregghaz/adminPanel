@@ -1,0 +1,136 @@
+@import "../../styles/variables";
+
+
+.select {
+    //border: 1px solid red;
+    height: auto;
+    display: flex;
+    width: 100%;
+    & div {
+
+        //box-shadow: none;
+        //border: 1px solid red;
+    }
+
+    & div:hover {
+        //border-color: $borderColor;
+    }
+
+    & svg {
+        width: 25px !important;
+        height: 25px !important;
+        color: $borderColor !important;
+    }
+}
+
+.react-select-container {
+    background-color: black;
+    //border: 1px solid red;
+}
+
+.e-multiselect.e-input-group .e-multi-select-wrapper {
+    background-color: red;
+}
+
+.sortSelect {
+    //border: 1px solid blue;
+    padding: 15px;
+}
+
+//.label {
+//    font-size: 15px;
+//    @include themify($themes) {
+//        color: themed('modalTitleColor');
+//    }
+//    font-weight: normal;
+//    margin-bottom: 10px;
+//
+//    @media only screen and (max-width: $smallDisplay) {
+//        font-size: 12px;
+//    }
+//
+//    span {
+//        color: $asteriskColor;
+//    }
+//}
+
+.customMenuList {
+    list-style: none;
+    li {
+        margin-bottom: 10px;
+    }
+}
+
+.addBtn {
+    text-align: center;
+    font-size: 16px;
+    color: #1d1c1c;
+    font-weight: bold;
+}
+
+.buttonsSelect {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    //border: 1px solid red;
+}
+
+.selectButton {
+    padding: 8px 15px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 3px;
+    color: $whiteColor;
+    //&:not(.blank,.round){
+    //    box-shadow: $buttonBoxShadow;
+    //}
+
+    &:focus {
+        outline: none;
+        box-shadow: none
+    }
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 100%;
+}
+
+.selectWrapper {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid $borderColor;
+    position: relative;
+}
+
+.selectRemove {
+    width: 20px;
+    height: 100%;
+    display: flex;
+    position: absolute;
+    right: 35px;
+    align-items: center;
+    justify-content: center;
+    //border: 1px solid red;
+    & > button {
+        width: 100%;
+        height: 100%;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        & > img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+
+        }
+    }
+}
+
+.error {
+}

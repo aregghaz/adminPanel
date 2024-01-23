@@ -1,0 +1,369 @@
+@import "../../styles/variables";
+
+.root {
+    width: 100%;
+    overflow-x: auto;
+    box-shadow: $adminBoxShadow;
+
+    &.altUsage {
+        display: table;
+    }
+}
+
+.detector {
+    width: 1px;
+    height: 1px;
+}
+
+.download_btn {
+    background-color: $menuColor;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    margin-bottom: 10px;
+
+    &:hover {
+        background-color: $menuHoverColor;
+    }
+}
+
+.table {
+    table-layout: fixed;
+    border-collapse: inherit;
+    border-spacing: 0;
+    min-width: 100%;
+    //border: 1px solid red;
+    //display: grid;
+
+    //tbody {
+    //    max-height: 60vh;
+    //}
+}
+
+.addressWrapper {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    max-height: 55px;
+
+    &::-webkit-scrollbar {
+        border: 0.1px solid $grayColor;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: $asteriskColor;
+    }
+}
+
+//.classNameFieldEven {
+//    background-color: rgba(63, 122, 173, 0.15);
+//}
+
+.tableBColor {
+    background-color: rgba(63, 122, 173, 0.15);
+
+}
+
+.tableHead {
+    display: table-header-group;
+}
+
+.tableBody {
+    display: table-row-group;
+    ///  max-height: 60vh;
+}
+
+
+.tableFooter {
+    display: table-footer-group;
+
+
+}
+
+.iconsWrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 7px;
+
+    .icon {
+        width: 25px;
+        height: 25px;
+        cursor: pointer;
+        margin: 0 3px;
+        transition: 0.1s;
+        fill: $aquaColor;
+
+    }
+
+
+    .iconCar{
+        fill: none;
+        stroke: $aquaColor;
+        stroke-width: 2px;
+    }
+
+
+    .iconColor {
+        width: 40px;
+        height: 40px;
+        fill: none;
+        stroke: $aquaColor;
+        stroke-width: 2px;
+    }
+
+
+
+    .iconInfo {
+        width: 30px;
+        height: 30px;
+    }
+
+    .icon:hover {
+        transform: translateY(-3px);
+        color: red;
+        fill: red;
+    }
+
+    .iconCar:hover{
+        fill: none;
+        stroke: red;
+    }
+
+    .iconColor:hover {
+        stroke: red;
+        fill: none;
+    }
+
+    .iconVendor{
+        width: 30px;
+        height: 30px;
+        fill: none;
+        stroke: $aquaColor;
+        stroke-width: 3px;
+    }
+
+    .iconVendor:hover{
+        fill: none;
+        stroke: red;
+    }
+
+}
+
+
+.tableRow {
+    color: inherit;
+    display: table-row;
+    outline: 0;
+    vertical-align: middle;
+}
+
+.rotate_arrow {
+    transform: rotate(180deg);
+}
+
+.tooltip {
+    position: relative;
+}
+
+.tooltip .tooltiptext {
+    width: 40px;
+    background-color: $borderColor;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 2px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: -20px;
+    left: -2px;
+    font-size: 10px;
+    user-select: none;
+    pointer-events: none;
+    transistion: 0.5s;
+    opacity: 1;
+}
+
+.delete {
+    // left: -10px;
+}
+
+.history, .assignVendor, .info, .edit, .delete, .reRoute, .claim {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.historySpan:hover .history, .infoSpan:hover .info, .editSpan:hover .edit, .deleteSpan:hover .delete, .reRouteSpan:hover .reRoute, .claimSpan:hover .claim {
+    visibility: visible;
+}
+
+.assignVendorSpan:hover .assignVendor {
+    visibility: visible;
+}
+
+.tableTd {
+    //display: table-cell;
+    /// padding: 9px;
+    text-align: start;
+    /// font-weight: bold;
+    vertical-align: inherit;
+    ///border-bottom: 1px solid #ddd;
+    ////margin-bottom: 10px;
+    color: $thTextColor;
+    padding-left: 20px;
+    min-width: 190px;
+    table-layout: auto;
+    background-color: $backgroundColor;
+    border-top: 2px solid $aquaColor;
+    border-bottom: 2px solid $aquaColor;
+    width: 100%;
+    //FIXME: Fix for large sizes & no support for vw
+    font-size: min(max(16px, 1vw), 19px);
+    @media only screen and (max-width: $mediumDisplay) {
+        font-size: min(max(12px, 1vw), 19px);
+    }
+    @media only screen and (max-width: $smallDisplay) {
+        font-size: min(max(10px, 1vw), 19px);
+    }
+
+    &.searchable {
+        padding-bottom: 0;
+        padding-right: 0;
+        padding-left: 0;
+    }
+}
+
+.img {
+    width: 100px;
+    height: 100px;
+}
+
+.tableTh {
+    z-index: 2;
+    //background-color: $menuColor;
+    color: $menuColor;
+    font-weight: bold;
+    //FIXME: Fix for large sizes & no support for vw
+    white-space: nowrap;
+    font-size: min(max(16px, 1vw), 25px);
+    //// margin-bottom: 10px;
+    min-width: 170px;
+    text-align: center;
+    @media only screen and (max-width: $mediumDisplay) {
+        font-size: min(max(12px, 1vw), 25px);
+    }
+    @media only screen and (max-width: $smallDisplay) {
+        font-size: min(max(10px, 1vw), 25px);
+    }
+
+    &:first-of-type {
+        // number column
+        width: 40px;
+    }
+}
+
+.classNameField {
+    display: table-cell;
+    /// padding: 9px;
+    text-align: start;
+    /// font-weight: bold;
+    vertical-align: inherit;
+    //// margin-bottom: 10px;
+    padding-left: 20px;
+    color: $thTextColor;
+    border-bottom: 0.1px solid $aquaColor;
+    height: 70px;
+}
+
+.address {
+    min-width: 350px;
+    width: 100%;
+}
+
+.gender {
+    max-width: 50px;
+    width: 100%;
+}
+
+.inputWrapper {
+    margin-top: 10px;
+}
+
+.tableHeadText {
+    font-weight: normal;
+    color: $thTextColor;
+    margin: auto;
+    font-size: 15px;
+    line-height: 22px;
+    max-height: 58px;
+    padding: 0 6px;
+}
+
+.tableHeadBlock {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+:global {
+    svg[focusable=false] {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+.chosen {
+    background-color: $asteriskColor !important;
+    opacity: 0.7;
+.classNameField{
+    .iconsWrapper {
+        .icon {
+            fill: white!important;
+        }
+
+        .iconVendor{
+            fill: none!important;
+            stroke: white!important;
+        }
+
+        .iconColor{
+            fill: none!important;
+            stroke: white!important;
+        }
+
+        .iconCar{
+            fill: none!important;
+            stroke: white!important;
+        }
+    }
+}
+
+
+    td {
+        color: $whiteColor;
+
+    }
+}
+
+.arrowSpan {
+    margin: 0 5px;
+}
+
+.row {
+    cursor: pointer;
+}
+
+.editLeft{
+    margin-left: 8px;
+    margin-top: 7px;
+}
+
+.infoLabel{
+    margin-top: 2px;
+}

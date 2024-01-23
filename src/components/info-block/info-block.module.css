@@ -1,0 +1,326 @@
+.block {
+  width: 100%;
+  min-height: 200px;
+  height: auto;
+  background-color: white;
+  margin: 20px;
+  display: flex;
+  gap: 20px;
+  padding-right: 40px;
+}
+.infoLeft {
+  width: 40%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  border-right: 0.1px solid #19347a;
+  padding-right: 20px;
+}
+
+.addon {
+  width: 100%;
+  height: auto;
+  min-height: 100px;
+  display: flex;
+  border-bottom: 1px solid #19347a;
+  border-top: 1px solid #19347a;
+  padding: 15px 0;
+}
+
+.addonInfo {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.addonInfo > p {
+  color: #19347a;
+  display: flex;
+  column-gap: 10px;
+}
+.addonInfo > p > span {
+  color: gray;
+}
+
+.infoLeftName {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.infoLeftName .username {
+  font-size: 25px;
+}
+.infoLeftName span {
+  color: gray;
+  display: flex;
+  gap: 20px;
+}
+
+.infoLeftTop {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.infoLeftBottom {
+  width: 100%;
+  height: 100%;
+}
+
+.infoRight {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.infoRightTop {
+  widht: 100%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.infoRightBottom {
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.classLabel {
+  font-size: 20px;
+  color: #19347a;
+}
+
+.itemLabel {
+  color: #19347a;
+  white-space: nowrap;
+}
+
+.itemValue {
+  color: gray;
+}
+
+.class {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.item {
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.saveIcon {
+  cursor: pointer;
+}
+
+.timepicker {
+  width: auto;
+}
+
+.items {
+  width: 100%;
+  height: auto;
+  padding-left: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.selectDiv {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.mapDiv {
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+}
+
+.directionDiv {
+  width: 50%;
+  height: 100%;
+}
+
+.directions {
+  color: gray;
+}
+.directions > b {
+  color: #19347a;
+}
+
+.seperator {
+  width: 100%;
+  height: 1px;
+  background-color: #19347a;
+}
+
+.infoRightBottomTextareas {
+  width: 100%;
+  height: auto;
+  display: flex;
+  column-gap: 20px;
+}
+
+.itemTextarea {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+}
+.itemTextarea > textarea {
+  width: 100%;
+}
+
+.updateButton {
+  height: auto;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+.updateButton > .updateButtonLabel {
+  white-space: nowrap;
+  background-color: #19347a;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 3px 7px;
+  position: absolute;
+  z-index: 1;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  pointer-events: none;
+  transistion: 0.5s;
+  opacity: 0;
+}
+.updateButton:hover > .updateButtonLabel {
+  opacity: 1;
+}
+
+.iconsWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.iconsWrapper .mapIcon {
+  fill: #3F7AAD;
+  transition: 0.5s;
+}
+.iconsWrapper .mapIcon:hover {
+  transform: translateY(-5px);
+  fill: #D63D3D;
+}
+.iconsWrapper .updateIcon {
+  fill: none;
+  stroke: #3F7AAD;
+  transition: 0.5s;
+}
+.iconsWrapper .updateIcon:hover {
+  transform: translateY(-5px);
+  stroke: #D63D3D;
+}
+
+.classInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.classSave {
+  width: 150px;
+  height: 50px;
+  background-color: #D63D3D;
+  border-radius: 25px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.itemLabelBox {
+  width: 18%;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.addInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.item1 {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.itemsSelects {
+  display: flex;
+  width: 100%;
+  column-gap: 10px;
+}
+
+.itemsSelect {
+  width: 100%;
+}
+
+.saveIcon {
+  fill: #3F7AAD;
+  transition: 0.5s;
+}
+
+.saveIcon:hover {
+  fill: #D63D3D;
+}
+
+.updateLabelTop {
+  margin-top: -5px;
+}
+
+.showMapLabel {
+  margin-top: 0;
+}
+
+.updateLabel {
+  margin-top: -5px;
+}
+
+.adminUpdate {
+  border: none;
+  outline: none;
+  background-color: transparent;
+}
+
+/*# sourceMappingURL=info-block.module.css.map */

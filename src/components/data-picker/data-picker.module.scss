@@ -1,0 +1,48 @@
+@import "../../styles/variables";
+
+.dataPicker {
+    width: 100%;
+    position: absolute !important;
+    top:110%;
+    left:50%;
+    //z-index: 1 !important;
+    z-index: 3 !important;
+    transform: translateX(-50%);
+    ///width: 300px !important;
+    /// background-color: white !important;
+    /// border: 1px solid !important;
+
+}
+
+//.dataPickerAlt {
+//    transform: translateX(50%);
+//}
+
+
+.input {
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    //width: calc(100% - 12px);
+    width: 100%;
+    height: 50px;
+    padding-left: 10px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    outline: none;
+    color: gray;
+    border-bottom: 1px solid $borderColor;
+
+    @media only screen and (max-width: $smallDisplay) {
+        font-size: 12px;
+    }
+}
+
+
+.error {
+}
+
+.errorInput {
+}

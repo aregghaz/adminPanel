@@ -1,0 +1,72 @@
+@import "../../styles/variables";
+
+
+.primary,
+.secondary,
+.transparent,
+.green,
+.blank {
+    border: none;
+    cursor: pointer;
+    text-align: center;
+    transition: 1s;
+    font-size: 13px;
+    background-color: transparent;
+
+    &:focus {
+        outline: none;
+        box-shadow: none
+    }
+}
+
+.selectButton {
+    padding: 8px 15px;
+    text-decoration: none;
+    text-align: center;
+    font-weight: bold;
+    font-size: 15px;
+    cursor: pointer;
+    border-radius: 3px;
+
+    &:not(.blank,.round) {
+        box-shadow: $buttonBoxShadow;
+    }
+
+    &:focus {
+        outline: none;
+        box-shadow: none
+    }
+}
+
+.primary {
+
+}
+
+.secondary {
+
+}
+
+.transparent {
+    background-color: transparent;
+    color: $greenColor;
+    border: 1.5px solid $greenColor;
+}
+
+
+.green {
+    background-color: $menuColor;
+
+}
+
+.blank {
+    background-color: transparent;
+    border: none;
+}
+
+
+.update {
+    width: 150px;
+    height: 50px;
+    border-radius: 25px;
+    color: white !important;
+}

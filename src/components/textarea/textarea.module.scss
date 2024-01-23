@@ -1,0 +1,36 @@
+@import "../../styles/variables";
+
+.textarea {
+    margin-top: 10px;
+    width: calc(100% - 20px);
+    border: 1px solid $borderColor;
+    height: 160px;
+    padding: 10px;
+    resize: none;
+    outline: none;
+    color: black;
+
+    @media only screen and (max-width: $smallDisplay) {
+        font-size: 12px;
+        height: 150px;
+    }
+}
+
+.label {
+    font-size: 15px;
+
+    font-weight: normal;
+    margin-bottom: 10px;
+    color: $borderColor;
+}
+
+
+textarea::-webkit-outer-spin-button,
+textarea::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+textarea[type=number] {
+    -moz-appearance: textfield;
+}

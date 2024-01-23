@@ -1,0 +1,82 @@
+@import "../../styles/variables";
+
+
+
+.checkbox {
+    position: relative;
+    font-family: inherit;
+    font-size: inherit;
+    background-color: 'black';
+
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    & * {
+        pointer-events: none;
+    }
+
+    & input {
+        z-index: -1;
+        opacity: 0;
+        width: 0;
+    }
+
+    & label {
+        font-size: 16px;
+        margin-left: 18px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+        @media only screen and (max-width: $smallDisplay) {
+            font-size: 14px;
+        }
+    }
+
+    & span {
+        position: relative;
+        display: inline-block;
+        width: 1.2rem;
+        height: 1rem;
+
+        border-radius: 3px;
+    }
+
+    & input:checked ~ span::after {
+        content: $checkbox;
+        position: absolute;
+        left: .2rem;
+    }
+
+    & input:focus {
+        outline-color: transparent;
+    }
+
+    & input:focus ~ span {
+        box-shadow: 1px 1px $boxShadowColor;
+    }
+
+    & input:focus ~ label {
+        text-shadow: 0 1px $boxShadowColor;
+    }
+
+    & input:disabled ~ span {
+        box-shadow: none;
+        color: $disabledColor;
+        border-color: currentColor;
+
+    }
+
+    & input:disabled ~ label {
+        color: $disabledColor;
+    }
+}
+
+
+.checkboxLabel {
+    font-size: 14px;
+    margin-left: 10px;
+
+}
+

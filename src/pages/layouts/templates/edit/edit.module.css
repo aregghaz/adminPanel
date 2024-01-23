@@ -1,0 +1,92 @@
+.form {
+  padding: 25px;
+  box-shadow: 0 5px 25px rgba(34, 41, 97, 0.08);
+  background: #ffffff;
+  display: grid;
+  align-items: end;
+  gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+}
+
+.statusForm {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  align-items: flex-start;
+}
+
+.glob {
+  padding: 30px;
+}
+
+.title {
+  margin-bottom: 25px;
+  text-transform: uppercase;
+}
+
+.itemsWrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 60px;
+}
+
+.item {
+  width: 80%;
+  position: relative;
+  align-items: center;
+}
+.item svg {
+  width: 20px;
+}
+
+.button {
+  padding: 0 32px;
+}
+
+.actionButtons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.buttonDiv {
+  width: 100%;
+  grid-column: 1/4;
+  justify-content: flex-end;
+  display: flex;
+  margin-top: 50px;
+}
+@media only screen and (max-width: 1250px) {
+  .buttonDiv {
+    width: 100%;
+  }
+  .buttonDiv > button {
+    width: 200px;
+    margin: 10px 10px 15px;
+  }
+}
+
+.googleMap {
+  position: relative;
+  margin-top: 20px;
+  aspect-ratio: 2/1;
+  overflow: visible;
+}
+@media only screen and (max-width: 1250px) {
+  .form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .item {
+    width: 100%;
+    align-items: center;
+  }
+}
+
+/*# sourceMappingURL=edit.module.css.map */
