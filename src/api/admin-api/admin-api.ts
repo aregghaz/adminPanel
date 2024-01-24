@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const fakeUrl = 'http://127.0.0.1:8000'
+///const fakeUrl = 'http://127.0.0.1:8000'
+const fakeUrl = 'http://brand.speedshop.am'
 export const AdminApi = {
     dashboard() {
         return axios.get(`${fakeUrl}/api/admin/dashboard`).then(res => res.data);
