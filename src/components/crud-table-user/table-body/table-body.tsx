@@ -1,15 +1,11 @@
 import React, {useState} from "react";
 import TableRow from "../table-row/table-row";
 import TableData from "../table-data/table-data";
-import TrashIcon from "../../../images/trash.svg";
-import EditIcon from "../../../images/edit.svg";
-import InfoIcon from "../../../images/infoIcon.svg";
-import AssignIcon from "../../../images/car-travel-plus-add-svgrepo-com.svg";
-import AssignVendorIcon from "../../../images/add-company-icon.svg";
-import RemoveIcon from "../../../images/tripCansle1.svg";
+import {ReactComponent as TrashIcon} from "../../../images/trash.svg";
+import {ReactComponent as EditIcon} from "../../../images/edit.svg";
+import {ReactComponent as InfoIcon} from "../../../images/Users.svg";
+import {ReactComponent as RemoveIcon} from "../../../images/tripCansle1.svg";
 import s from "../crud-table.module.scss";
-import ClaimTrip from "../../../images/tripAdd1.svg";
-import ActivityIcon from "../../../images/Actions.svg";
 import timestampToDate from "../../../utils/timestampToDate";
 import DeleteServiceModal from "../../delete-service-modal/delete-service-modal"
 
@@ -18,14 +14,9 @@ interface ITableBody {
     isEdit: boolean
     isDelete: boolean
     isInfo: boolean,
-    isClaim: boolean,
-    isAssign: boolean,
-    isGetHistory: boolean,
-    isAssignVendor: boolean,
     isRemove: boolean,
     handlerAction: (id: number, action: string) => void
-    selectedIds: number[]
-    typeId: number
+   /// selectedIds: number[]
 
 }
 
@@ -33,16 +24,11 @@ const TableBody: React.FC<ITableBody> = (
     {
         data,
         isEdit,
-        isAssign,
         isDelete,
-        isClaim,
-        isGetHistory,
         isInfo,
         isRemove,
-        isAssignVendor,
         handlerAction,
-        selectedIds,
-        typeId
+        // selectedIds,
     }) => {
     let count = 0;
     const [deleteModal, setDeleteModal] = useState<boolean>(false)
@@ -58,13 +44,14 @@ const TableBody: React.FC<ITableBody> = (
                         return keys.length > 0 && (
 
                             <TableRow key={index} data-rowid={item["id"]}
-                                      className={`${selectedIds?.includes(item["id"]) ? s.chosen : ""} ${s.tableBColor}`}>
+                                     /// className={`${selectedIds?.includes(item["id"]) ? s.chosen : ""} ${s.tableBColor}`}>
+                                      className={`${s.tableBColor}`}>
                                 {
-                                    (isEdit || isDelete || isInfo || isAssign) &&
+                                    (isEdit || isDelete || isInfo ) &&
                                     <TableData item={item} key={999999} click={false}>
                                         <div className={s.iconsWrapper}>
                                             {
-                                                isDelete && typeId !== 5 && typeId !== 6 &&
+                                                isDelete  &&
                                                 <span className={`${s.tooltip} ${s.deleteSpan}`}>
                                             <span className={`${s.tooltiptext} ${s.delete}`}>Delete</span>
                                             <TrashIcon
@@ -78,7 +65,7 @@ const TableBody: React.FC<ITableBody> = (
                                             </span>
                                             }
                                             {
-                                                isEdit && typeId !== 5 && typeId !== 6 &&
+                                                isEdit &&
                                                 <span className={`${s.tooltip} ${s.editSpan}`}>
                                             <span className={`${s.tooltiptext} ${s.edit} ${s.editLeft}`}>Edit</span>
                                             <EditIcon
@@ -87,7 +74,7 @@ const TableBody: React.FC<ITableBody> = (
                                             />
                                             </span>
                                             }
-                                            {isRemove && typeId === 1 &&
+                                            {isRemove &&
                                                 <span className={`${s.tooltip} ${s.reRouteSpan}`}>
                                             <span className={`${s.tooltiptext} ${s.reRoute}`}>ReRoute</span>
                                             <RemoveIcon
@@ -107,45 +94,7 @@ const TableBody: React.FC<ITableBody> = (
                                             </span>
                                             }
 
-                                            {isClaim && typeId === 2 &&
-                                                <span className={`${s.tooltip} ${s.claimSpan}`}>
-                                            <span
-                                                className={`${s.tooltiptext} ${s.claim} ${s.claimLabelTop}`}>Claim</span>
-                                            <ClaimTrip
-                                                className={s.icon}
-                                                onClick={() => handlerAction(item.id, "claim")}
-                                            />
-                                                </span>
-                                            }
-                                            {
-                                                isAssign && typeId === 1 &&
-                                                <span className={`${s.tooltip} ${s.historySpan}`}>
-                                            <span className={`${s.tooltiptext} ${s.history}`}>Assign</span>
-                                            <AssignIcon
-                                                className={`${s.icon} ${s.iconCar}`}
-                                                onClick={() => handlerAction(item.id, "assign")}
-                                            />
-                                            </span>
-                                            }
-                                            {
-                                                isGetHistory &&
-                                                <span className={`${s.tooltip} ${s.historySpan}`}>
-                                            <span className={`${s.tooltiptext} ${s.history}`}>History</span>
-                                            <ActivityIcon
-                                                className={`${s.icon} `}
-                                                onClick={() => handlerAction(item.id, "history")}
-                                            />
-                                        </span>
-                                            }{
-                                            isAssignVendor && (typeId === 2 || typeId === 1 || typeId === 4) &&
-                                            <span className={`${s.tooltip} ${s.assignVendorSpan}`}>
-                                            <span className={`${s.tooltiptext} ${s.assignVendor}`}>Assign</span>
-                                        <AssignVendorIcon
-                                            className={`${s.icon} ${s.iconVendor}`}
-                                            onClick={() => handlerAction(item.id, "assignVendor")}
-                                        />
-                                        </span>
-                                        }
+
                                         </div>
                                     </TableData>
                                 }

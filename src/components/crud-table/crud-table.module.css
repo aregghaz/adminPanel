@@ -1,3 +1,4 @@
+@import "../../styles/variables.scss";
 .root {
   width: 100%;
   overflow-x: auto;
@@ -66,8 +67,8 @@
   visibility: visible;
 }
 .iconWrapper:hover > svg {
-  fill: #D63D3D;
-  color: #D63D3D;
+  fill:#0C96D1;
+  color:#0C96D1;
 }
 
 .iconLabel {
@@ -79,7 +80,7 @@
   min-width: 40px;
   height: 15px;
   font-size: 10px;
-  background-color: #19347a;
+  background-color: #0C96D1;
   color: white;
   padding: 2px 5px;
   display: flex;
@@ -110,7 +111,7 @@
   vertical-align: inherit;
   color: #332e2e;
   padding-left: 20px;
-  min-width: 190px;
+  /*min-width: 190px;*/
   table-layout: auto;
   border-top: 2px solid #3F7AAD;
   border-bottom: 2px solid #3F7AAD;

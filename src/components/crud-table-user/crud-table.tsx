@@ -10,20 +10,16 @@ const CrudTable: React.FC<ICrudTable> = (
     {
         data,
         titles,
-        isAssign,
         isEdit,
-        isGetHistory,
         isDelete,
-        isClaim,
         isRemove,
-        isAssignVendor,
         isInfo,
         tableRef,
         fetchMoreData,
         handlerAction,
         action,
-        selectedIds,
-        typeId
+        // selectedIds,
+        // typeId
     }) => {
 
     const [filterTable, setFilterTable] = useState<string>("ASC");
@@ -45,7 +41,8 @@ const CrudTable: React.FC<ICrudTable> = (
         }
     };
     const whichData = filteredData.length > 0 ? filteredData : data;
-    const resetOrNotTable = defaultTypeId !== typeId ? data : whichData;
+   /// const resetOrNotTable = defaultTypeId !== typeId ? data : whichData;
+    const resetOrNotTable = data;
 
     return (
         <>
@@ -64,15 +61,11 @@ const CrudTable: React.FC<ICrudTable> = (
                         data={resetOrNotTable}
                         isEdit={isEdit}
                         isInfo={isInfo}
-                        isAssign={isAssign}
                         isDelete={isDelete}
-                        isGetHistory={isGetHistory}
-                        isClaim={isClaim}
                         isRemove={isRemove}
-                        typeId={typeId}
-                        isAssignVendor={isAssignVendor}
                         handlerAction={handlerAction}
-                        selectedIds={selectedIds}
+                        // selectedIds={selectedIds}
+
                     />
 
                 </table>
@@ -84,21 +77,16 @@ const CrudTable: React.FC<ICrudTable> = (
 interface ICrudTable {
     ////FIXME SHOULD ADD TYPE DATA
     data: Array<any>
-    titles: Array<IOption>
+    titles: Array<string>
     isDelete: boolean
     isEdit: boolean
-    isGetHistory: boolean
     isRemove: boolean
-    isAssign: boolean
-    isClaim: boolean
     isInfo: boolean
     action: boolean
-    isAssignVendor: boolean
     className: string
     handlerAction: (id: number, action: string) => void
     fetchMoreData: () => void
-    selectedIds: number[]
-    typeId: number,
+   /// selectedIds: number[]
     tableRef: any
 
 }

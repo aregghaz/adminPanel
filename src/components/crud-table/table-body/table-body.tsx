@@ -17,6 +17,7 @@ interface ITableBody {
     isPrice: boolean
     isGetItems: boolean
     handlerAction: (action: string, id: number) => void
+    titles: Array<string>
 }
 
 
@@ -29,7 +30,8 @@ const TableBody: React.FC<ITableBody> = (
             isGetItems,
             isGetInfo,
             isGetHistory,
-            handlerAction
+            handlerAction,
+            titles
         }) => {
         const {t} = useTranslation();
         let count = 0;
@@ -39,8 +41,6 @@ const TableBody: React.FC<ITableBody> = (
             {
                 data
                     .map((item, index) => {
-                        const keys = Object.keys(item);
-                        //// console.log(keys, 'item')
                         return (
                             <TableRow key={index} className={++count % 2 == 0 ? s.classNameFieldEven : ""}>
                                 {
@@ -86,10 +86,10 @@ const TableBody: React.FC<ITableBody> = (
                                     </TableData>
                                 }
                                 {
-                                    keys.length > 0 &&
                                     (
-                                        keys
+                                        titles
                                             .map((key, i) => {
+                                                    console.log(key, item[key])
                                                     if (key == "image") {
                                                         return (
                                                             <TableData data={item.id} key={i} isGetInfo={isGetInfo}
@@ -99,45 +99,28 @@ const TableBody: React.FC<ITableBody> = (
                                                             </TableData>
                                                         );
 
-                                                    } else if (key.search("_id") > -1) {
+                                                    } else if (key !== "action") {
                                                         ///     console.log(item[key.replace("_id", "")].title,'222222222')
                                                         return <TableData data={item.id} key={i} isGetInfo={isGetInfo}
                                                                           handlerAction={handlerAction}
                                                         >
+                                                            {(item[key] ? (key != 'updated' ? item[key] : timestampToDate(item[key])) : '---')}
 
-                                                            {item[key.replace("_id", "")] ? item[key.replace("_id", "")].title : ' '}
-                                                        </TableData>
-                                                    } else if (key === "created_at" || key === "updated_at") {
-                                                        ///     console.log(item[key.replace("_id", "")].title,'222222222')
-                                                        return <TableData data={item.id} key={i} isGetInfo={isGetInfo}
-                                                                          handlerAction={handlerAction}
-                                                        >
-                                                            {timestampToDate(item[key])}
-
-                                                        </TableData>
-                                                    } else if (typeof item[key] !== "object") {
-                                                        ///     console.log(item[key.replace("_id", "")].title,'222222222')
-                                                        return <TableData data={item.id} key={i} isGetInfo={isGetInfo}
-                                                                          handlerAction={handlerAction}
-                                                        >
-
-                                                            {item[key]}
                                                         </TableData>
                                                     }
+                                                    return true
 
                                                 }
                                             )
                                     )
                                 }
-
-
-
                             </TableRow>
                         );
                     })
             }
             </tbody>
-        );
+        )
+            ;
     }
 ;
 

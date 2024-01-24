@@ -166,7 +166,7 @@ const Select: React.FC<ISelect> = (
                         isMulti={isMulti}
                         styles={selectStylesFunction(styles, error)}
                         className={s.select}
-                        placeholder={t(placeholder)}
+                        placeholder={t(`admin:${placeholder}`)}
                         components={isCheckbox ? {
                                 Option,
                                 IndicatorSeparator: () => null

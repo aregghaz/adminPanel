@@ -53,7 +53,7 @@ const TableHead: React.FC<ITableHead> = (
                                     {
                                         isNotActions(title)
                                     }
-                                    {t(title)}
+                                    {t(`admin:`+title)}
 
                                 </th>
                             );

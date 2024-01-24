@@ -69,7 +69,7 @@ const FormikHandler: React.FC<IFormikHandler> = (
                         type={item.inputType}
                         className={className}
                         onChange={handleChange}
-                        placeholder={item.placeholder ? t(item.placeholder) : item.name}
+                        placeholder={item.placeholder ? t(`admin:${item.placeholder}`) :t(`admin:${item.name}`)}
                         label={getFieldLabel(t, item.label, item.name, requiredFields)}
                         error={errors[item.name]}
                     />
@@ -83,7 +83,7 @@ const FormikHandler: React.FC<IFormikHandler> = (
                     type={item.inputType}
                     className={className}
                     onChange={handleChange}
-                    placeholder={item.placeholder ? t(item.placeholder) : item.name}
+                    placeholder={item.placeholder ? t(`admin:${item.placeholder}`) :t(`admin:${item.name}`)}
                     label={getFieldLabel(t, item.label, item.name, requiredFields)}
                     error={errors[item.name]}
                     autoComplete={item.autoComplete}

@@ -17,12 +17,13 @@ const ProductCreate: React.FC<IUserCreate> = () => {
     const fields: Array<any> = [
         // {name: 'image', type: 'file', label: 'image'},
         {name: "title", type: "input", label: "title", placeholder: "title"},
-        {name: "description", type: "richText", label: "description", placeholder: "description"},
         {name: "price", type: "input", label: "price", placeholder: "price"},
         {name: 'brands', type: 'select', label: 'brands'},
         {name: 'categories', type: 'select', label: 'categories'},
         {name: 'attributes', type: 'multiSelect', label: 'attributes', placeholder :'attributes'},
         {name: 'conditions', type: 'select', label: 'conditions'},
+        {name: "description", type: "richText", label: "description", placeholder: "description"},
+
         // {name: "email", type: "input", label: "email", placeholder: "Email"},
         // {name: "address", type: "input", label: "address", placeholder: "Address"},
         // {name: "birthday", type: "datepicker", label: "birthDate"},

@@ -9,9 +9,12 @@ import {ReactComponent as Close} from "../../images/Close.svg";
 import {ReactComponent as Account} from "../../images/User.svg";
 import {ReactComponent as Logout} from "../../images/SignOut.svg";
 import {ReactComponent as ProfileSvg} from "../../images/profile1.svg";
-import {ReactComponent as Clients} from "../../images/Clients.svg";
+import {ReactComponent as ProductIcon} from "../../svgs/product-icon.svg";
+import {ReactComponent as Category} from "../../svgs/category.svg";
 import {ReactComponent as HomeIcon} from "../../images/my-services.svg";
 import {ReactComponent as Status} from "../../images/Settings.svg";
+import {ReactComponent as CompanyIcon} from "../../svgs/company.svg";
+import {ReactComponent as LogoSvg} from "../../svgs/logo.svg";
 import {getUserData} from "../../store/selectors";
 
 
@@ -21,10 +24,8 @@ const Drawer = ({children}: { children: React.ReactNode }) => {
     const logoutRef: any = useRef(null);
     const accountRef: any = useRef(null);
     const userData = useSelector(getUserData);
-    //// const notificationCount = useSelector(getNotificationCount);
     const [menuOpen, setMenuOpen] = useState<boolean>(false);
     const [isOpen, setIsOpen] = useState<boolean>(false);
-
     const openAccountMenu = () => setMenuOpen(!menuOpen);
     const openSideBar = () => setIsOpen(!isOpen);
     const outsideClickHandler = (e: MouseEvent) => {
@@ -50,27 +51,27 @@ const Drawer = ({children}: { children: React.ReactNode }) => {
             icon: <HomeIcon/>
         }, {
             id: 2,
-            item: "product",
+            item: "Продукты",
             page: '/products',
-            icon: <Clients/>
+            icon: <ProductIcon/>
         }, {
             id: 3,
-            item: "category",
+            item: "Категории",
             page: '/categories',
-            icon: <Status/>
+            icon: <Category/>
         }, {
             id: 4,
-            item: "attributes",
+            item: "Атрибуты",
             page: '/attributes',
             icon: <Status/>
         }, {
             id: 5,
-            item: "brands",
+            item: "Бренды",
             page: '/brands',
-            icon: <Status/>
+            icon: <CompanyIcon/>
         }, {
             id: 5,
-            item: "conditions",
+            item: "Состояние",
             page: '/conditions',
             icon: <Status/>
         }
@@ -86,21 +87,10 @@ const Drawer = ({children}: { children: React.ReactNode }) => {
                     <div className={s.icons}>
                         <div className={s.logoSection}>
                             <div className={s.logoDiv}>
-                                <img src={`../../images/logo.png`} alt="logo"/>
+                                <LogoSvg/>
                             </div>
-
-
                         </div>
-
                         <div className={s.header_icons_block}>
-
-                            {/*<div className={s.iconBlock}>*/}
-                            {/*    <Button type={"blank"}>*/}
-                            {/*    <span className={s.icon}>*/}
-                            {/*        <Notification />*/}
-                            {/*    </span>*/}
-                            {/*    </Button>*/}
-                            {/*</div>*/}
                             <div className={s.iconBlock} ref={accountRef}>
                                 <Button
                                     type={"blank"}
@@ -159,7 +149,6 @@ const Drawer = ({children}: { children: React.ReactNode }) => {
                 </div>
             </nav>
             <div className={s.content_part}>
-
                 <nav className={s.main} style={isOpen ? {width: "200px"} : {width: "50px"}}>
                     <div
                         key={"home"}

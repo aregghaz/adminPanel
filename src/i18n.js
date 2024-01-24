@@ -28,25 +28,36 @@ const options = {
     checkWhitelist: true
 };
 const resources = {
-    admin: {
-        en: {
-            translation: {
-                "Welcome to React": "Welcome to React and react-i18next"
-            }
-        },
-        fr: {
-            translation: {
-                "Welcome to React": "Bienvenue à React et react-i18next"
-            }
+    ru:{
+        admin: {
+            id:'Ид',
+            name:'Название',
+            description:'Описание',
+            price:'Цена',
+            special_price:'Специальная цена',
+            teg:'Тег',
+            brand:'Бренд',
+            brands:'Бренд',
+            types:'Виды',
+            slug:'Url',
+            conditions:'Состояние',
+            category:'Категория',
+            categories:'Категория',
+            action:'Действие',
+            title:'Название',
+            parent:"Родитель",
+            updated:"Обновлено",
+            attributes:"Атрибуты",
         }
-    }
+    },
+
 };
 i18n
     .use(initReactI18next) // passes i18n down to react-i18next
     .use(LanguageDetector)
     .init({
         resources,
-        lng: "hy",
+        lng: "ru",
         detection: options,
         defaultNS: "site",
         fallbackLng: ["hy", "en", "ru"],

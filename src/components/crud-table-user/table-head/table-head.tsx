@@ -2,14 +2,13 @@ import React from "react";
 import TableRow from "../table-row/table-row";
 
 import s from "../crud-table.module.scss";
-import { useTranslation } from "react-i18next";
-import { IOption } from "../../select/select";
+import {useTranslation} from "react-i18next";
 
 
-import ArrowDown from "-!svg-react-loader!../../../svgs/arrow-down.svg";
+import {ReactComponent as ArrowDown} from "../../../svgs/arrow-down.svg";
 
 interface ITableHead {
-    titles: Array<IOption>
+    titles: Array<string>
     colspan?: number
     rowspan?: number
     titleSort: (name: string) => void,
@@ -28,7 +27,7 @@ const TableHead: React.FC<ITableHead> = (
         filterTable,
         titleName
     }) => {
-    const { t } = useTranslation();
+    const {t} = useTranslation();
     const classes = (name: string) => filterTable === "ASC" && name === titleName ? s.rotate_arrow : " ";
     const isNotActions = (title: string) => {
         if (title === "action" || title === "fields") {
@@ -54,26 +53,19 @@ const TableHead: React.FC<ITableHead> = (
             {
                 titles && titles
                     .map((title, index) => {
-                            var classNameField;
-                            if (title.label === "origin" || title.label === "destination" || title.label === "destination_comments" || title.label === "origin_comment") {
-                                classNameField = `${s.tableTd} ${s.address}`;
-                            } else if (title.label === "gender") {
-                                classNameField = `${s.tableTd}  ${s.gender}`;
-                            } else {
-                                classNameField = `${s.tableTd}`;
-                            }
-                            return title.label !== "id" && (
+                            let classNameField = `${s.tableTd}`;
+                            return title !== "id" && (
                                 <th
-                                    onClick={() => titleSort(title.label)}
+                                    onClick={() => titleSort(title)}
                                     className={classNameField}
                                     key={index}
                                     colSpan={colspan || 1}
                                     rowSpan={rowspan || 1}
-                                    style={{ cursor: "pointer" }}
+                                    style={{cursor: "pointer"}}
                                 >
-                                    {t(title.label)}
+                                    {t(title)}
 
-                                    <span className={s.arrowSpan}>{isNotActions(title.label)}</span>
+                                    <span className={s.arrowSpan}>{isNotActions(title)}</span>
 
                                 </th>
                             );
