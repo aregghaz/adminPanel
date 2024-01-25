@@ -18,10 +18,11 @@ const DeleteModal: FC<IDeleteModal> = ({isModalOpen, setIsModalOpen, handlerActi
     };
 
 
-    return <DeleteServiceModal id={12} isOpen={isModalOpen} handleCloseModal={handlerCloseModal}
-                               handlerDeleteItem={() => {
-                                   handlerAction('deleteModal')
-                               }}/>
+    return <DeleteServiceModal
+        isOpen={isModalOpen}
+        handleCloseModal={handlerCloseModal}
+        handlerAction={handlerAction}
+    />
     // (<Modal
     //     isOpen={isModalOpen}
     //     style={customStyles}

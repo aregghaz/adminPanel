@@ -1,14 +1,13 @@
 import React from "react";
 import Modal from "react-modal";
-import ReactModal from "react-modal";
 import Button from "../button/button";
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
 import useWindowResize from "../../hooks/use-window-resize";
 
 import s from "./delete-service-modal.module.scss";
 
 
-const customStyles:any = {
+const customStyles: any = {
     content: {
         position: "fixed",
         border: "none",
@@ -54,30 +53,24 @@ const customStylesMobile: any = {
 };
 
 interface IDeleteServiceModal {
-    id: number;
     isOpen: boolean;
     handleCloseModal: () => void;
-    handlerDeleteItem: (id: number) => void;
+    handlerAction: (action: string) => void;
 }
 
 const DeleteServiceModal: React.FC<IDeleteServiceModal> = (
     {
-        id,
         isOpen,
         handleCloseModal,
-        handlerDeleteItem
+        handlerAction
     }) => {
-    const { t } = useTranslation();
-    const { width } = useWindowResize();
+    const {t} = useTranslation();
+    const {width} = useWindowResize();
 
-    const handlerDelete = () => {
-        handlerDeleteItem(id);
-        handleCloseModal();
-    };
 
     return (
         <Modal
-            isOpen={isOpen !== false}
+            isOpen={isOpen}
             style={width < 767 ? customStylesMobile : customStyles}
             onRequestClose={handleCloseModal}
         >
@@ -88,12 +81,13 @@ const DeleteServiceModal: React.FC<IDeleteServiceModal> = (
                     />
                 </div>
 
-                <i className={`binicon- ${s.icon}`} />
+                <i className={`binicon- ${s.icon}`}/>
                 <p className={s.text}>{t("Do you want to delete")}</p>
                 <div className={s.buttons}>
-                    <Button type={"green"} onClick={handlerDelete}
+                    <Button type={"green"} onClick={() => handlerAction('deleteModal')}
                             className={s.button}>{t("yes")}</Button>
-                    <Button type={"transparent"} onClick={handleCloseModal} className={`${s.button} ${s.buttonNo}`}>{t("no")}</Button>
+                    <Button type={"transparent"} onClick={handleCloseModal}
+                            className={`${s.button} ${s.buttonNo}`}>{t("no")}</Button>
                 </div>
             </div>
         </Modal>
