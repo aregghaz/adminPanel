@@ -31,8 +31,6 @@ const TableBody: React.FC<ITableBody> = (
         // selectedIds,
     }) => {
     let count = 0;
-    const [deleteModal, setDeleteModal] = useState<boolean>(false)
-    const [deleteId, setDeleteId] = useState<number>(-1)
     return (
         <>
             <tbody>
@@ -57,9 +55,7 @@ const TableBody: React.FC<ITableBody> = (
                                             <TrashIcon
                                                 className={s.icon}
                                                 onClick={() => {
-                                                    // handlerAction(item.id, "delete")
-                                                    setDeleteId(item.id)
-                                                    setDeleteModal(true)
+                                                    handlerAction("delete", item.id)
                                                 }}
                                             />
                                             </span>
@@ -129,11 +125,11 @@ const TableBody: React.FC<ITableBody> = (
                     })
             }
             </tbody>
-            <DeleteServiceModal id={12} isOpen={deleteModal} handleCloseModal={() => {
-                setDeleteModal(false)
-            }} handlerDeleteItem={() => {
-                handlerAction("delete", deleteId)
-            }}/>
+            {/*<DeleteServiceModal id={12} isOpen={deleteModal} handleCloseModal={() => {*/}
+            {/*    setDeleteModal(false)*/}
+            {/*}} handlerDeleteItem={() => {*/}
+            {/*    handlerAction("delete", deleteId)*/}
+            {/*}}/>*/}
         </>
     );
 };
