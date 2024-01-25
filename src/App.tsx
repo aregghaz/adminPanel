@@ -33,7 +33,7 @@ import ProductEdit from "./pages/admin/products/edit";
 
 
 const App = (): JSX.Element => (
-    // <Provider store={store}>
+    <Provider store={store}>
         <Router>
             <LoginWrapper path="/login"/>
             <Site path="/">
@@ -61,8 +61,7 @@ const App = (): JSX.Element => (
                 {/*<NotFound default />*/}
             </Site>
         </Router>
-    // </Provider>
-
+    </Provider>
 
 );
 
