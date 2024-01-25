@@ -43,7 +43,7 @@ const ProductsList: React.FC<IProductsList> = () => {
     const countRef = useRef(2);
 
     const handlerAction = async (action: string, id?: number) => {
-        return PageAction(crudKey, setLoading, loading, action, id)
+        return PageAction(crudKey, setLoading, loading, action, id, setIsModalOpen)
     };
     const fetchMoreData = async () => {
         countRef.current++
