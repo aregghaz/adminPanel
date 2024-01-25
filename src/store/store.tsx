@@ -43,14 +43,14 @@
 // const store = createStore(reducers, composeWithDevTools(applyMiddleware()));
 //
 // export default store;
-import { createStore, applyMiddleware } from 'redux';
+import {createStore, applyMiddleware, compose} from 'redux';
 // import thunk from 'redux-thunk';
 import {thunk} from 'redux-thunk';
-import { composeWithDevTools } from 'redux-devtools-extension';
+// import { composeWithDevTools } from 'redux-devtools-extension';
 import reducers from "./reducers";
 const initialState = {};
 const middleware = [thunk];
-const applied = composeWithDevTools ( applyMiddleware(...middleware) ); //error!
+const applied = compose ( applyMiddleware(...middleware) ); //error!
 const store = createStore(reducers, initialState, applied);
 
 
