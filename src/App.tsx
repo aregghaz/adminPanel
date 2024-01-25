@@ -29,6 +29,7 @@ import BrandsEdit from "./pages/admin/brands/edit";
 import ConditionsList from "./pages/admin/conditions/list";
 import ConditionsCreate from "./pages/admin/conditions/create";
 import ConditionsEdit from "./pages/admin/conditions/edit";
+import ProductEdit from "./pages/admin/products/edit";
 
 
 const App = (): JSX.Element => (
@@ -39,6 +40,7 @@ const App = (): JSX.Element => (
                 <Dashboard path="/dashboard"/>
                 <ProductsList path="/products"/>
                 <ProductCreate path="/products/create"/>
+                <ProductEdit path="/products/:id"/>
                 <CategoriesList path="/categories"/>
                 <CategoryCreate path="/categories/create"/>
                 <CategoriesEdit path="/categories/:id"/>

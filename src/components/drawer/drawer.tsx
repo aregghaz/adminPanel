@@ -26,6 +26,7 @@ const Drawer = ({children}: { children: React.ReactNode }) => {
     const userData = useSelector(getUserData);
     const [menuOpen, setMenuOpen] = useState<boolean>(false);
     const [isOpen, setIsOpen] = useState<boolean>(false);
+
     const openAccountMenu = () => setMenuOpen(!menuOpen);
     const openSideBar = () => setIsOpen(!isOpen);
     const outsideClickHandler = (e: MouseEvent) => {

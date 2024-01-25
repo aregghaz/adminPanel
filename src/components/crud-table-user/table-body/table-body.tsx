@@ -15,8 +15,8 @@ interface ITableBody {
     isDelete: boolean
     isInfo: boolean,
     isRemove: boolean,
-    handlerAction: (id: number, action: string) => void
-   /// selectedIds: number[]
+    handlerAction: (action: string, id: number) => void
+    /// selectedIds: number[]
 
 }
 
@@ -44,14 +44,14 @@ const TableBody: React.FC<ITableBody> = (
                         return keys.length > 0 && (
 
                             <TableRow key={index} data-rowid={item["id"]}
-                                     /// className={`${selectedIds?.includes(item["id"]) ? s.chosen : ""} ${s.tableBColor}`}>
+                                /// className={`${selectedIds?.includes(item["id"]) ? s.chosen : ""} ${s.tableBColor}`}>
                                       className={`${s.tableBColor}`}>
                                 {
-                                    (isEdit || isDelete || isInfo ) &&
+                                    (isEdit || isDelete || isInfo) &&
                                     <TableData item={item} key={999999} click={false}>
                                         <div className={s.iconsWrapper}>
                                             {
-                                                isDelete  &&
+                                                isDelete &&
                                                 <span className={`${s.tooltip} ${s.deleteSpan}`}>
                                             <span className={`${s.tooltiptext} ${s.delete}`}>Delete</span>
                                             <TrashIcon
@@ -70,30 +70,19 @@ const TableBody: React.FC<ITableBody> = (
                                             <span className={`${s.tooltiptext} ${s.edit} ${s.editLeft}`}>Edit</span>
                                             <EditIcon
                                                 className={`${s.icon} ${s.iconColor}`}
-                                                onClick={() => handlerAction(item.id, "edit")}
+                                                onClick={() => handlerAction("edit", item.id)}
                                             />
                                             </span>
                                             }
-                                            {isRemove &&
-                                                <span className={`${s.tooltip} ${s.reRouteSpan}`}>
-                                            <span className={`${s.tooltiptext} ${s.reRoute}`}>ReRoute</span>
-                                            <RemoveIcon
-                                                className={s.icon}
-                                                onClick={() => handlerAction(item.id, "reRoute")}
-                                            />
-                                                  </span>
-                                            }
-                                            {
-                                                isInfo &&
-                                                <span className={`${s.tooltip} ${s.infoSpan}`}>
-                                            <span className={`${s.tooltiptext} ${s.info} ${s.infoLabel}`}>Info</span>
-                                            <InfoIcon
-                                                className={`${s.icon} ${s.iconInfo}`}
-                                                onClick={() => handlerAction(item.id, "info")}
-                                            />
-                                            </span>
-                                            }
-
+                                            {/*{isRemove &&*/}
+                                            {/*    <span className={`${s.tooltip} ${s.reRouteSpan}`}>*/}
+                                            {/*<span className={`${s.tooltiptext} ${s.reRoute}`}>ReRoute</span>*/}
+                                            {/*<RemoveIcon*/}
+                                            {/*    className={s.icon}*/}
+                                            {/*    onClick={() => handlerAction("reRoute", item.id)}*/}
+                                            {/*/>*/}
+                                            {/*      </span>*/}
+                                            {/*}*/}
 
                                         </div>
                                     </TableData>
@@ -112,7 +101,7 @@ const TableBody: React.FC<ITableBody> = (
                                                     itemData = item[key] + " mile";
                                                     break;
                                                 case "price":
-                                                    itemData = "$" + item[key];
+                                                    itemData = item[key] + '₽';
                                                     break;
                                                 case "date_of_service":
                                                     itemData = timestampToDate(item[key]);
@@ -143,7 +132,7 @@ const TableBody: React.FC<ITableBody> = (
             <DeleteServiceModal id={12} isOpen={deleteModal} handleCloseModal={() => {
                 setDeleteModal(false)
             }} handlerDeleteItem={() => {
-                handlerAction(deleteId, "delete")
+                handlerAction("delete", deleteId)
             }}/>
         </>
     );

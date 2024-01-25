@@ -1,5 +1,4 @@
 import React, {useEffect, useRef, useState} from "react";
-import List from "../../layouts/templates/list/list";
 import {useTranslation} from "react-i18next";
 import {AdminApi} from "../../../api/admin-api/admin-api";
 import PageAction from "../../../utils/page";
@@ -43,8 +42,8 @@ const ProductsList: React.FC<IProductsList> = () => {
     const tableRef = useRef(null);
     const countRef = useRef(2);
 
-    const handlerAction = async (id:number,action: string) => {
-       // return PageAction(crudKey, setLoading, loading, action, id)
+    const handlerAction = async (action: string, id?: number) => {
+        return PageAction(crudKey, setLoading, loading, action, id)
     };
     const fetchMoreData = async () => {
         countRef.current++
@@ -62,13 +61,17 @@ const ProductsList: React.FC<IProductsList> = () => {
                 className={"pagination"}
                 handlerAction={handlerAction}
                 tableRef={tableRef}
-             fetchMoreData={fetchMoreData} action={false} isInfo isRemove/>
-            {/*<DeleteModal*/}
-            {/*    handlerAction={handlerAction}*/}
-            {/*    isModalOpen={isModalOpen}*/}
-            {/*    setIsModalOpen={setIsModalOpen}*/}
-            {/*    t={t}*/}
-            {/*/>*/}
+                fetchMoreData={fetchMoreData}
+                action={false}
+                isInfo={false}
+                isRemove
+            />
+            <DeleteModal
+                handlerAction={handlerAction}
+                isModalOpen={isModalOpen}
+                setIsModalOpen={setIsModalOpen}
+                t={t}
+            />
         </>
     );
 };

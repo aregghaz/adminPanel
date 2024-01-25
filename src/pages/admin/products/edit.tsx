@@ -1,20 +1,20 @@
 import React, {useEffect, useState} from "react";
+import Edit from "../../layouts/templates/edit/edit";
 import {useTranslation} from "react-i18next";
-import Create from "../../layouts/templates/create/create";
 import {AdminApi} from "../../../api/admin-api/admin-api";
+import Input from "../../../components/input/input";
 
-
-interface IUserCreate {
+interface ITableFildsList {
     path: string;
+    id?: number;
 }
 
-
-const ProductCreate: React.FC<IUserCreate> = () => {
+const ProductEdit: React.FC<ITableFildsList> = ({id, path}) => {
     const {t} = useTranslation();
     const crudKey = "products";
-    const redirectKey = "products";
-    const [data, setData] = useState(null);
+    const [data, setData] = useState<any>(null);
     const fields: Array<any> = [
+         {name: 'id', type: 'hidden', label: 'id'},
         {name: "title", type: "input",  label: "title", placeholder: "title"},
         {name: "price", type: "input", inputType:'number', label: "price", placeholder: "price"},
         {name: "special_price", type: "input", inputType:'number' , label: "special_price", placeholder: "special_price"},
@@ -29,52 +29,47 @@ const ProductCreate: React.FC<IUserCreate> = () => {
         {name: 'meta_key', type: 'input', label: 'meta_key'},
         {name: "description", type: "richText", label: "description", placeholder: "description"},
         {name: "meta_desc", type: "richText", label: "meta_desc", placeholder: "meta_desc"},
-
-        // {name: "id", type: "hidden", inputType: "hidden"}
     ];
+
+
     useEffect(() => {
         (
             async () => {
-                 const data = await AdminApi.create('products')
+                if (id) {
+                    const data = await AdminApi.getItemData(crudKey, id);
+                    console.log(data, 'datadata')
+                    setData(data);
+                }
 
-               setData(data);
+
             }
         )();
 
     }, []);
-    const requiredFields = [
-        "title",
-        "price",
-        // "address",
-        // "birthday",
-        // "phone_number",
-        // "password",
-        // "email",
-        // "license",
-        // "picture",
-        // "sex_offender_check",
-        // "motor_vehicle_record",
-        // "defensive_driving",
-        // "wheelchair_securement",
-        // "pass_basic",
-        // "emt_1",
-        // "first_aid",
-        // "company_training",
-        // "drug_test"
-    ];
+    return (
+        data &&
+        <>
+            <div style={{paddingLeft: 40, paddingRight: 40}}>
+                {data.data.attributes.map((item: { label: string, value: string }) => {
+                    return <>
+                        <Input name={item.label} placeholder={item.label} label={item.label} type={'text'}
+                               value={item.value}/>
+                        {/*<span>{item.label +' '+item.value}</span><br/>*/}
+                    </>
+                })}
+            </div>
+            <Edit
+                crudKey={crudKey}
+                data={data}
+                fields={fields}
+                title={""}
+                children={t("update")}
+                requiredFields={[]}
+                selectRange
+            />
+        </>
 
-    return data && <Create
-        crudKey={crudKey}
-        redirectKey={redirectKey}
-        data={data}
-        fields={fields}
-        isAdmin={false}
-        requiredFields={requiredFields}
-        title={""}
-        children={t("create")}
-        selectRange
-    />;
-
+    );
 };
 
-export default ProductCreate;
+export default ProductEdit;

@@ -126,32 +126,7 @@ const SingleFileUpload: React.FC<ISingleFileUpload> = (
                     </div>
                 </div>
                 {/*{type !== "hidden" && <div className={s.splitter}></div>}*/}
-                {
-                    type !== "hidden" && <>
-                        <div className={s.datePickerWrapper}>
-                            {/*<div className={s.datePickerLabel}>*/}
-                            {/*    <span>Experation Date</span>*/}
-                            {/*</div>*/}
-                            <div className={s.datepicker}>
-                                <DataPicker
-                                    name={`${name}_exp`}
-                                    type={true}
-                                    setFieldValue={setFieldValue}
-                                    selectRange={false}
-                                    ///  handleChange={handleChange}
-                                    label={dataPickerLabel}
-                                    value={value[`${name}_exp`]}
-                                    style={{border: "none"}}
-                                    error={dataPickerError}
-                                    singleFileUpload={true}
-                                />
-                                <div style={{
-                                    height: 50,
-                                }}></div>
-                            </div>
-                        </div>
-                    </>
-                }
+
             </div>
         </>
     );

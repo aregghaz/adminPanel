@@ -1,9 +1,9 @@
-import React, { useState } from "react";
+import React, {useState} from "react";
 import TableHead from "./table-head/table-head";
 import TableBody from "./table-body/table-body";
 import s from "./crud-table.module.scss";
-import { IOption } from "../select/select";
 import InfiniteScroll from "react-infinite-scroll-component";
+import Button from "../button/button";
 
 
 const CrudTable: React.FC<ICrudTable> = (
@@ -41,11 +41,18 @@ const CrudTable: React.FC<ICrudTable> = (
         }
     };
     const whichData = filteredData.length > 0 ? filteredData : data;
-   /// const resetOrNotTable = defaultTypeId !== typeId ? data : whichData;
+    /// const resetOrNotTable = defaultTypeId !== typeId ? data : whichData;
     const resetOrNotTable = data;
 
     return (
         <>
+            <div className={s.addBtnWrapper}>
+                {
+                    <Button type="green" className={s.add} onClick={() => handlerAction('add', 0)}>
+                        <span>+</span>
+                    </Button>
+                }
+            </div>
             <InfiniteScroll
                 dataLength={resetOrNotTable.length} //This is important field to render the next data
                 next={fetchMoreData}
@@ -55,7 +62,7 @@ const CrudTable: React.FC<ICrudTable> = (
             >
                 <table className={s.table} ref={tableRef}>
                     <TableHead action={action} titles={titles} titleSort={titleSort} filterTable={filterTable}
-                               titleName={titleName} />
+                               titleName={titleName}/>
 
                     <TableBody
                         data={resetOrNotTable}
@@ -84,9 +91,9 @@ interface ICrudTable {
     isInfo: boolean
     action: boolean
     className: string
-    handlerAction: (id: number, action: string) => void
+    handlerAction: (action: string, id: number) => void
     fetchMoreData: () => void
-   /// selectedIds: number[]
+    /// selectedIds: number[]
     tableRef: any
 
 }
