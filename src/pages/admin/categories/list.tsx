@@ -1,6 +1,4 @@
 import React, {useEffect, useRef, useState} from "react";
-import List from "../../layouts/templates/list/list";
-import {useTranslation} from "react-i18next";
 import {AdminApi} from "../../../api/admin-api/admin-api";
 import PageAction from "../../../utils/page";
 import DeleteModal from "../../../components/modal/deleteModal";
@@ -15,7 +13,6 @@ const CategoriesList: React.FC<IProductsList> = () => {
     const [data, setData] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [loading, setLoading] = useState(false);
-    const {t} = useTranslation();
     useEffect(() => {
         (
             async () => {
@@ -85,7 +82,6 @@ const CategoriesList: React.FC<IProductsList> = () => {
                 handlerAction={handlerAction}
                 isModalOpen={isModalOpen}
                 setIsModalOpen={setIsModalOpen}
-                t={t}
             />
 
         </>

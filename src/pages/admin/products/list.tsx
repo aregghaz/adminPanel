@@ -70,7 +70,6 @@ const ProductsList: React.FC<IProductsList> = () => {
                 handlerAction={handlerAction}
                 isModalOpen={isModalOpen}
                 setIsModalOpen={setIsModalOpen}
-                t={t}
             />
         </>
     );
