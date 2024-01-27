@@ -224,6 +224,7 @@ const FormikHandler: React.FC<IFormikHandler> = (
         case "attributes":
             return (
                 <div style={{paddingLeft: 40, paddingRight: 40}}>
+                    <div>{getFieldLabel(t, item.label, item.name, requiredFields)}</div>
                     {values['attributes'] && values[item.name].map((i: { label: string, value: string, id: string }, index: number) => {
                         /// console.log(i,111111)
                         return <span key={index}>
@@ -231,7 +232,7 @@ const FormikHandler: React.FC<IFormikHandler> = (
                                 onChange={handleChange}
                                 name={i.id}
                                 placeholder={i.label}
-                                // label={i.label}
+                                label={i.label}
                                 type={'text'}
                                 value={values[i.id]}/>
                             {/*<span>{item.label +' '+item.value}</span><br/>*/}
