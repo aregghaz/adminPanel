@@ -25,9 +25,16 @@ const populateCreateFormFields = (fields: Array<IItem>, data: any) => {
                 case "datepicker":
                     // values.selectOptions[''] = data['']
                     break;
-                // case 'province':
-                //     values[`${field.name}_province`] = data[`${field.name}_province`]
-                //     break
+                case "attributes":
+
+                    // data.data[field.name].map((item: { label: string, value: string, id: string }, index: number) => {
+                    //
+                    //     values[item.id] = item.value
+                    //
+                    // })
+                    // values["origin"] = data.data["origin"];
+                    // values["destination"] = data.data["destination"];
+                    break;
                 default:
                     //       values[field.name] = []
                     break;

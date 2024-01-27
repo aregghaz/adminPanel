@@ -1,7 +1,5 @@
 import axios from "axios";
-///const fakeUrl = 'http://127.0.0.1:8000'
-const fakeUrl = 'http://brand.speedshop.am'
-
+import {fakeUrl} from "../../utils/getFieldLabel";
 export const authAPI = {
 
     register(formData: FormData) {

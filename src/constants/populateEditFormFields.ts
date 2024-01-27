@@ -1,18 +1,17 @@
-import { IItem } from "../pages/layouts/templates/formik-handler/formik-handler";
+import {IItem} from "../pages/layouts/templates/formik-handler/formik-handler";
 
 
 const populateEditFormFields = (fields: Array<IItem>, data: { [key: string]: { [key: string]: any } }) => {
-    const values: { [key: string]: Object } = {};
+    const values: { [key: string]: Object | any } = {};
     fields
         .forEach((field) => {
-            console.log( data.data[field.name],'12323ss')
+
             switch (field.type) {
                 case "input":
                     values[field.name] = data.data[field.name];
                     break;
                 case "file":
                     values[field.name] = data.data[field.name];
-                    values[`${field.name}_exp`] = data.data[`${field.name}_exp`];
                     break;
                 case "hidden":
                     values[field.name] = data.data[field.name];
@@ -23,9 +22,15 @@ const populateEditFormFields = (fields: Array<IItem>, data: { [key: string]: { [
                 case "datepicker":
                     values[field.name] = data.data[field.name];
                     break;
-                case "autocomplete":
-                    values["origin"] = data.data["origin"];
-                    values["destination"] = data.data["destination"];
+                case "attributes":
+
+                    data.data[field.name].map((item: { label: string, value: string, id: string }, index: number) => {
+
+                        values[item.id] = item.value
+
+                    })
+                    // values["origin"] = data.data["origin"];
+                    // values["destination"] = data.data["destination"];
                     break;
 
                 default:

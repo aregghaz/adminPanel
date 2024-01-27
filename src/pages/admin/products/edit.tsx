@@ -22,11 +22,11 @@ const ProductEdit: React.FC<ITableFildsList> = ({id, path}) => {
         {name: 'brand_id', type: 'select', label: 'brands'},
         {name: 'categories', type: 'multiSelect', label: 'categories'},
         {name: 'attributes', type: 'multiSelect', label: 'attributes', placeholder: 'attributes'},
-        {name: 'condition_id', type: 'select', label: 'condition'},
         {name: 'status', type: 'select', label: 'status'},
         {name: 'meta_title', type: 'input', label: 'meta_title'},
         {name: 'sku', type: 'input', label: 'sku'},
         {name: 'meta_key', type: 'input', label: 'meta_key'},
+        {name: 'attributes', type: 'attributes', label: 'attributes'},
         {name: "description", type: "richText", label: "description", placeholder: "description"},
         {name: "meta_desc", type: "richText", label: "meta_desc", placeholder: "meta_desc"},
     ];
@@ -49,15 +49,7 @@ const ProductEdit: React.FC<ITableFildsList> = ({id, path}) => {
     return (
         data &&
         <>
-            <div style={{paddingLeft: 40, paddingRight: 40}}>
-                {data.data.attributes.map((item: { label: string, value: string }) => {
-                    return <>
-                        <Input name={item.label} placeholder={item.label} label={item.label} type={'text'}
-                               value={item.value}/>
-                        {/*<span>{item.label +' '+item.value}</span><br/>*/}
-                    </>
-                })}
-            </div>
+
             <Edit
                 crudKey={crudKey}
                 data={data}

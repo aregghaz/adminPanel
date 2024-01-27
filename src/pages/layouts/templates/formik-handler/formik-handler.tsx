@@ -1,12 +1,12 @@
 import React from "react";
-import Select, { IOption, IOptionMultiselect } from "../../../../components/select/select";
-import { FormikValues } from "formik";
+import Select, {IOption, IOptionMultiselect} from "../../../../components/select/select";
+import {FormikValues} from "formik";
 import TextField from "../../../../components/text-field/text-field";
 import Textarea from "../../../../components/textarea/textarea";
 import Input from "../../../../components/input/input";
 import Checkbox from "../../../../components/checkbox/checkbox";
 import RichText from "../../../../components/rich-text/rich-text";
-import { useTranslation } from "react-i18next";
+import {useTranslation} from "react-i18next";
 ///import DataPicker from "../../../../components/data-picker/data-picker";
 import SingleFileUpload from "../../../../components/single-file-upload/single-file-upload";
 import getFieldLabel from "../../../../utils/getFieldLabel";
@@ -16,7 +16,7 @@ import Autocomplete from "../../../../components/autocomplate/autocomplete";
 import Password from "../../../../components/password/password";
 
 export interface IItem {
-    type: "input" | "password" | "autocomplete" | "address" | "timePicker" | "checkbox" | "richText" | "textarea" | "select" | "file" | "textField" | "radio" | "datepicker" | "multiSelect" | "hidden";
+    type: "input" | "password" | "autocomplete" | "address" | "timePicker" | "checkbox" | "richText" | "textarea" | "select" | "file" | "textField" | "radio" | "datepicker" | "multiSelect" | "attributes" | "hidden";
     inputType: string;
     name: string;
     value?: string | boolean | File | IOption;
@@ -56,7 +56,7 @@ const FormikHandler: React.FC<IFormikHandler> = (
         handleDrawMap,
         requiredFields,
     }) => {
-    const { t } = useTranslation();
+    const {t} = useTranslation();
     switch (item.type) {
         case "input":
             return (
@@ -69,7 +69,7 @@ const FormikHandler: React.FC<IFormikHandler> = (
                         type={item.inputType}
                         className={className}
                         onChange={handleChange}
-                        placeholder={item.placeholder ? t(`admin:${item.placeholder}`) :t(`admin:${item.name}`)}
+                        placeholder={item.placeholder ? t(`admin:${item.placeholder}`) : t(`admin:${item.name}`)}
                         label={getFieldLabel(t, item.label, item.name, requiredFields)}
                         error={errors[item.name]}
                     />
@@ -83,7 +83,7 @@ const FormikHandler: React.FC<IFormikHandler> = (
                     type={item.inputType}
                     className={className}
                     onChange={handleChange}
-                    placeholder={item.placeholder ? t(`admin:${item.placeholder}`) :t(`admin:${item.name}`)}
+                    placeholder={item.placeholder ? t(`admin:${item.placeholder}`) : t(`admin:${item.name}`)}
                     label={getFieldLabel(t, item.label, item.name, requiredFields)}
                     error={errors[item.name]}
                     autoComplete={item.autoComplete}
@@ -103,7 +103,7 @@ const FormikHandler: React.FC<IFormikHandler> = (
             return (
                 // TODO:  type in function handlerEditorChange
                 <RichText
-                    handleEditorChange={(content:string, editor:any) => {
+                    handleEditorChange={(content: string, editor: any) => {
                         setFieldValue(item.name, content)
                     }}
                     initialValue={values[item.name]}
@@ -130,7 +130,7 @@ const FormikHandler: React.FC<IFormikHandler> = (
                     label={getFieldLabel(t, item.label, item.name, requiredFields)}
 
                     onChange={(option: IOption) => setFieldValue(item.name, option)}
-                   /// label={t(item.label)}
+                    /// label={t(item.label)}
                     isSearchable={false}
                     name={item.name}
                     placeholder={t(item.label)}
@@ -140,7 +140,7 @@ const FormikHandler: React.FC<IFormikHandler> = (
             );
         case "file":
             return (
-                <div style={{ width: "100%" }}>
+                <div style={{width: "100%"}}>
                     <SingleFileUpload
                         name={item.name}
                         oldImage={values[item.name]}
@@ -193,7 +193,6 @@ const FormikHandler: React.FC<IFormikHandler> = (
                     name={item.name}
                     setFieldValue={setFieldValue}
                     selectRange={selectRange}
-                    ///  handleChange={handleChange}
                     value={values[item.name]}
                     error={errors[item.name]}
                     label={getFieldLabel(t, item.label, item.name, requiredFields)}
@@ -220,7 +219,25 @@ const FormikHandler: React.FC<IFormikHandler> = (
                     handleDrawMap={handleDrawMap}
                     handleChange={handleChange}
                     error={errors[item.name]}
-                    />
+                />
+            );
+        case "attributes":
+            return (
+                <div style={{paddingLeft: 40, paddingRight: 40}}>
+                    {values['attributes'] && values[item.name].map((i: { label: string, value: string, id: string }, index: number) => {
+                        /// console.log(i,111111)
+                        return <span key={index}>
+                            <Input
+                                onChange={handleChange}
+                                name={i.id}
+                                placeholder={i.label}
+                                // label={i.label}
+                                type={'text'}
+                                value={values[i.id]}/>
+                            {/*<span>{item.label +' '+item.value}</span><br/>*/}
+                        </span>
+                    })}
+                </div>
             );
         default:
             return (
@@ -230,7 +247,7 @@ const FormikHandler: React.FC<IFormikHandler> = (
                     type={'hidden'}
                     onChange={handleChange}
                     // placeholder={item.placeholder}
-                   /// label={item.label}
+                    /// label={item.label}
                 />
             );
     }
