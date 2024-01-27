@@ -27,9 +27,9 @@ const ProductsList: React.FC<IProductsList> = () => {
 
     const titles: Array<string> = [
         'action',
+        'image',
         'id',
         'name',
-        // 'description',
         'price',
         'special_price',
         'slug',

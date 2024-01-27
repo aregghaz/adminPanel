@@ -1,13 +1,9 @@
-import React, {useState} from "react";
+import React from "react";
 import TableRow from "../table-row/table-row";
 import TableData from "../table-data/table-data";
 import {ReactComponent as TrashIcon} from "../../../images/trash.svg";
 import {ReactComponent as EditIcon} from "../../../images/edit.svg";
-import {ReactComponent as InfoIcon} from "../../../images/Users.svg";
-import {ReactComponent as RemoveIcon} from "../../../images/tripCansle1.svg";
 import s from "../crud-table.module.scss";
-import timestampToDate from "../../../utils/timestampToDate";
-import DeleteServiceModal from "../../delete-service-modal/delete-service-modal"
 
 interface ITableBody {
     data: Array<any>
@@ -86,36 +82,38 @@ const TableBody: React.FC<ITableBody> = (
                                 {
                                     keys.map((key: any, i: number) => {
                                             let itemData = "";
-                                            switch (key) {
-                                                case "car_id":
-                                                    itemData = item["car_id"] != null ? item["car_name"] : "";
-                                                    break;
-                                                case "duration_id":
-                                                    itemData = item[key] + " minute";
-                                                    break;
-                                                case "miles":
-                                                    itemData = item[key] + " mile";
-                                                    break;
-                                                case "price":
-                                                    itemData = item[key] + '₽';
-                                                    break;
-                                                case "date_of_service":
-                                                    itemData = timestampToDate(item[key]);
-                                                    break;
-                                                case "birthday":
-                                                    itemData = timestampToDate(item[key]);
-                                                    break;
-                                                default:
-                                                    itemData = item[key];
+                                            if (key !== 'id') {
+                                                switch (key) {
+                                                    case "price":
+                                                        return (
+                                                            <TableData key={key} item={item} className={key} click={true}
+                                                                       handlerAction={handlerAction}>
+                                                                {item[key] + '₽'}
+
+                                                            </TableData>)
+                                                    case "image":
+                                                        return (
+                                                            <TableData key={key} item={item} className={key} click={true}
+                                                                       handlerAction={handlerAction}>
+                                                                <img src={item[key]}/>
+
+                                                            </TableData>)
+                                                    default:
+                                                        return (
+                                                            <TableData key={key} item={item} className={key} click={true}
+                                                                       handlerAction={handlerAction}>
+                                                                {item[key]}
+                                                            </TableData>)
+                                                }
                                             }
 
-                                            return i !== 0 && key !== "car_name" && (
-                                                <TableData key={key} item={item} className={key} click={true}
-                                                           handlerAction={handlerAction}>
-                                                    {itemData}
-
-                                                </TableData>
-                                            );
+                                            // return i !== 0 && (
+                                            //     <TableData key={key} item={item} className={key} click={true}
+                                            //                handlerAction={handlerAction}>
+                                            //         {itemData}
+                                            //
+                                            //     </TableData>
+                                            // );
                                         }
                                     )
                                 }
