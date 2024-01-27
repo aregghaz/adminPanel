@@ -19,7 +19,6 @@ const CategoryCreate: React.FC<IUserCreate> = () => {
         {name: "categories", type: "select", label: "categories", placeholder: "categories"},
         {name: "meta_title", type: "input", label: "meta_title", placeholder: "meta_title"},
         {name: "meta_key", type: "input", label: "meta_key", placeholder: "meta_key"},
-        {name: "status", type: "select", label: "status", placeholder: "status"},
         {name: "image", type: "file", label: "image", placeholder: "image"},
         {name: "description", type: "richText", label: "description", placeholder: "description"},
         {name: "meta_desc", type: "richText", label: "meta_desc", placeholder: "meta_desc"},

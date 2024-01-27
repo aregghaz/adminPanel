@@ -22,7 +22,6 @@ const ProductCreate: React.FC<IUserCreate> = () => {
         {name: 'brand_id', type: 'select', label: 'brands'},
         {name: 'categories', type: 'multiSelect', label: 'categories'},
         {name: 'attributes', type: 'multiSelect', label: 'attributes', placeholder: 'attributes'},
-        {name: 'status', type: 'select', label: 'status'},
         {name: 'meta_title', type: 'input', label: 'meta_title'},
         {name: 'sku', type: 'input', label: 'sku'},
         {name: 'meta_key', type: 'input', label: 'meta_key'},
