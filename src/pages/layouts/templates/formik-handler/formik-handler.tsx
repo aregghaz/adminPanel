@@ -148,13 +148,9 @@ const FormikHandler: React.FC<IFormikHandler> = (
                             setFieldValue(item.name, event.currentTarget.files[0]);
                         }}
                         type={item.inputType}
-                        setFieldValue={setFieldValue}
                         label={getFieldLabel(t, item.label, item.name, requiredFields)}
-                        dataPickerLabel={getFieldLabel(t, "Expiration date", item.name, requiredFields)}
-                        media={"image"}
                         value={values}
                         error={errors[item.name]}
-                        dataPickerError={errors[item.name]}
                     />
                 </div>
             );

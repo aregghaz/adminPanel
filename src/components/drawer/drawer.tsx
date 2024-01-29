@@ -1,5 +1,4 @@
 import React, {useEffect, useRef, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
 import Button from "../button/button";
 import {useTranslation} from "react-i18next";
 import {Link, useNavigate} from "@reach/router";
@@ -15,7 +14,6 @@ import {ReactComponent as HomeIcon} from "../../images/my-services.svg";
 import {ReactComponent as Status} from "../../images/Settings.svg";
 import {ReactComponent as CompanyIcon} from "../../svgs/company.svg";
 import {ReactComponent as LogoSvg} from "../../svgs/logo.svg";
-import {getUserData} from "../../store/selectors";
 
 
 const Drawer = ({children}: { children: React.ReactNode }) => {
@@ -23,7 +21,6 @@ const Drawer = ({children}: { children: React.ReactNode }) => {
     const navigate = useNavigate();
     const logoutRef: any = useRef(null);
     const accountRef: any = useRef(null);
-    const userData = useSelector(getUserData);
     const [menuOpen, setMenuOpen] = useState<boolean>(false);
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -72,8 +69,13 @@ const Drawer = ({children}: { children: React.ReactNode }) => {
             icon: <CompanyIcon/>
         }, {
             id: 5,
-            item: "Состояние",
-            page: '/conditions',
+            item: "Клиенты",
+            page: '/users',
+            icon: <Status/>
+        }, {
+            id: 5,
+            item: "Баннеры",
+            page: '/banners',
             icon: <Status/>
         }
     ];

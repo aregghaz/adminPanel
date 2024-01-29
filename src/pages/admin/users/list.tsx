@@ -1,23 +1,26 @@
-import React, {useEffect, useState} from "react";
-import List from "../../layouts/templates/list/list";
+import React, {useEffect, useRef, useState} from "react";
 import {AdminApi} from "../../../api/admin-api/admin-api";
 import PageAction from "../../../utils/page";
 import DeleteModal from "../../../components/modal/deleteModal";
+import CrudTable from "../../../components/crud-table-user/crud-table";
 
 interface IProductsList {
     path: string;
 }
 
-const AttributesList: React.FC<IProductsList> = () => {
-    const crudKey = "attributes";
+const UsersList: React.FC<IProductsList> = () => {
+    const crudKey = "users";
+
     const [data, setData] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         (
             async () => {
-                const data = await AdminApi.get(crudKey);
+                const data = await AdminApi.get(crudKey,countRef.current);
                 setData(data);
+                //  setCount(data.count);
+
             }
         )();
     }, [loading]);
@@ -25,42 +28,40 @@ const AttributesList: React.FC<IProductsList> = () => {
 
     const titles: Array<string> = [
         'action',
-        'id',
-        'title',
-        'type',
-        'updated',
+        'name',
+        'lastName',
+        'phone',
+        'email',
+        'subscribed',
+        'status',
     ];
     const handlerAction = async (action: string, id?: number) => {
-        return PageAction(crudKey, setLoading, loading, action, id, setIsModalOpen)
+        return PageAction(crudKey, setLoading, loading, action, id)
+    };
+    const tableRef = useRef(null);
+    const countRef = useRef(2);
+
+    const fetchMoreData = async () => {
+        countRef.current++
+        setLoading(!loading)
     };
 
-    // const onSearchInput = async (event: { search: string }) => {
-    //     // setQuery(event.search);
-    //     // await getClientData(event.search, date);
-    // };
-    // const openSearch = () => {
-    //     if (open) {
-    //         // setQuery("");
-    //         setLoading(true);
-    //     }
-    //     setOpen(!open);
-    // };
     return (
         data &&
         <>
-            {/*<NavigationTab  onSearchInput={onSearchInput} open={open} openSearch={openSearch}  />*/}
-            <List
+            {/* <InfoBlock  items={data}/> */}
+            <CrudTable
                 data={data}
                 titles={titles}
                 isDelete={true}
                 isEdit={true}
-                isGetInfo={false}
-                paginated={false}
-                isCreate={true}
-                isGetItems={false}
-                isGetHistory={false}
                 className={"pagination"}
                 handlerAction={handlerAction}
+                tableRef={tableRef}
+                fetchMoreData={fetchMoreData}
+                action={false}
+                isInfo={false}
+                isRemove
             />
             <DeleteModal
                 handlerAction={handlerAction}
@@ -72,4 +73,4 @@ const AttributesList: React.FC<IProductsList> = () => {
 };
 
 
-export default AttributesList;
+export default UsersList;

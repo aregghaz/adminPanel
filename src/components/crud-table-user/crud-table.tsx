@@ -40,7 +40,7 @@ const CrudTable: React.FC<ICrudTable> = (
             setTitleName(name);
         }
     };
-    const whichData = filteredData.length > 0 ? filteredData : data;
+  ///  const whichData = filteredData.length > 0 ? filteredData : data;
     /// const resetOrNotTable = defaultTypeId !== typeId ? data : whichData;
     const resetOrNotTable = data;
 

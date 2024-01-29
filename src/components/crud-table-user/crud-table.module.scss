@@ -222,7 +222,6 @@
     background-color: $backgroundColor;
     border-top: 2px solid $aquaColor;
     border-bottom: 2px solid $aquaColor;
-    width: 100%;
     //FIXME: Fix for large sizes & no support for vw
     font-size: min(max(16px, 1vw), 19px);
     @media only screen and (max-width: $mediumDisplay) {

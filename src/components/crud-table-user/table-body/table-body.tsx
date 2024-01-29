@@ -4,6 +4,8 @@ import TableData from "../table-data/table-data";
 import {ReactComponent as TrashIcon} from "../../../images/trash.svg";
 import {ReactComponent as EditIcon} from "../../../images/edit.svg";
 import s from "../crud-table.module.scss";
+import {fakeUrl} from "../../../utils/getFieldLabel";
+import timestampToDate from "../../../utils/timestampToDate";
 
 interface ITableBody {
     data: Array<any>
@@ -95,7 +97,15 @@ const TableBody: React.FC<ITableBody> = (
                                                         return (
                                                             <TableData key={key} item={item} className={key} click={true}
                                                                        handlerAction={handlerAction}>
-                                                                <img src={item[key]}/>
+                                                                <img src={`${fakeUrl}${item[key]}`} width={200} height={100}
+                                                                     alt={'image'}/>
+
+                                                            </TableData>)
+                                                    case "updated":
+                                                        return (
+                                                            <TableData key={key} item={item} className={key} click={true}
+                                                                       handlerAction={handlerAction}>
+                                                                {timestampToDate(item[key])}
 
                                                             </TableData>)
                                                     default:

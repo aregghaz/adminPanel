@@ -8,7 +8,7 @@ export const AdminApi = {
     delete(crudKey: string, id: number) {
         return axios.delete(`${fakeUrl}/api/${crudKey}/${id}`).then(res => res.data);
     },
-    store(formData: FormData, crudKey: string, isAdmin: boolean) {
+    store(formData: FormData, crudKey: string) {
         return axios.post(`${fakeUrl}/api/${crudKey}`, formData).then(res => res.data);
     },
     getProduct() {

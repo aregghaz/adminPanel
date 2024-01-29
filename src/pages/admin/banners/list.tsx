@@ -8,7 +8,7 @@ interface IProductsList {
     path: string;
 }
 
-const AttributesList: React.FC<IProductsList> = () => {
+const BannersList: React.FC<IProductsList> = () => {
     const crudKey = "attributes";
     const [data, setData] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -72,4 +72,4 @@ const AttributesList: React.FC<IProductsList> = () => {
 };
 
 
-export default AttributesList;
+export default BannersList;

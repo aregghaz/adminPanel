@@ -1,25 +1,23 @@
 import React from "react";
 import s from "./create.module.scss";
-import FormikHandler, { IItem } from "../formik-handler/formik-handler";
+import FormikHandler, {IItem} from "../formik-handler/formik-handler";
 import Button from "../../../../components/button/button";
-import { Formik, FormikHelpers, FormikValues } from "formik";
-import { useNavigate } from "@reach/router";
+import {Formik, FormikHelpers, FormikValues} from "formik";
+import {useNavigate} from "@reach/router";
 import populateCreateFormFields from "../../../../constants/populateCreateFormFields";
-import { AdminApi } from "../../../../api/admin-api/admin-api";
+import {AdminApi} from "../../../../api/admin-api/admin-api";
 import validationRules from "../../../../utils/validationRule";
-import { useTranslation } from "react-i18next";
-import { toast } from "react-toastify";
+import {useTranslation} from "react-i18next";
+import {toast} from "react-toastify";
 
 interface ICreate {
     data?: { [key: string]: Object }
     fields: Array<IItem>
     crudKey: string
-    isAdmin?: boolean
     selectRange: boolean
-    redirectKey?: string
     title: string,
     requiredFields: Array<string>,
-    children:any
+    children: any
 }
 
 
@@ -29,32 +27,34 @@ const Create: React.FC<ICreate> = (
         crudKey,
         data,
         selectRange,
-        isAdmin = true,
         children,
-        redirectKey,
         requiredFields,
     }) => {
     const navigate = useNavigate();
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     const validate = (values: FormikValues) => validationRules(values, requiredFields, fields, t);
-    const create = async (values: FormikValues, { setSubmitting }: FormikHelpers<FormikValues>) => {
+    const create = async (values: FormikValues, {setSubmitting}: FormikHelpers<FormikValues>) => {
         setSubmitting(true);
         const formData: FormData = new FormData();
 
+        for (let property in values) {
+            if (property === 'image') {
+                formData.append("image", values[property]);
+            }
 
+        }
         formData.append("value", JSON.stringify(values));
-        const res: any = await AdminApi.store(formData, crudKey, isAdmin);
-        // if (Number(res.status === 200)) {
-        //     const options = {
-        //         type: toast.TYPE.SUCCESS,
-        //         position: toast.POSITION.TOP_RIGHT
-        //     };
-        //
-        //     toast(t("record_successfully_added"), options);
-        await navigate(-1);
-        //
-        // }
+        const res: any = await AdminApi.store(formData, crudKey);
+        if (Number(res.status === 200)) {
+            const options = {
+                type: toast.TYPE.SUCCESS,
+                position: toast.POSITION.TOP_RIGHT
+            };
+            toast(t("record_successfully_added"), options);
+            await navigate(-1);
+            //
+        }
 
     };
 
@@ -86,7 +86,7 @@ const Create: React.FC<ICreate> = (
                                                     return <div
                                                         key={index}
                                                         className={s.item}
-                                                        style={field.type == "hidden" ? { display: "none" } : {}}
+                                                        style={field.type === "hidden" ? {display: "none"} : {}}
                                                     >
                                                         <FormikHandler
                                                             item={field}
@@ -103,7 +103,7 @@ const Create: React.FC<ICreate> = (
                                                     return <div
                                                         key={index}
                                                         className={s.item}
-                                                        style={field.type == "hidden" ? { display: "none" } : {}}
+                                                        style={field.type === "hidden" ? {display: "none"} : {}}
                                                     >
                                                         <FormikHandler
                                                             item={field}

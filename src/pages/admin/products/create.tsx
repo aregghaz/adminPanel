@@ -12,21 +12,26 @@ interface IUserCreate {
 const ProductCreate: React.FC<IUserCreate> = () => {
     const {t} = useTranslation();
     const crudKey = "products";
-    const redirectKey = "products";
     const [data, setData] = useState(null);
     const fields: Array<any> = [
-        {name: "title", type: "input",  label: "title", placeholder: "title"},
-        {name: "price", type: "input", inputType:'number', label: "price", placeholder: "price"},
-        {name: "special_price", type: "input", inputType:'number' , label: "special_price", placeholder: "special_price"},
-        {name: "quantity", type: "input", inputType:'number', label: "quantity", placeholder: "quantity"},
+        {name: "title", type: "input", label: "title", placeholder: "title"},
+        {name: "price", type: "input", inputType: 'number', label: "price", placeholder: "price"},
+        {
+            name: "special_price",
+            type: "input",
+            inputType: 'number',
+            label: "special_price",
+            placeholder: "special_price"
+        },
+        {name: "quantity", type: "input", inputType: 'number', label: "quantity", placeholder: "quantity"},
         {name: 'brand_id', type: 'select', label: 'brands'},
         {name: 'categories', type: 'multiSelect', label: 'categories'},
         {name: 'attributes', type: 'multiSelect', label: 'attributes', placeholder: 'attributes'},
         {name: 'meta_title', type: 'input', label: 'meta_title'},
         {name: 'sku', type: 'input', label: 'sku'},
         {name: 'meta_key', type: 'input', label: 'meta_key'},
+        {name: "meta_desc", type: "textarea", label: "meta_desc", placeholder: "meta_desc"},
         {name: "description", type: "richText", label: "description", placeholder: "description"},
-        {name: "meta_desc", type: "richText", label: "meta_desc", placeholder: "meta_desc"},
         {name: 'attributes', type: 'attributes', label: 'attributes'},
 
 
@@ -35,9 +40,9 @@ const ProductCreate: React.FC<IUserCreate> = () => {
     useEffect(() => {
         (
             async () => {
-                 const data = await AdminApi.create('products')
+                const data = await AdminApi.create('products')
 
-               setData(data);
+                setData(data);
             }
         )();
 
@@ -65,12 +70,10 @@ const ProductCreate: React.FC<IUserCreate> = () => {
 
     return data && <Create
         crudKey={crudKey}
-        redirectKey={redirectKey}
         data={data}
         fields={fields}
-        isAdmin={false}
         requiredFields={requiredFields}
-        title={""}
+         title={""}
         children={t("create")}
         selectRange
     />;

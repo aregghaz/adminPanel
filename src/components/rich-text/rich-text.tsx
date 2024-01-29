@@ -20,7 +20,9 @@ const RichText: React.FC<IRichText> = (
         // label,
         height = 500,
         plugins = [
-            'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount',
+            "advlist directionality autolink autosave link image lists charmap print preview hr anchor pagebreak",
+            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
+            "table contextmenu textcolor paste textcolor"
         ],
         toolbar = 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
     }
@@ -29,12 +31,13 @@ const RichText: React.FC<IRichText> = (
     return (
         <Editor
             apiKey='0x0vt21r124ntoyvayagzne12v3yte3g3138dyxtvn8d70t6'
-            initialValue={initialValue}
+            value={initialValue}
             init={{
                 height: height,
                 menubar: menubar,
                 plugins: plugins,
-                toolbar: toolbar
+                toolbar: toolbar,
+                directionality : 'ltr'
             }}
             onEditorChange={handleEditorChange}
         />

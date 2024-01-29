@@ -5,7 +5,6 @@ import {ReactComponent as TrashIcon} from "../../../images/trash.svg";
 import {ReactComponent as EditIcon} from "../../../images/edit.svg";
 import {ReactComponent as UsersIcon} from "../../../images/Users.svg";
 import s from "../crud-table.module.scss";
-import {useTranslation} from "react-i18next";
 import timestampToDate from "../../../utils/timestampToDate";
 
 interface ITableBody {
@@ -33,7 +32,6 @@ const TableBody: React.FC<ITableBody> = (
             handlerAction,
             titles
         }) => {
-        const {t} = useTranslation();
         let count = 0;
         return (
             <tbody>
@@ -42,7 +40,7 @@ const TableBody: React.FC<ITableBody> = (
                 data
                     .map((item, index) => {
                         return (
-                            <TableRow key={index} className={++count % 2 == 0 ? s.classNameFieldEven : ""}>
+                            <TableRow key={index} className={++count % 2 === 0 ? s.classNameFieldEven : ""}>
                                 {
                                     (isEdit || isDelete || isGetItems || isGetHistory) &&
                                     <TableData isGetInfo={isGetInfo}>
@@ -89,8 +87,7 @@ const TableBody: React.FC<ITableBody> = (
                                     (
                                         titles
                                             .map((key, i) => {
-                                                    console.log(key, item[key])
-                                                    if (key == "image") {
+                                                    if (key === "image") {
                                                         return (
                                                             <TableData data={item.id} key={i} isGetInfo={isGetInfo}
                                                                        handlerAction={handlerAction}
@@ -104,7 +101,7 @@ const TableBody: React.FC<ITableBody> = (
                                                         return <TableData data={item.id} key={i} isGetInfo={isGetInfo}
                                                                           handlerAction={handlerAction}
                                                         >
-                                                            {(item[key] ? (key != 'updated' ? item[key] : timestampToDate(item[key])) : '---')}
+                                                            {(item[key] ? (key !== 'updated' ? item[key] : timestampToDate(item[key])) : '---')}
 
                                                         </TableData>
                                                     }

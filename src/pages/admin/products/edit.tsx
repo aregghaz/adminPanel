@@ -2,7 +2,6 @@ import React, {useEffect, useState} from "react";
 import Edit from "../../layouts/templates/edit/edit";
 import {useTranslation} from "react-i18next";
 import {AdminApi} from "../../../api/admin-api/admin-api";
-import Input from "../../../components/input/input";
 
 interface ITableFildsList {
     path: string;
@@ -26,8 +25,8 @@ const ProductEdit: React.FC<ITableFildsList> = ({id, path}) => {
         {name: 'meta_title', type: 'input', label: 'meta_title'},
         {name: 'sku', type: 'input', label: 'sku'},
         {name: 'meta_key', type: 'input', label: 'meta_key'},
+        {name: "meta_desc", type: "textField", label: "meta_desc", placeholder: "meta_desc"},
         {name: "description", type: "richText", label: "description", placeholder: "description"},
-        {name: "meta_desc", type: "richText", label: "meta_desc", placeholder: "meta_desc"},
         {name: 'attributes', type: 'attributes', label: 'attributes'},
 
     ];
@@ -46,7 +45,7 @@ const ProductEdit: React.FC<ITableFildsList> = ({id, path}) => {
             }
         )();
 
-    }, []);
+    }, [id]);
     return (
         data &&
         <>
