@@ -4,6 +4,7 @@ import {AdminApi} from "../../../api/admin-api/admin-api";
 import PageAction from "../../../utils/page";
 import DeleteModal from "../../../components/modal/deleteModal";
 import CrudTable from "../../../components/crud-table-user/crud-table";
+import NavigationTab from "../../../components/navigation/navigationTab";
 
 interface IProductsList {
     path: string;
@@ -15,10 +16,12 @@ const BrandsList: React.FC<IProductsList> = () => {
     const [data, setData] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [open, setOpen] = useState<boolean>(false);
+    const [query, setQuery] = useState("");
     useEffect(() => {
         (
             async () => {
-                const data = await AdminApi.get(crudKey,countRef.current);
+                const data = await AdminApi.get(crudKey,countRef.current,query);
                 setData(data);
                 //  setCount(data.count);
 
@@ -37,8 +40,9 @@ const BrandsList: React.FC<IProductsList> = () => {
         'slug',
         'updated',
     ];
+    const [ids, setIds] = useState([]);
     const handlerAction = async (action: string, id?: number) => {
-        return PageAction(crudKey, setLoading, loading, action, id, setIsModalOpen)
+        return PageAction(crudKey, setLoading, loading, action, id, setIsModalOpen,ids,setIds)
     };
     const tableRef = useRef(null);
     const countRef = useRef(2);
@@ -51,7 +55,14 @@ const BrandsList: React.FC<IProductsList> = () => {
     return (
         data &&
         <>
-            {/* <InfoBlock  items={data}/> */}
+            <NavigationTab
+                open={open}
+                tableRef={tableRef}
+                loading={loading}
+                setLoading={setLoading}
+                setOpen={setOpen}
+                setQuery={setQuery}
+            />
             <CrudTable
                 data={data}
                 titles={titles}
@@ -63,7 +74,7 @@ const BrandsList: React.FC<IProductsList> = () => {
                 fetchMoreData={fetchMoreData}
                 action={false}
                 isInfo={false}
-                isRemove
+                isRemove={false}
             />
             <DeleteModal
                 handlerAction={handlerAction}

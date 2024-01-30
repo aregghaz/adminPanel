@@ -14,7 +14,7 @@ interface ITableBody {
     isInfo: boolean,
     isRemove: boolean,
     handlerAction: (action: string, id: number) => void
-    /// selectedIds: number[]
+     selectedIds: number[]
 
 }
 
@@ -26,7 +26,7 @@ const TableBody: React.FC<ITableBody> = (
         isInfo,
         isRemove,
         handlerAction,
-        // selectedIds,
+         selectedIds,
     }) => {
     let count = 0;
     return (
@@ -40,8 +40,8 @@ const TableBody: React.FC<ITableBody> = (
                         return keys.length > 0 && (
 
                             <TableRow key={index} data-rowid={item["id"]}
-                                /// className={`${selectedIds?.includes(item["id"]) ? s.chosen : ""} ${s.tableBColor}`}>
-                                      className={`${s.tableBColor}`}>
+                                 className={`${selectedIds?.includes(item["id"]) ? s.chosen : ""} ${s.tableBColor}`}>
+                                      {/*className={`${s.tableBColor}`}>*/}
                                 {
                                     (isEdit || isDelete || isInfo) &&
                                     <TableData item={item} key={999999} click={false}>
@@ -88,14 +88,14 @@ const TableBody: React.FC<ITableBody> = (
                                                 switch (key) {
                                                     case "price":
                                                         return (
-                                                            <TableData key={key} item={item} className={key} click={true}
+                                                            <TableData key={key} item={item} className={key} click={isRemove}
                                                                        handlerAction={handlerAction}>
                                                                 {item[key] + '₽'}
 
                                                             </TableData>)
                                                     case "image":
                                                         return (
-                                                            <TableData key={key} item={item} className={key} click={true}
+                                                            <TableData key={key} item={item} className={key} click={isRemove}
                                                                        handlerAction={handlerAction}>
                                                                 <img src={`${fakeUrl}${item[key]}`} width={200} height={100}
                                                                      alt={'image'}/>
@@ -103,14 +103,14 @@ const TableBody: React.FC<ITableBody> = (
                                                             </TableData>)
                                                     case "updated":
                                                         return (
-                                                            <TableData key={key} item={item} className={key} click={true}
+                                                            <TableData key={key} item={item} className={key} click={isRemove}
                                                                        handlerAction={handlerAction}>
                                                                 {timestampToDate(item[key])}
 
                                                             </TableData>)
                                                     default:
                                                         return (
-                                                            <TableData key={key} item={item} className={key} click={true}
+                                                            <TableData key={key} item={item} className={key} click={isRemove}
                                                                        handlerAction={handlerAction}>
                                                                 {item[key]}
                                                             </TableData>)

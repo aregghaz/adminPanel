@@ -3,6 +3,7 @@ import {AdminApi} from "../../../api/admin-api/admin-api";
 import PageAction from "../../../utils/page";
 import DeleteModal from "../../../components/modal/deleteModal";
 import CrudTable from "../../../components/crud-table-user/crud-table";
+import NavigationTab from "../../../components/navigation/navigationTab";
 
 interface IProductsList {
     path: string;
@@ -13,10 +14,12 @@ const CategoriesList: React.FC<IProductsList> = () => {
     const [data, setData] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [open, setOpen] = useState<boolean>(false);
+    const [query, setQuery] = useState("");
     useEffect(() => {
         (
             async () => {
-                const data = await AdminApi.get(crudKey, countRef.current);
+                const data = await AdminApi.get(crudKey, countRef.current, query);
                 setData(data);
             }
         )();
@@ -39,8 +42,9 @@ const CategoriesList: React.FC<IProductsList> = () => {
     ];
 
 
+    const [ids, setIds] = useState([]);
     const handlerAction = async (action: string, id?: number) => {
-        return PageAction(crudKey, setLoading, loading, action, id, setIsModalOpen)
+        return PageAction(crudKey, setLoading, loading, action, id, setIsModalOpen, ids, setIds)
     };
     const tableRef = useRef(null);
     const countRef = useRef(2);
@@ -52,20 +56,14 @@ const CategoriesList: React.FC<IProductsList> = () => {
     return (
         data &&
         <>
-            {/* <InfoBlock  items={data}/> */}
-            {/*<List*/}
-            {/*    data={data}*/}
-            {/*    titles={titles}*/}
-            {/*    isDelete={true}*/}
-            {/*    isEdit={true}*/}
-            {/*    isGetInfo={false}*/}
-            {/*    paginated={false}*/}
-            {/*    isCreate={true}*/}
-            {/*    isGetItems={false}*/}
-            {/*    isGetHistory={false}*/}
-            {/*    className={"pagination"}*/}
-            {/*    handlerAction={handlerAction}*/}
-            {/*/>*/}
+            <NavigationTab
+                open={open}
+                tableRef={tableRef}
+                loading={loading}
+                setLoading={setLoading}
+                setOpen={setOpen}
+                setQuery={setQuery}
+            />
             <CrudTable
                 data={data}
                 titles={titles}
@@ -77,7 +75,8 @@ const CategoriesList: React.FC<IProductsList> = () => {
                 fetchMoreData={fetchMoreData}
                 action={false}
                 isInfo={false}
-                isRemove
+                selectedIds={ids}
+                isRemove={false}
             />
             <DeleteModal
                 handlerAction={handlerAction}

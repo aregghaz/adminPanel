@@ -31,6 +31,7 @@ import ConditionsCreate from "./pages/admin/conditions/create";
 import ConditionsEdit from "./pages/admin/conditions/edit";
 import ProductEdit from "./pages/admin/products/edit";
 import UsersList from "./pages/admin/users/list";
+import BannersList from "./pages/admin/banners/list";
 
 
 const App = (): JSX.Element => (
@@ -55,6 +56,7 @@ const App = (): JSX.Element => (
                 <ConditionsCreate path="/conditions/create"/>
                 <ConditionsEdit path="/conditions/:id"/>
                 <UsersList path="/users"/>
+                <BannersList path="/banners"/>
                 {/*<ProductCreate path="/products/create" />*/}
                 {/*<Users path="/users/:id" />*/}
                 {/*<Clients path="/trips" />*/}

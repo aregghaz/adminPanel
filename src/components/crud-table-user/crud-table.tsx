@@ -18,7 +18,7 @@ const CrudTable: React.FC<ICrudTable> = (
         fetchMoreData,
         handlerAction,
         action,
-        // selectedIds,
+        selectedIds,
         // typeId
     }) => {
 
@@ -30,19 +30,19 @@ const CrudTable: React.FC<ICrudTable> = (
     const titleSort = (name: string) => {
         if (name !== "action") {
             if (filterTable === "ASC") {
-                setFilteredData(data.sort((a, b) => a[name]?.toLowerCase() > b[name]?.toLowerCase() ? 1 : -1));
+                setFilteredData(data.sort((a, b) => a[name] > b[name] ? 1 : -1));
                 setFilterTable("DSC");
             }
             if (filterTable === "DSC") {
-                setFilteredData(data.sort((a, b) => a[name]?.toLowerCase() < b[name]?.toLowerCase() ? 1 : -1));
+                setFilteredData(data.sort((a, b) => a[name] < b[name] ? 1 : -1));
                 setFilterTable("ASC");
             }
             setTitleName(name);
         }
     };
-  ///  const whichData = filteredData.length > 0 ? filteredData : data;
-    /// const resetOrNotTable = defaultTypeId !== typeId ? data : whichData;
-    const resetOrNotTable = data;
+      const whichData = filteredData.length > 0 ? filteredData : data;
+     const resetOrNotTable = whichData;
+  //  const resetOrNotTable = data;
 
     return (
         <>
@@ -71,7 +71,7 @@ const CrudTable: React.FC<ICrudTable> = (
                         isDelete={isDelete}
                         isRemove={isRemove}
                         handlerAction={handlerAction}
-                        // selectedIds={selectedIds}
+                        selectedIds={selectedIds ?? []}
 
                     />
 
@@ -93,7 +93,8 @@ interface ICrudTable {
     className: string
     handlerAction: (action: string, id: number) => void
     fetchMoreData: () => void
-    /// selectedIds: number[]
+    /////FIXME ITS SHOULD BE REQUIRED
+    selectedIds?: number[]
     tableRef: any
 
 }

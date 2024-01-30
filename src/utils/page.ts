@@ -1,12 +1,23 @@
 import {AdminApi} from "../api/admin-api/admin-api";
 import {navigate} from "@reach/router";
+import {useState} from "react";
 
 let state = 0;
-const PageAction = (crudKey: string, setLoading: any, loading: boolean, action: string, id?: number, setIsModalOpen?: any) => {
-  
-    if(id){
-         state = id
+const PageAction = (
+    crudKey: string,
+    setLoading: any,
+    loading: boolean,
+    action: string,
+    id: number = 0,
+    setIsModalOpen?: any,
+    ids?: any,
+    setIds?: any,
+) => {
+
+    if (id) {
+        state = id
     }
+
 
     const handlerAddItem = () => navigate(`/${crudKey}/create`);
     const handlerEditItem = () => navigate(`/${crudKey}/${state}`);
@@ -19,8 +30,28 @@ const PageAction = (crudKey: string, setLoading: any, loading: boolean, action: 
         setIsModalOpen(false);
 
     };
+
+    const handlerSelectClient = async () => {
+        ///  if (event.ctrlKey || event.shiftKey) {
+        const objWithIdIndex = ids.findIndex((value: number) => value === state);
+        if (objWithIdIndex > -1) {
+            setIds((prevState: any[]) => {
+                return prevState.filter((value) => value !== state);
+            });
+        } else {
+            setIds((prevState:any) => {
+                return [
+                    ...prevState,
+                    state
+                ];
+            });
+        }
+    };
     const handlerAction = async () => {
         switch (action) {
+            case "get":
+                await handlerSelectClient();
+                break;
             case "edit":
                 await handlerEditItem();
                 break;

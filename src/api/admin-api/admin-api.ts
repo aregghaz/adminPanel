@@ -24,7 +24,7 @@ export const AdminApi = {
     getItemData(crudKey: string, id: number) {
         return axios.get(`${fakeUrl}/api/${crudKey}/${id}`).then(res => res.data);
     },
-    get(crudKey: string,showMore?: number) {
-        return axios.get(`${fakeUrl}/api/${crudKey}?showMore=${showMore}`).then(res => res.data);
+    get(crudKey: string,showMore?: number,query?:string) {
+        return axios.get(`${fakeUrl}/api/${crudKey}?showMore=${showMore}&query=${query}`).then(res => res.data);
     },
 };
