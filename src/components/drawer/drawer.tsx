@@ -32,7 +32,7 @@ const Drawer = ({children}: { children: React.ReactNode }) => {
         }
     };
 
-    var selectedPage = 1;
+    let selectedPage = parseFloat(localStorage.getItem("page") || "1");
     useEffect(() => {
         document.addEventListener("mousedown", outsideClickHandler);
         return () => {
@@ -68,12 +68,12 @@ const Drawer = ({children}: { children: React.ReactNode }) => {
             page: '/brands',
             icon: <CompanyIcon/>
         }, {
-            id: 5,
+            id: 6,
             item: "Клиенты",
             page: '/users',
             icon: <Status/>
         }, {
-            id: 5,
+            id: 7,
             item: "Баннеры",
             page: '/banners',
             icon: <Status/>

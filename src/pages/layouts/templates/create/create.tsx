@@ -132,7 +132,7 @@ const Create: React.FC<ICreate> = (
                                         onClick={handleSubmit}
                                         className={"admin"}
                                     >
-                                        {children}
+                                        {t(`admin:${children}`)}
                                     </Button>
                                 </div>
 

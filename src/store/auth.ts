@@ -1,8 +1,9 @@
 ///import { BaseThunkType, InferActionsTypes } from "./store";
-import { IError, IUser } from "../types/auth";
+import {IError, IUser} from "../types/auth";
 import axios from "axios";
-import { Dispatch } from "redux";
-import { authAPI } from "../api/admin-api/auth-api";
+import {Dispatch} from "redux";
+import {authAPI} from "../api/admin-api/auth-api";
+import {navigate} from "@reach/router";
 // import { navigate } from "@reach/router";
 
 const initialState = {
@@ -65,7 +66,10 @@ export const checkLoggedIn = (): any => async (dispatch: (arg0: { readonly type:
         if (token) {
             dispatch(actions.setLoggedIn(token));
             await dispatch(getUserData());
+        } else {
+            navigate('/login')
         }
+
     } catch (e) {
         console.error(e);
     }
@@ -87,7 +91,7 @@ export const checkLoggedIn = (): any => async (dispatch: (arg0: { readonly type:
 //
 //
 export const login = (formData: FormData) => {
-    return async (dispatch:any) => {
+    return async (dispatch: any) => {
         try {
             const response = await authAPI.login(formData);
 
@@ -104,10 +108,10 @@ export const login = (formData: FormData) => {
                         console.error(e);
                     }
 
-                   // await getUserData()
+                    // await getUserData()
                 }
             }
-        } catch (e:any) {
+        } catch (e: any) {
             dispatch(actions.setError(e));
             console.error(e);
 
@@ -137,10 +141,10 @@ export const setLogOut = () => async (dispatch: Dispatch) => {
 
 
 export const actions = {
-    setLoggedIn: (token: string) => ({ type: "SET_LOGGED_IN_AND_TOKEN", payload: token } as const),
-    setUser: (user: IUser) => ({ type: "SETTING_USER_DATA", payload: user } as const),
-    logOut: () => ({ type: "LOG_OUT_USER" } as const),
-    setError: (e: Error) => ({ type: "SET_LOGIN_ERROR", payload: e } as const)
+    setLoggedIn: (token: string) => ({type: "SET_LOGGED_IN_AND_TOKEN", payload: token} as const),
+    setUser: (user: IUser) => ({type: "SETTING_USER_DATA", payload: user} as const),
+    logOut: () => ({type: "LOG_OUT_USER"} as const),
+    setError: (e: Error) => ({type: "SET_LOGIN_ERROR", payload: e} as const)
 };
 
 

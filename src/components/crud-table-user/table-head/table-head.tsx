@@ -63,7 +63,7 @@ const TableHead: React.FC<ITableHead> = (
                                     rowSpan={rowspan || 1}
                                     style={{cursor: "pointer"}}
                                 >
-                                    {t(title)}
+                                    {t(`admin:${title}`)}
 
                                     <span className={s.arrowSpan}>{isNotActions(title)}</span>
 

@@ -1,11 +1,14 @@
 import React from "react";
-import { Editor } from "@tinymce/tinymce-react";
+import {Editor} from "@tinymce/tinymce-react";
+import s from "../text-field/text-field.module.scss";
+
 ///import { EventHandler } from "@tinymce/tinymce-react/lib/cjs/main/ts/Events";
 
 interface IRichText {
-    handleEditorChange:any;
+    handleEditorChange: any;
     menubar?: boolean;
     initialValue: string;
+    label: string;
     height?: number;
     plugins?: Array<string>;
     toolbar?: string;
@@ -17,7 +20,7 @@ const RichText: React.FC<IRichText> = (
         menubar = true,
         initialValue,
         // name,
-        // label,
+         label,
         height = 500,
         plugins = [
             "advlist directionality autolink autosave link image lists charmap print preview hr anchor pagebreak",
@@ -29,18 +32,29 @@ const RichText: React.FC<IRichText> = (
 ) => {
 
     return (
-        <Editor
-            apiKey='0x0vt21r124ntoyvayagzne12v3yte3g3138dyxtvn8d70t6'
-            value={initialValue}
-            init={{
-                height: height,
-                menubar: menubar,
-                plugins: plugins,
-                toolbar: toolbar,
-                directionality : 'ltr'
-            }}
-            onEditorChange={handleEditorChange}
-        />
+        <>
+            <div className={s.labelWrapper}>
+                {
+                    label &&
+                    // eslint-disable-next-line no-restricted-globals
+                    <label className={s.label}  >
+                        {label}
+                    </label>
+                }
+            </div>
+            <Editor
+                apiKey='0x0vt21r124ntoyvayagzne12v3yte3g3138dyxtvn8d70t6'
+                value={initialValue}
+
+                init={{
+                    height: height,
+                    menubar: menubar,
+                    plugins: plugins,
+                    toolbar: toolbar,
+                    directionality: 'ltr'
+                }}
+                onEditorChange={handleEditorChange}
+            /></>
     );
 };
 

@@ -99,7 +99,7 @@ const Edit: React.FC<IEdit> = (
                                             .map((field, index) =>
 
                                                 <div key={index} className={s.item}
-                                                     style={field.type == "hidden" ? { display: "none" } : {}}>
+                                                     style={field.type === "hidden" ? { display: "none" } : {}}>
                                                     <FormikHandler
                                                         item={field}
                                                         handleDrawMap={handleDrawMap}
@@ -126,7 +126,7 @@ const Edit: React.FC<IEdit> = (
                                         isSubmit={true}
 
                                     >
-                                        {children}
+                                        {t(`admin:${children}`)}
                                     </Button>
                                 </div>
 

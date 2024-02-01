@@ -137,7 +137,7 @@ const Select: React.FC<ISelect> = (
         <>
             {error && !value && <div className={s.error}>{error}</div>}
 
-            {label && <label style={{
+            {label && <label className={s.label} style={{
                 color: error && !value ? "crimson" : value ? "#194b76" : "#757575",
             }} htmlFor={name}>{t(label)}</label>}
             <div className={s.wrapper}>

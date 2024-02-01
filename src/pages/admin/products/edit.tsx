@@ -12,6 +12,8 @@ const ProductEdit: React.FC<IPageEdit> = ({id, path}) => {
     const fields: Array<any> = [
         {name: 'id', type: 'hidden', label: 'id'},
         {name: "title", type: "input", label: "title", placeholder: "title"},
+        {name: "quantity", type: "input", inputType: 'number', label: "quantity", placeholder: "quantity"},
+        {name: 'brand_id', type: 'select', label: 'brands'},
         {name: "price", type: "input", inputType: 'number', label: "price", placeholder: "price"},
         {
             name: "special_price",
@@ -20,15 +22,21 @@ const ProductEdit: React.FC<IPageEdit> = ({id, path}) => {
             label: "special_price",
             placeholder: "special_price"
         },
-        {name: "quantity", type: "input", inputType: 'number', label: "quantity", placeholder: "quantity"},
-        {name: 'brand_id', type: 'select', label: 'brands'},
-        {name: 'categories', type: 'multiSelect', label: 'categories'},
-        {name: 'attributes', type: 'multiSelect', label: 'attributes', placeholder: 'attributes'},
+        {
+            name: "range",
+            type: "datepicker",
+            selectRange: true,
+            label: "date_special_price",
+            placeholder: "date_special_price"
+        },
+
         {name: 'status', type: 'select', label: 'status'},
+        {name: 'categories', type: 'multiSelect', label: 'categories'},
+
+        {name: 'attributes', type: 'multiSelect', label: 'attributes', placeholder: 'attributes'},
         {name: 'meta_title', type: 'input', label: 'meta_title'},
-        {name: 'sku', type: 'input', label: 'sku'},
         {name: 'meta_key', type: 'input', label: 'meta_key'},
-        {name: "meta_desc", type: "textField", label: "meta_desc", placeholder: "meta_desc"},
+        {name: "meta_desc", type: "textarea", label: "meta_desc", placeholder: "meta_desc"},
         {name: "description", type: "richText", label: "description", placeholder: "description"},
         {name: 'attributes', type: 'attributes', label: 'attributes'},
 
@@ -45,6 +53,14 @@ const ProductEdit: React.FC<IPageEdit> = ({id, path}) => {
             }
         )();
     }, [id]);
+
+    const requiredFields = [
+        "title",
+        "price",
+        'brand_id',
+        'quantity',
+        'categories'
+    ];
     return (
         data &&
         <>
@@ -54,8 +70,8 @@ const ProductEdit: React.FC<IPageEdit> = ({id, path}) => {
                 data={data}
                 fields={fields}
                 title={""}
-                children={t("update")}
-                requiredFields={[]}
+                children={'update'}
+                requiredFields={requiredFields}
                 selectRange
             />
         </>

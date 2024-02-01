@@ -16,6 +16,7 @@ const CategoriesList: React.FC<IProductsList> = () => {
     const [loading, setLoading] = useState(false);
     const [open, setOpen] = useState<boolean>(false);
     const [query, setQuery] = useState("");
+    const [ids, setIds] = useState([]);
     useEffect(() => {
         (
             async () => {
@@ -41,8 +42,6 @@ const CategoriesList: React.FC<IProductsList> = () => {
         'status',
     ];
 
-
-    const [ids, setIds] = useState([]);
     const handlerAction = async (action: string, id?: number) => {
         return PageAction(crudKey, setLoading, loading, action, id, setIsModalOpen, ids, setIds)
     };
@@ -74,9 +73,9 @@ const CategoriesList: React.FC<IProductsList> = () => {
                 tableRef={tableRef}
                 fetchMoreData={fetchMoreData}
                 action={false}
-                isInfo={false}
                 selectedIds={ids}
-                isRemove={false}
+                isInfo={false}
+                isRemove
             />
             <DeleteModal
                 handlerAction={handlerAction}

@@ -106,6 +106,7 @@ const FormikHandler: React.FC<IFormikHandler> = (
                     handleEditorChange={(content: string, editor: any) => {
                         setFieldValue(item.name, content)
                     }}
+                    label={t(`admin:${item.label}`)}
                     initialValue={values[item.name]}
                 />
             );
@@ -115,8 +116,8 @@ const FormikHandler: React.FC<IFormikHandler> = (
                     name={item.name}
                     onChange={handleChange}
                     value={values[item.name]}
-                    label={t(item.label)}
-                    placeholder={item.placeholder}
+                    label={t(`admin:${item.label}`)}
+                    placeholder={t(`admin:${item.placeholder}`)}
                 />
             );
         case "select":
@@ -160,9 +161,9 @@ const FormikHandler: React.FC<IFormikHandler> = (
                     name={item.name}
                     value={values[item.name]}
                     type={item.inputType}
-                    placeholder={item.placeholder}
                     onChange={handleChange}
-                    label={item.label}
+                    label={t(`admin:${item.label}`)}
+                    placeholder={t(`admin:${item.placeholder}`)}
                 />
             );
         case "multiSelect":

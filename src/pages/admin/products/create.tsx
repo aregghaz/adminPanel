@@ -15,6 +15,8 @@ const ProductCreate: React.FC<IUserCreate> = () => {
     const [data, setData] = useState(null);
     const fields: Array<any> = [
         {name: "title", type: "input", label: "title", placeholder: "title"},
+        {name: "quantity", type: "input", inputType: 'number', label: "quantity", placeholder: "quantity"},
+        {name: 'brand_id', type: 'select', label: 'brands'},
         {name: "price", type: "input", inputType: 'number', label: "price", placeholder: "price"},
         {
             name: "special_price",
@@ -23,12 +25,17 @@ const ProductCreate: React.FC<IUserCreate> = () => {
             label: "special_price",
             placeholder: "special_price"
         },
-        {name: "quantity", type: "input", inputType: 'number', label: "quantity", placeholder: "quantity"},
-        {name: 'brand_id', type: 'select', label: 'brands'},
+        {
+            name: "range",
+            type: "datepicker",
+            selectRange: true,
+            label: "date_special_price",
+            placeholder: "date_special_price"
+        },
+
         {name: 'categories', type: 'multiSelect', label: 'categories'},
         {name: 'attributes', type: 'multiSelect', label: 'attributes', placeholder: 'attributes'},
         {name: 'meta_title', type: 'input', label: 'meta_title'},
-        {name: 'sku', type: 'input', label: 'sku'},
         {name: 'meta_key', type: 'input', label: 'meta_key'},
         {name: "meta_desc", type: "textarea", label: "meta_desc", placeholder: "meta_desc"},
         {name: "description", type: "richText", label: "description", placeholder: "description"},
@@ -50,22 +57,9 @@ const ProductCreate: React.FC<IUserCreate> = () => {
     const requiredFields = [
         "title",
         "price",
-        // "address",
-        // "birthday",
-        // "phone_number",
-        // "password",
-        // "email",
-        // "license",
-        // "picture",
-        // "sex_offender_check",
-        // "motor_vehicle_record",
-        // "defensive_driving",
-        // "wheelchair_securement",
-        // "pass_basic",
-        // "emt_1",
-        // "first_aid",
-        // "company_training",
-        // "drug_test"
+        'brand_id',
+        'quantity',
+        'categories'
     ];
 
     return data && <Create
@@ -73,8 +67,8 @@ const ProductCreate: React.FC<IUserCreate> = () => {
         data={data}
         fields={fields}
         requiredFields={requiredFields}
-         title={""}
-        children={t("create")}
+        title={""}
+        children={"create"}
         selectRange
     />;
 

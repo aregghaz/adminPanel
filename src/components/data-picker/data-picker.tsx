@@ -1,8 +1,8 @@
-import React, {useEffect, useState, useRef} from "react";
+import React, { useState, useRef} from "react";
 import s from "./data-picker.module.scss";
 import Calendar from "react-calendar";
 import timestampToDate from "../../utils/timestampToDate";
-///import "react-calendar/dist/Calendar.css";
+import "react-calendar/dist/Calendar.css";
 import useOnClickOutside from "../../hooks/use-on-click-outside";
 
 interface IDataPicker {
@@ -38,6 +38,7 @@ const DataPicker: React.FC<IDataPicker> = (
     const outsideClickHandler = (e: any) => {
         setShow(false)
     }
+    console.log(value,'valuevaluevalue')
     useOnClickOutside(calendarRef, outsideClickHandler)
     return (
         <>
@@ -49,12 +50,13 @@ const DataPicker: React.FC<IDataPicker> = (
                     color: value ? "grey" : "C4C4C4",
                     // border: !singleFileUpload && error && !value ? "1px solid crimson" : type ? "none" : "",
                 }} type="text" className={`${s.input} ${error && !value && s.errorInput}`}
-                value={value ? timestampToDate(new Date(value)) : timestampToDate(new Date().toLocaleDateString())}
+                value={value && value[0] !== null ? `${timestampToDate(value[0])} - ${timestampToDate(value[1])}` : ""}
                 onClick={() => setShow(!show)}
                 readOnly={true}/>
-            {show && <div className={s.dataPicker} ref={calendarRef}><Calendar
-
-                value={value ? new Date(value) : new Date()}
+            {show && <div className={s.dataPicker} ref={calendarRef}>
+                <Calendar
+                formats="MM-dd-yyyy"
+                selected={new Date().toLocaleDateString()}
                 // className={s.dataPicker}
                 // className={s.dataPickerAlt}
                 selectRange={selectRange}
@@ -62,7 +64,8 @@ const DataPicker: React.FC<IDataPicker> = (
                     e.preventDefault();
                 }}
                 onChange={(date: any) => {
-                    setFieldValue(name, new Date(date).toLocaleDateString());
+                  ///  console.log(date,new Date(date).toISOString(),'123')
+                    setFieldValue(name, date);
                     setShow(!show);
                 }}
             /></div>}
