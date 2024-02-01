@@ -16,3 +16,7 @@ export interface ITabs {
     selected: boolean;
 
 }
+export interface IPageEdit {
+    path: string;
+    id?: number;
+}

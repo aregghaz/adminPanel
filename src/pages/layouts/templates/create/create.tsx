@@ -54,6 +54,12 @@ const Create: React.FC<ICreate> = (
             toast(t("record_successfully_added"), options);
             await navigate(-1);
             //
+        }else{
+            const options = {
+                type: toast.TYPE.WARNING,
+                position: toast.POSITION.TOP_RIGHT
+            };
+            toast(t(res.message), options);
         }
 
     };

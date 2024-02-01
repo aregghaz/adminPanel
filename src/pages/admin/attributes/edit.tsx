@@ -1,15 +1,12 @@
 import React, {useEffect, useState} from "react";
 import Edit from "../../layouts/templates/edit/edit";
-import {IItem} from "../../layouts/templates/formik-handler/formik-handler";
 import {useTranslation} from "react-i18next";
 import {AdminApi} from "../../../api/admin-api/admin-api";
+import {IPageEdit} from "../../../types/admin";
 
-interface ITableFildsList {
-    path: string;
-    id?: number;
-}
 
-const AttributesEdit: React.FC<ITableFildsList> = ({id, path}) => {
+
+const AttributesEdit: React.FC<IPageEdit> = ({id, path}) => {
     const {t} = useTranslation();
     const crudKey = "attributes";
     const [data, setData] = useState(null);

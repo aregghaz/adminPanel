@@ -1,35 +1,27 @@
 import React, {useEffect, useState} from "react";
 import Edit from "../../layouts/templates/edit/edit";
-import {IItem} from "../../layouts/templates/formik-handler/formik-handler";
 import {useTranslation} from "react-i18next";
 import {AdminApi} from "../../../api/admin-api/admin-api";
+import {IPageEdit} from "../../../types/admin";
 
-interface ITableFildsList {
-    path: string;
-    id?: number;
-}
-
-const AttributesEdit: React.FC<ITableFildsList> = ({id, path}) => {
+const BannersEdit: React.FC<IPageEdit> = ({id, path}) => {
     const {t} = useTranslation();
-    const crudKey = "attributes";
+    const crudKey = "banners";
     const [data, setData] = useState(null);
     const fields: Array<any> = [
         {name: "id", type: "hidden", label: "id", placeholder: "id"},
-        {name: "title", type: "input", label: "title", placeholder: "title"},
-        {name: "type", type: "select", label: "type", placeholder: "type"},
+        {name: "image", type: "file", label: "image", placeholder: "image"},
+        {name: "position", type: "select", label: "position", placeholder: "position"},
     ];
 
 
     useEffect(() => {
         (
             async () => {
-                if(id){
+                if (id) {
                     const data = await AdminApi.getItemData(crudKey, id);
-                    console.log(data,'datadata')
                     setData(data);
                 }
-
-
             }
         )();
 
@@ -48,4 +40,4 @@ const AttributesEdit: React.FC<ITableFildsList> = ({id, path}) => {
     );
 };
 
-export default AttributesEdit;
+export default BannersEdit;

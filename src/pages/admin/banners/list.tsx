@@ -9,7 +9,7 @@ interface IProductsList {
 }
 
 const BannersList: React.FC<IProductsList> = () => {
-    const crudKey = "attributes";
+    const crudKey = "banners";
     const [data, setData] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -26,37 +26,26 @@ const BannersList: React.FC<IProductsList> = () => {
     const titles: Array<string> = [
         'action',
         'id',
-        'title',
-        'type',
+        'image',
+        'position',
         'updated',
     ];
     const handlerAction = async (action: string, id?: number) => {
         return PageAction(crudKey, setLoading, loading, action, id, setIsModalOpen)
     };
 
-    // const onSearchInput = async (event: { search: string }) => {
-    //     // setQuery(event.search);
-    //     // await getClientData(event.search, date);
-    // };
-    // const openSearch = () => {
-    //     if (open) {
-    //         // setQuery("");
-    //         setLoading(true);
-    //     }
-    //     setOpen(!open);
-    // };
+
     return (
         data &&
         <>
-            {/*<NavigationTab  onSearchInput={onSearchInput} open={open} openSearch={openSearch}  />*/}
             <List
                 data={data}
                 titles={titles}
-                isDelete={true}
+                isDelete={false}
                 isEdit={true}
                 isGetInfo={false}
                 paginated={false}
-                isCreate={true}
+                isCreate={false}
                 isGetItems={false}
                 isGetHistory={false}
                 className={"pagination"}

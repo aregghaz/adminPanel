@@ -1,15 +1,11 @@
 import React, {useEffect, useState} from "react";
 import Edit from "../../layouts/templates/edit/edit";
-import {IItem} from "../../layouts/templates/formik-handler/formik-handler";
 import {useTranslation} from "react-i18next";
 import {AdminApi} from "../../../api/admin-api/admin-api";
+import {IPageEdit} from "../../../types/admin";
 
-interface ITableFildsList {
-    path: string;
-    id?: number;
-}
 
-const CategoriesEdit: React.FC<ITableFildsList> = ({id, path}) => {
+const CategoriesEdit: React.FC<IPageEdit> = ({id, path}) => {
     const {t} = useTranslation();
     const crudKey = "categories";
     const [data, setData] = useState(null);
@@ -19,19 +15,20 @@ const CategoriesEdit: React.FC<ITableFildsList> = ({id, path}) => {
         {name: "categories", type: "select", label: "categories", placeholder: "categories"},
         {name: "image", type: "file", label: "image", placeholder: "image"},
         {name: "meta_title", type: "input", label: "meta_title", placeholder: "meta_title"},
+        {name: 'attributes', type: 'multiSelect', label: 'attributes'},
         {name: "meta_key", type: "input", label: "meta_key", placeholder: "meta_key"},
         {name: "status", type: "select", label: "status", placeholder: "status"},
         {name: "meta_desc", type: "textarea", label: "meta_desc", placeholder: "meta_desc"},
         {name: "description", type: "richText", label: "description", placeholder: "description"},
+
     ];
 
 
     useEffect(() => {
         (
             async () => {
-                if(id){
+                if (id) {
                     const data = await AdminApi.getItemData(crudKey, id);
-                    console.log(data,'datadata')
                     setData(data);
                 }
 

@@ -2,22 +2,25 @@ import React, {useEffect, useState} from "react";
 import Edit from "../../layouts/templates/edit/edit";
 import {useTranslation} from "react-i18next";
 import {AdminApi} from "../../../api/admin-api/admin-api";
+import {IPageEdit} from "../../../types/admin";
 
-interface ITableFildsList {
-    path: string;
-    id?: number;
-}
 
-const ProductEdit: React.FC<ITableFildsList> = ({id, path}) => {
+const ProductEdit: React.FC<IPageEdit> = ({id, path}) => {
     const {t} = useTranslation();
     const crudKey = "products";
     const [data, setData] = useState<any>(null);
     const fields: Array<any> = [
-         {name: 'id', type: 'hidden', label: 'id'},
-        {name: "title", type: "input",  label: "title", placeholder: "title"},
-        {name: "price", type: "input", inputType:'number', label: "price", placeholder: "price"},
-        {name: "special_price", type: "input", inputType:'number' , label: "special_price", placeholder: "special_price"},
-        {name: "quantity", type: "input", inputType:'number', label: "quantity", placeholder: "quantity"},
+        {name: 'id', type: 'hidden', label: 'id'},
+        {name: "title", type: "input", label: "title", placeholder: "title"},
+        {name: "price", type: "input", inputType: 'number', label: "price", placeholder: "price"},
+        {
+            name: "special_price",
+            type: "input",
+            inputType: 'number',
+            label: "special_price",
+            placeholder: "special_price"
+        },
+        {name: "quantity", type: "input", inputType: 'number', label: "quantity", placeholder: "quantity"},
         {name: 'brand_id', type: 'select', label: 'brands'},
         {name: 'categories', type: 'multiSelect', label: 'categories'},
         {name: 'attributes', type: 'multiSelect', label: 'attributes', placeholder: 'attributes'},
@@ -37,14 +40,10 @@ const ProductEdit: React.FC<ITableFildsList> = ({id, path}) => {
             async () => {
                 if (id) {
                     const data = await AdminApi.getItemData(crudKey, id);
-                    console.log(data, 'datadata')
                     setData(data);
                 }
-
-
             }
         )();
-
     }, [id]);
     return (
         data &&

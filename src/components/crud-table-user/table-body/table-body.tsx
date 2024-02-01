@@ -14,41 +14,46 @@ interface ITableBody {
     isInfo: boolean,
     isRemove: boolean,
     handlerAction: (action: string, id: number) => void
-     selectedIds: number[]
+    selectedIds: number[]
 
 }
 
 const TableBody: React.FC<ITableBody> = (
-    {
-        data,
-        isEdit,
-        isDelete,
-        isInfo,
-        isRemove,
-        handlerAction,
-         selectedIds,
-    }) => {
-    let count = 0;
-    return (
-        <>
-            <tbody>
+        {
+            data,
+            isEdit,
+            isDelete,
+            isInfo,
+            isRemove,
+            handlerAction,
+            selectedIds,
+        }) => {
+        let count = 0;
 
-            {
-                data
-                    .map((item, index) => {
-                        const keys = Object.keys(item);
-                        return keys.length > 0 && (
+        const handleError = (e: any, img: string) => {
+            e.stopPropagation()
+            e.target.src = img
+        }
+        return (
+            <>
+                <tbody>
 
-                            <TableRow key={index} data-rowid={item["id"]}
-                                 className={`${selectedIds?.includes(item["id"]) ? s.chosen : ""} ${s.tableBColor}`}>
-                                      {/*className={`${s.tableBColor}`}>*/}
-                                {
-                                    (isEdit || isDelete || isInfo) &&
-                                    <TableData item={item} key={999999} click={false}>
-                                        <div className={s.iconsWrapper}>
-                                            {
-                                                isDelete &&
-                                                <span className={`${s.tooltip} ${s.deleteSpan}`}>
+                {
+                    data
+                        .map((item, index) => {
+                            const keys = Object.keys(item);
+                            return keys.length > 0 && (
+
+                                <TableRow key={index} data-rowid={item["id"]}
+                                          className={`${selectedIds?.includes(item["id"]) ? s.chosen : ""} ${s.tableBColor}`}>
+                                    {/*className={`${s.tableBColor}`}>*/}
+                                    {
+                                        (isEdit || isDelete || isInfo) &&
+                                        <TableData item={item} key={999999} click={false}>
+                                            <div className={s.iconsWrapper}>
+                                                {
+                                                    isDelete &&
+                                                    <span className={`${s.tooltip} ${s.deleteSpan}`}>
                                             <span className={`${s.tooltiptext} ${s.delete}`}>Delete</span>
                                             <TrashIcon
                                                 className={s.icon}
@@ -57,90 +62,104 @@ const TableBody: React.FC<ITableBody> = (
                                                 }}
                                             />
                                             </span>
-                                            }
-                                            {
-                                                isEdit &&
-                                                <span className={`${s.tooltip} ${s.editSpan}`}>
+                                                }
+                                                {
+                                                    isEdit &&
+                                                    <span className={`${s.tooltip} ${s.editSpan}`}>
                                             <span className={`${s.tooltiptext} ${s.edit} ${s.editLeft}`}>Edit</span>
                                             <EditIcon
                                                 className={`${s.icon} ${s.iconColor}`}
                                                 onClick={() => handlerAction("edit", item.id)}
                                             />
                                             </span>
-                                            }
-                                            {/*{isRemove &&*/}
-                                            {/*    <span className={`${s.tooltip} ${s.reRouteSpan}`}>*/}
-                                            {/*<span className={`${s.tooltiptext} ${s.reRoute}`}>ReRoute</span>*/}
-                                            {/*<RemoveIcon*/}
-                                            {/*    className={s.icon}*/}
-                                            {/*    onClick={() => handlerAction("reRoute", item.id)}*/}
-                                            {/*/>*/}
-                                            {/*      </span>*/}
-                                            {/*}*/}
-
-                                        </div>
-                                    </TableData>
-                                }
-                                {
-                                    keys.map((key: any, i: number) => {
-                                            let itemData = "";
-                                            if (key !== 'id') {
-                                                switch (key) {
-                                                    case "price":
-                                                        return (
-                                                            <TableData key={key} item={item} className={key} click={isRemove}
-                                                                       handlerAction={handlerAction}>
-                                                                {item[key] + '₽'}
-
-                                                            </TableData>)
-                                                    case "image":
-                                                        return (
-                                                            <TableData key={key} item={item} className={key} click={isRemove}
-                                                                       handlerAction={handlerAction}>
-                                                                <img src={`${fakeUrl}${item[key]}`} width={200} height={100}
-                                                                     alt={'image'}/>
-
-                                                            </TableData>)
-                                                    case "updated":
-                                                        return (
-                                                            <TableData key={key} item={item} className={key} click={isRemove}
-                                                                       handlerAction={handlerAction}>
-                                                                {timestampToDate(item[key])}
-
-                                                            </TableData>)
-                                                    default:
-                                                        return (
-                                                            <TableData key={key} item={item} className={key} click={isRemove}
-                                                                       handlerAction={handlerAction}>
-                                                                {item[key]}
-                                                            </TableData>)
                                                 }
+                                                {/*{isRemove &&*/}
+                                                {/*    <span className={`${s.tooltip} ${s.reRouteSpan}`}>*/}
+                                                {/*<span className={`${s.tooltiptext} ${s.reRoute}`}>ReRoute</span>*/}
+                                                {/*<RemoveIcon*/}
+                                                {/*    className={s.icon}*/}
+                                                {/*    onClick={() => handlerAction("reRoute", item.id)}*/}
+                                                {/*/>*/}
+                                                {/*      </span>*/}
+                                                {/*}*/}
+
+                                            </div>
+                                        </TableData>
+                                    }
+                                    {
+                                        keys.map((key: any, i: number) => {
+                                                let itemData = "";
+                                                if (key !== 'id') {
+                                                    switch (key) {
+                                                        case "price":
+                                                            return (
+                                                                <TableData key={key} item={item} className={key}
+                                                                           click={isRemove}
+                                                                           handlerAction={handlerAction}>
+                                                                    {item[key] + '₽'}
+
+                                                                </TableData>)
+                                                        case "image":
+
+                                                            return (
+                                                                <TableData key={key} item={item} className={key}
+                                                                           click={isRemove}
+                                                                           handlerAction={handlerAction}>
+                                                                    <img src={`${fakeUrl}${item[key]}`}
+                                                                        width={200}
+                                                                         height={100}
+                                                                         alt={'image'}/>
+
+                                                                </TableData>)
+                                                        case "updated":
+                                                            return (
+                                                                <TableData key={key} item={item} className={key}
+                                                                           click={isRemove}
+                                                                           handlerAction={handlerAction}>
+                                                                    {timestampToDate(item[key])}
+
+                                                                </TableData>)
+                                                        default:
+                                                            return (
+                                                                <TableData key={key} item={item} className={key}
+                                                                           click={isRemove}
+                                                                           handlerAction={handlerAction}>
+                                                                    {item[key]}
+                                                                </TableData>)
+                                                    }
+                                                }
+
+                                                // return i !== 0 && (
+                                                //     <TableData key={key} item={item} className={key} click={true}
+                                                //                handlerAction={handlerAction}>
+                                                //         {itemData}
+                                                //
+                                                //     </TableData>
+                                                // );
                                             }
+                                        )
+                                    }
 
-                                            // return i !== 0 && (
-                                            //     <TableData key={key} item={item} className={key} click={true}
-                                            //                handlerAction={handlerAction}>
-                                            //         {itemData}
-                                            //
-                                            //     </TableData>
-                                            // );
-                                        }
-                                    )
-                                }
-
-                            </TableRow>
-                        );
-                    })
-            }
-            </tbody>
-            {/*<DeleteServiceModal id={12} isOpen={deleteModal} handleCloseModal={() => {*/}
-            {/*    setDeleteModal(false)*/}
-            {/*}} handlerDeleteItem={() => {*/}
-            {/*    handlerAction("delete", deleteId)*/}
-            {/*}}/>*/}
-        </>
-    );
-};
+                                </TableRow>
+                            );
+                        })
+                }
+                </tbody>
+                {/*<DeleteServiceModal id={12} isOpen={deleteModal} handleCloseModal={() => {*/
+                }
+                {/*    setDeleteModal(false)*/
+                }
+                {/*}} handlerDeleteItem={() => {*/
+                }
+                {/*    handlerAction("delete", deleteId)*/
+                }
+                {/*}}/>*/
+                }
+            </>
+        )
+            ;
+    }
+;
 
 
 export default TableBody;

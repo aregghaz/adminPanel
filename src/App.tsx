@@ -32,6 +32,9 @@ import ConditionsEdit from "./pages/admin/conditions/edit";
 import ProductEdit from "./pages/admin/products/edit";
 import UsersList from "./pages/admin/users/list";
 import BannersList from "./pages/admin/banners/list";
+import UserEdit from "./pages/admin/users/edit";
+import BannersEdit from "./pages/admin/banners/edit";
+import UsersCreate from "./pages/admin/users/create";
 
 
 const App = (): JSX.Element => (
@@ -55,8 +58,13 @@ const App = (): JSX.Element => (
                 <ConditionsList path="/conditions"/>
                 <ConditionsCreate path="/conditions/create"/>
                 <ConditionsEdit path="/conditions/:id"/>
+
                 <UsersList path="/users"/>
+                <UserEdit path="/users/:id"/>
+                <UsersCreate path="/users/create"/>
+
                 <BannersList path="/banners"/>
+                <BannersEdit path="/banners/:id"/>
                 {/*<ProductCreate path="/products/create" />*/}
                 {/*<Users path="/users/:id" />*/}
                 {/*<Clients path="/trips" />*/}

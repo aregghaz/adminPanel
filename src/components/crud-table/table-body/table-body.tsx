@@ -6,6 +6,7 @@ import {ReactComponent as EditIcon} from "../../../images/edit.svg";
 import {ReactComponent as UsersIcon} from "../../../images/Users.svg";
 import s from "../crud-table.module.scss";
 import timestampToDate from "../../../utils/timestampToDate";
+import {fakeUrl} from "../../../utils/getFieldLabel";
 
 interface ITableBody {
     data: Array<any>
@@ -92,7 +93,8 @@ const TableBody: React.FC<ITableBody> = (
                                                             <TableData data={item.id} key={i} isGetInfo={isGetInfo}
                                                                        handlerAction={handlerAction}
                                                             >
-                                                                <img src={item[key]} alt=""/>
+                                                                <img src={`${fakeUrl}${item[key]}`} width={200} height={100}
+                                                                     alt={'image'}/>
                                                             </TableData>
                                                         );
 

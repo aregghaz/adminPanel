@@ -63,6 +63,12 @@ const Edit: React.FC<IEdit> = (
 
             toast(t("record_successfully_edited"), options);
             await navigate(-1);
+        }else{
+            const options = {
+                type: toast.TYPE.WARNING,
+                position: toast.POSITION.TOP_RIGHT
+            };
+            toast(t(res.message), options);
         }
     };
 

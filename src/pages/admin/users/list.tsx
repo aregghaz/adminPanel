@@ -30,6 +30,7 @@ const UsersList: React.FC<IProductsList> = () => {
         'action',
         'name',
         'lastName',
+        'fatherName',
         'phone',
         'email',
         'subscribed',
