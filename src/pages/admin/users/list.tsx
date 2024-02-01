@@ -3,6 +3,7 @@ import {AdminApi} from "../../../api/admin-api/admin-api";
 import PageAction from "../../../utils/page";
 import DeleteModal from "../../../components/modal/deleteModal";
 import CrudTable from "../../../components/crud-table-user/crud-table";
+import NavigationTab from "../../../components/navigation/navigationTab";
 
 interface IProductsList {
     path: string;
@@ -14,13 +15,13 @@ const UsersList: React.FC<IProductsList> = () => {
     const [data, setData] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [loading, setLoading] = useState(false);
+    const [open, setOpen] = useState<boolean>(false);
+    const [query, setQuery] = useState("");
     useEffect(() => {
         (
             async () => {
-                const data = await AdminApi.get(crudKey,countRef.current);
+                const data = await AdminApi.get(crudKey, countRef.current, query);
                 setData(data);
-                //  setCount(data.count);
-
             }
         )();
     }, [loading]);
@@ -50,7 +51,14 @@ const UsersList: React.FC<IProductsList> = () => {
     return (
         data &&
         <>
-            {/* <InfoBlock  items={data}/> */}
+            <NavigationTab
+                open={open}
+                tableRef={tableRef}
+                loading={loading}
+                setLoading={setLoading}
+                setOpen={setOpen}
+                setQuery={setQuery}
+            />
             <CrudTable
                 data={data}
                 titles={titles}
@@ -62,7 +70,7 @@ const UsersList: React.FC<IProductsList> = () => {
                 fetchMoreData={fetchMoreData}
                 action={false}
                 isInfo={false}
-                isRemove
+                isRemove={false}
             />
             <DeleteModal
                 handlerAction={handlerAction}
