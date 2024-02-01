@@ -6,13 +6,14 @@ import Input from "../../../components/input/input";
 
 import {useDispatch, useSelector} from "react-redux";
 import {getUserData} from "../../../store/selectors";
-import {useNavigate,navigate} from "@reach/router";
+import {navigate} from "@reach/router";
 import Password from "../../../components/password/password";
+import {ReactComponent as LogoSvg} from "../../../svgs/logo.svg";
 
 import s from "./login-wrapper.module.scss";
 import validationRules from "../../../utils/validationRule";
 import {IItem} from "../../layouts/templates/formik-handler/formik-handler";
-import {actions, login} from "../../../store/auth";
+import {actions} from "../../../store/auth";
 import {authAPI} from "../../../api/admin-api/auth-api";
 import axios from "axios";
 
@@ -96,12 +97,12 @@ const LoginWrapper: React.FC<ILoginWrapper> = () => {
                         <form id={"form"} onSubmit={handleSubmit} className={s.form}>
                             {/*<h3> {t("login")} </h3>*/}
                             <div className={s.logoDiv}>
-                                <img src={`../../images/logo.png`} alt="logo"/>
+                                <LogoSvg/>
                             </div>
                             <div style={{position: "relative"}}>
                                 <Input
-                                    label={t("email")}
-                                    placeholder={"Email"}
+                                    label={t("admin:email")}
+                                    placeholder={t("admin:email")}
                                     name={"email"}
                                     type={"text"}
                                     inLogin={true}
@@ -120,15 +121,15 @@ const LoginWrapper: React.FC<ILoginWrapper> = () => {
                             <Password
                                 name={"password"}
                                 value={values.password}
-                                placeholder={"Password"}
+                                placeholder={t("admin:password")}
                                 // className={cls.passwordWrapper}
                                 onChange={handleChange}
-                                label={t("password")}
+                                label={t("admin:password")}
                                 error={errors["password"]}
                             />
                             {!userFound && <span className={s.userNotFound}>Email or password are incorrect</span>}
                             <div className={s.actions}>
-                                <Button isSubmit type={"green"} onClick={handleSubmit}>{t("sign_in")}</Button>
+                                <Button isSubmit type={"green"} onClick={handleSubmit}>{t("admin:sign_in")}</Button>
                             </div>
                         </form>
                     )}
