@@ -38,6 +38,9 @@ import UsersCreate from "./pages/admin/users/create";
 import NewsList from "./pages/admin/news/list";
 import NewsCreate from "./pages/admin/news/create";
 import NewsEdit from "./pages/admin/news/edit";
+import VideoList from "./pages/admin/video/list";
+import VideoEdit from "./pages/admin/video/edit";
+import VideoCreate from "./pages/admin/video/create";
 
 
 const App = (): JSX.Element => (
@@ -69,6 +72,10 @@ const App = (): JSX.Element => (
                 <NewsList path="/news"/>
                 <NewsCreate path="/news/create"/>
                 <NewsEdit path="/news/:id"/>
+
+                <VideoList path="/video"/>
+                <VideoEdit path="/video/:id"/>
+                <VideoCreate path="/video/create"/>
 
 
 
