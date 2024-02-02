@@ -17,6 +17,7 @@ const UsersList: React.FC<IProductsList> = () => {
     const [loading, setLoading] = useState(false);
     const [open, setOpen] = useState<boolean>(false);
     const [query, setQuery] = useState("");
+    const [ids, setIds] = useState([]);
     useEffect(() => {
         (
             async () => {
@@ -38,7 +39,7 @@ const UsersList: React.FC<IProductsList> = () => {
         'status',
     ];
     const handlerAction = async (action: string, id?: number) => {
-        return PageAction(crudKey, setLoading, loading, action, id)
+        return PageAction(crudKey, setLoading, loading, action, id, setIsModalOpen, ids, setIds)
     };
     const tableRef = useRef(null);
     const countRef = useRef(2);
