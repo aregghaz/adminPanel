@@ -77,6 +77,11 @@ const Drawer = ({children}: { children: React.ReactNode }) => {
             item: "Баннеры",
             page: '/banners',
             icon: <Status/>
+        }, {
+            id: 8,
+            item: "news",
+            page: '/news',
+            icon: <Status/>
         }
     ];
 

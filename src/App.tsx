@@ -35,6 +35,9 @@ import BannersList from "./pages/admin/banners/list";
 import UserEdit from "./pages/admin/users/edit";
 import BannersEdit from "./pages/admin/banners/edit";
 import UsersCreate from "./pages/admin/users/create";
+import NewsList from "./pages/admin/news/list";
+import NewsCreate from "./pages/admin/news/create";
+import NewsEdit from "./pages/admin/news/edit";
 
 
 const App = (): JSX.Element => (
@@ -63,8 +66,17 @@ const App = (): JSX.Element => (
                 <UserEdit path="/users/:id"/>
                 <UsersCreate path="/users/create"/>
 
+                <NewsList path="/news"/>
+                <NewsCreate path="/news/create"/>
+                <NewsEdit path="/news/:id"/>
+
+
+
                 <BannersList path="/banners"/>
                 <BannersEdit path="/banners/:id"/>
+
+
+
                 {/*<ProductCreate path="/products/create" />*/}
                 {/*<Users path="/users/:id" />*/}
                 {/*<Clients path="/trips" />*/}

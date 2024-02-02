@@ -1,16 +1,16 @@
 import React from "react";
-import { Formik, FormikHelpers, FormikValues } from "formik";
-import FormikHandler, { IItem } from "../formik-handler/formik-handler";
+import {Formik, FormikHelpers, FormikValues} from "formik";
+import FormikHandler, {IItem} from "../formik-handler/formik-handler";
 import populateEditFormFields from "../../../../constants/populateEditFormFields";
 import Button from "../../../../components/button/button";
-import { useNavigate } from "@reach/router";
+import {useNavigate} from "@reach/router";
 
 
 import s from "./edit.module.scss";
-import { AdminApi } from "../../../../api/admin-api/admin-api";
+import {AdminApi} from "../../../../api/admin-api/admin-api";
 import validationRules from "../../../../utils/validationRule";
-import { useTranslation } from "react-i18next";
-import { toast } from "react-toastify";
+import {useTranslation} from "react-i18next";
+import {toast} from "react-toastify";
 
 interface IEdit {
     data: { [key: string]: { [key: string]: Object } }
@@ -21,8 +21,8 @@ interface IEdit {
     selectRange: boolean
     redirectKey?: string,
     requiredFields: Array<string>
-    isStatus?:boolean,
-    children:any
+    isStatus?: boolean,
+    children: any
 }
 
 const Edit: React.FC<IEdit> = (
@@ -37,20 +37,20 @@ const Edit: React.FC<IEdit> = (
         requiredFields,
         isStatus = false,
     }) => {
-    const { t } = useTranslation();
+    const {t} = useTranslation();
 
     const navigate = useNavigate();
     const validate = (values: FormikValues) => validationRules(values, requiredFields, fields, t);
 
-    const submit = async (values: FormikValues, { setSubmitting }: FormikHelpers<FormikValues>) => {
+    const submit = async (values: FormikValues, {setSubmitting}: FormikHelpers<FormikValues>) => {
         setSubmitting(true);
         const formData: FormData = new FormData();
         for (let property in values) {
             if (property === 'image') {
                 formData.append("image", values[property]);
-                console.log(property);
+            } else if (property === 'banner') {
+                formData.append("banner", values[property]);
             }
-
         }
         formData.append("_method", "put");
         formData.append("value", JSON.stringify(values));
@@ -63,7 +63,7 @@ const Edit: React.FC<IEdit> = (
 
             toast(t("record_successfully_edited"), options);
             await navigate(-1);
-        }else{
+        } else {
             const options = {
                 type: toast.TYPE.WARNING,
                 position: toast.POSITION.TOP_RIGHT
@@ -94,28 +94,26 @@ const Edit: React.FC<IEdit> = (
                     return (
                         <>
                             <form className={`${s.form} ${isStatus ? s.statusForm : ""}`}>
-                                    {
-                                        fields
-                                            .map((field, index) =>
+                                {
+                                    fields
+                                        .map((field, index) =>
 
-                                                <div key={index} className={s.item}
-                                                     style={field.type === "hidden" ? { display: "none" } : {}}>
-                                                    <FormikHandler
-                                                        item={field}
-                                                        handleDrawMap={handleDrawMap}
-                                                        handleChange={handleChange}
-                                                        values={values}
-                                                        selectRange={selectRange}
-                                                        requiredFields={requiredFields}
-                                                        setFieldValue={setFieldValue}
-                                                        selectOptions={data}
-                                                        errors={errors}
-                                                    />
-                                                </div>
-
-
-                                            )
-                                    }
+                                            <div key={index} className={s.item}
+                                                 style={field.type === "hidden" ? {display: "none"} : {}}>
+                                                <FormikHandler
+                                                    item={field}
+                                                    handleDrawMap={handleDrawMap}
+                                                    handleChange={handleChange}
+                                                    values={values}
+                                                    selectRange={selectRange}
+                                                    requiredFields={requiredFields}
+                                                    setFieldValue={setFieldValue}
+                                                    selectOptions={data}
+                                                    errors={errors}
+                                                />
+                                            </div>
+                                        )
+                                }
 
 
                                 <div className={s.buttonDiv}>

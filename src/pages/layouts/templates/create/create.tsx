@@ -41,8 +41,9 @@ const Create: React.FC<ICreate> = (
         for (let property in values) {
             if (property === 'image') {
                 formData.append("image", values[property]);
+            } else if (property === 'banner') {
+                formData.append("banner", values[property]);
             }
-
         }
         formData.append("value", JSON.stringify(values));
         const res: any = await AdminApi.store(formData, crudKey);
