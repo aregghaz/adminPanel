@@ -90,7 +90,6 @@ const TableBody: React.FC<ITableBody> = (
 
                                                                 </TableData>)
                                                         case "image":
-
                                                             return (
                                                                 <TableData key={key} item={item} className={key}
                                                                            click={isRemove}
@@ -104,7 +103,21 @@ const TableBody: React.FC<ITableBody> = (
                                                                              e.currentTarget.src = "/noImage.svg"
                                                                          }}
                                                                     />
-
+                                                                </TableData>)
+                                                        case "prImage":
+                                                            return (
+                                                                <TableData key={key} item={item} className={key}
+                                                                           click={isRemove}
+                                                                           handlerAction={handlerAction}>
+                                                                    <img src={`${item[key]}`}
+                                                                         width={200}
+                                                                         height={100}
+                                                                         alt={'image'}
+                                                                         onError={(e:any) =>{
+                                                                             e.stopPropagation()
+                                                                             e.currentTarget.src = "/noImage.svg"
+                                                                         }}
+                                                                    />
                                                                 </TableData>)
                                                         case "updated":
                                                             return (
