@@ -52,7 +52,7 @@ const Create: React.FC<ICreate> = (
                 type: toast.TYPE.SUCCESS,
                 position: toast.POSITION.TOP_RIGHT
             };
-            toast(t("record_successfully_added"), options);
+            toast(t("admin:record_successfully_added"), options);
             await navigate(-1);
             //
         }else{

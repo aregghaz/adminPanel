@@ -67,6 +67,8 @@ const resources = {
             mark_all:'пометить все',
             remove_all:'убрать все',
             position:'позиция',
+            type:'тип',
+
             record_successfully_edited:'запись успешно изменена',
             record_successfully_added:'запись успешно добавлена',
         }

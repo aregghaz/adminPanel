@@ -3,6 +3,7 @@ import TableRow from "../table-row/table-row";
 import TableData from "../table-data/table-data";
 import {ReactComponent as TrashIcon} from "../../../images/trash.svg";
 import {ReactComponent as EditIcon} from "../../../images/edit.svg";
+import {ReactComponent as NoImage} from "../../../svgs/noImage.svg";
 import s from "../crud-table.module.scss";
 import {fakeUrl} from "../../../utils/getFieldLabel";
 import timestampToDate from "../../../utils/timestampToDate";
@@ -71,18 +72,7 @@ const TableBody: React.FC<ITableBody> = (
                                                 className={`${s.icon} ${s.iconColor}`}
                                                 onClick={() => handlerAction("edit", item.id)}
                                             />
-                                            </span>
-                                                }
-                                                {/*{isRemove &&*/}
-                                                {/*    <span className={`${s.tooltip} ${s.reRouteSpan}`}>*/}
-                                                {/*<span className={`${s.tooltiptext} ${s.reRoute}`}>ReRoute</span>*/}
-                                                {/*<RemoveIcon*/}
-                                                {/*    className={s.icon}*/}
-                                                {/*    onClick={() => handlerAction("reRoute", item.id)}*/}
-                                                {/*/>*/}
-                                                {/*      </span>*/}
-                                                {/*}*/}
-
+                                            </span>}
                                             </div>
                                         </TableData>
                                     }
@@ -106,9 +96,14 @@ const TableBody: React.FC<ITableBody> = (
                                                                            click={isRemove}
                                                                            handlerAction={handlerAction}>
                                                                     <img src={`${fakeUrl}${item[key]}`}
-                                                                        width={200}
+                                                                         width={200}
                                                                          height={100}
-                                                                         alt={'image'}/>
+                                                                         alt={'image'}
+                                                                         onError={(e:any) =>{
+                                                                             e.stopPropagation()
+                                                                             e.currentTarget.src = "/noImage.svg"
+                                                                         }}
+                                                                    />
 
                                                                 </TableData>)
                                                         case "updated":
@@ -156,10 +151,6 @@ const TableBody: React.FC<ITableBody> = (
                 {/*}}/>*/
                 }
             </>
-        )
-            ;
-    }
-;
-
+        )};
 
 export default TableBody;

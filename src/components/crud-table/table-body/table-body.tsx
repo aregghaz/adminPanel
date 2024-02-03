@@ -3,7 +3,6 @@ import TableRow from "../table-row/table-row";
 import TableData from "../table-data/table-data";
 import {ReactComponent as TrashIcon} from "../../../images/trash.svg";
 import {ReactComponent as EditIcon} from "../../../images/edit.svg";
-import {ReactComponent as UsersIcon} from "../../../images/Users.svg";
 import s from "../crud-table.module.scss";
 import timestampToDate from "../../../utils/timestampToDate";
 import {fakeUrl} from "../../../utils/getFieldLabel";
