@@ -54,7 +54,7 @@ const TableBody: React.FC<ITableBody> = (
                                                 {
                                                     isDelete &&
                                                     <span className={`${s.tooltip} ${s.deleteSpan}`}>
-                                            <span className={`${s.tooltiptext} ${s.delete}`}>Delete</span>
+                                            <span className={`${s.tooltiptext} ${s.delete}`}>удалить</span>
                                             <TrashIcon
                                                 className={s.icon}
                                                 onClick={() => {
@@ -66,7 +66,7 @@ const TableBody: React.FC<ITableBody> = (
                                                 {
                                                     isEdit &&
                                                     <span className={`${s.tooltip} ${s.editSpan}`}>
-                                            <span className={`${s.tooltiptext} ${s.edit} ${s.editLeft}`}>Edit</span>
+                                            <span className={`${s.tooltiptext} ${s.edit} ${s.editLeft}`}>Изменить</span>
                                             <EditIcon
                                                 className={`${s.icon} ${s.iconColor}`}
                                                 onClick={() => handlerAction("edit", item.id)}

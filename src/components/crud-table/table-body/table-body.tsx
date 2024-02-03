@@ -49,34 +49,24 @@ const TableBody: React.FC<ITableBody> = (
                                             {
                                                 isEdit &&
                                                 <div className={s.iconWrapper}>
-                                                    <div className={`${s.iconLabel} ${s.iconLabelTop}`}>Edit</div>
+                                                    <div className={`${s.iconLabel} ${s.iconLabelTop}`}>Изменить</div>
                                                     <EditIcon
                                                         className={s.editIcon}
                                                         onClick={() => handlerAction("edit", item.id)}
                                                     />
                                                 </div>
                                             }
-                                            {
-                                                isGetItems &&
-                                                <div className={s.iconWrapper}>
-                                                    <div className={s.iconLabel}>Users</div>
-                                                    <UsersIcon
-                                                        className={`${s.editIcon} ${s.userEditIcon}`}
-                                                        onClick={() => handlerAction("getVendorUser", item.id)}
-                                                    />
-                                                </div>
-                                            }
+
 
                                             {
                                                 isDelete &&
                                                 <div className={s.iconWrapper}>
-                                                    <div className={s.iconLabel}>Delete</div>
+                                                    <div className={s.iconLabel}>удалить</div>
                                                     <TrashIcon
                                                         className={s.trashIcon}
 
                                                         onClick={() => {
                                                             handlerAction("delete", item.id)
-                                                            console.log("aa")
                                                         }}
                                                     />
                                                 </div>

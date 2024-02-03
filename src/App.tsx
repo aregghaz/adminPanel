@@ -41,6 +41,9 @@ import NewsEdit from "./pages/admin/news/edit";
 import VideoList from "./pages/admin/video/list";
 import VideoEdit from "./pages/admin/video/edit";
 import VideoCreate from "./pages/admin/video/create";
+import SlidersList from "./pages/admin/sliders/list";
+import SliderCreate from "./pages/admin/sliders/create";
+import SliderEdit from "./pages/admin/sliders/edit";
 
 
 const App = (): JSX.Element => (
@@ -81,6 +84,10 @@ const App = (): JSX.Element => (
 
                 <BannersList path="/banners"/>
                 <BannersEdit path="/banners/:id"/>
+
+                <SlidersList path="/sliders"/>
+                <SliderCreate path="/sliders/create"/>
+                <SliderEdit path="/sliders/:id"/>
 
 
 

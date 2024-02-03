@@ -66,6 +66,9 @@ const resources = {
             update:"обновить",
             mark_all:'пометить все',
             remove_all:'убрать все',
+            position:'позиция',
+            record_successfully_edited:'запись успешно изменена',
+            record_successfully_added:'запись успешно добавлена',
         }
     },
 

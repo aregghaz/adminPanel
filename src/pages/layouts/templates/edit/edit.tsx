@@ -61,7 +61,7 @@ const Edit: React.FC<IEdit> = (
                 position: toast.POSITION.TOP_RIGHT
             };
 
-            toast(t("record_successfully_edited"), options);
+            toast(t("admin:record_successfully_edited"), options);
             await navigate(-1);
         } else {
             const options = {

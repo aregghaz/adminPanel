@@ -14,6 +14,11 @@ import {ReactComponent as HomeIcon} from "../../images/my-services.svg";
 import {ReactComponent as Status} from "../../images/Settings.svg";
 import {ReactComponent as CompanyIcon} from "../../svgs/company.svg";
 import {ReactComponent as LogoSvg} from "../../svgs/logo.svg";
+import {ReactComponent as Slider} from "../../svgs/slider.svg";
+import {ReactComponent as Video} from "../../svgs/video.svg";
+import {ReactComponent as News} from "../../svgs/news.svg";
+import {ReactComponent as Banners} from "../../svgs/banners.svg";
+import {ReactComponent as Brends} from "../../svgs/brends.svg";
 
 
 const Drawer = ({children}: { children: React.ReactNode }) => {
@@ -66,27 +71,32 @@ const Drawer = ({children}: { children: React.ReactNode }) => {
             id: 5,
             item: "Бренды",
             page: '/brands',
-            icon: <CompanyIcon/>
+            icon: <Brends/>
         }, {
             id: 6,
             item: "Клиенты",
             page: '/users',
-            icon: <Status/>
+            icon: <CompanyIcon/>
         }, {
             id: 7,
             item: "Баннеры",
             page: '/banners',
-            icon: <Status/>
+            icon: <Banners/>
         }, {
             id: 8,
-            item: "news",
+            item: "Новости",
             page: '/news',
-            icon: <Status/>
+            icon: <News/>
         }, {
             id: 9,
-            item: "Video",
+            item: "Видеоблог",
             page: '/video',
-            icon: <Status/>
+            icon: <Video/>
+        }, {
+            id: 10,
+            item: "Слайдер",
+            page: '/sliders',
+            icon: <Slider/>
         }
     ];
 

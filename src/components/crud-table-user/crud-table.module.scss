@@ -171,13 +171,13 @@
 }
 
 .tooltip .tooltiptext {
-    width: 40px;
-    background-color: $borderColor;
+    width: 50px;
+    background-color: $menuColor;
     color: #fff;
     text-align: center;
     border-radius: 6px;
     padding: 2px 0;
-
+    text-transform: lowercase;
     /* Position the tooltip */
     position: absolute;
     z-index: 1;
