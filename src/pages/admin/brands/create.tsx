@@ -23,6 +23,10 @@ const BrandsCreate: React.FC<IUserCreate> = () => {
 
     const requiredFields = [
         "title",
+        "image",
+        "description",
+        "meta_title",
+        "meta_desc",
     ];
 
     return <Create

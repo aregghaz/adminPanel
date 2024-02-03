@@ -5,7 +5,6 @@ import {AdminApi} from "../../../api/admin-api/admin-api";
 import {IPageEdit} from "../../../types/admin";
 
 
-
 const BrandsEdit: React.FC<IPageEdit> = ({id, path}) => {
     const {t} = useTranslation();
     const crudKey = "brands";
@@ -24,7 +23,7 @@ const BrandsEdit: React.FC<IPageEdit> = ({id, path}) => {
     useEffect(() => {
         (
             async () => {
-                if(id){
+                if (id) {
                     const data = await AdminApi.getItemData(crudKey, id);
                     setData(data);
                 }
@@ -32,6 +31,14 @@ const BrandsEdit: React.FC<IPageEdit> = ({id, path}) => {
         )();
 
     }, [id]);
+
+    const requiredFields = [
+        "title",
+        "image",
+        "description",
+        "meta_title",
+        "meta_desc"
+    ]
     return (
         data &&
         <Edit
@@ -40,7 +47,7 @@ const BrandsEdit: React.FC<IPageEdit> = ({id, path}) => {
             fields={fields}
             title={""}
             children={t("update")}
-            requiredFields={[]}
+            requiredFields={requiredFields}
             selectRange
         />
     );

@@ -26,9 +26,6 @@ import AttributesEdit from "./pages/admin/attributes/edit";
 import BrandsList from "./pages/admin/brands/list";
 import BrandsCreate from "./pages/admin/brands/create";
 import BrandsEdit from "./pages/admin/brands/edit";
-import ConditionsList from "./pages/admin/conditions/list";
-import ConditionsCreate from "./pages/admin/conditions/create";
-import ConditionsEdit from "./pages/admin/conditions/edit";
 import ProductEdit from "./pages/admin/products/edit";
 import UsersList from "./pages/admin/users/list";
 import BannersList from "./pages/admin/banners/list";
@@ -64,9 +61,6 @@ const App = (): JSX.Element => (
                 <BrandsList path="/brands"/>
                 <BrandsCreate path="/brands/create"/>
                 <BrandsEdit path="/brands/:id"/>
-                <ConditionsList path="/conditions"/>
-                <ConditionsCreate path="/conditions/create"/>
-                <ConditionsEdit path="/conditions/:id"/>
 
                 <UsersList path="/users"/>
                 <UserEdit path="/users/:id"/>

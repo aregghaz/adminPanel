@@ -59,7 +59,9 @@ const ProductCreate: React.FC<IUserCreate> = () => {
         "price",
         'brand_id',
         'quantity',
-        'categories'
+        'categories',
+        'meta_title',
+        'description',
     ];
 
     return data && <Create

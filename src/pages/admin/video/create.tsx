@@ -19,6 +19,7 @@ const VideoCreate: React.FC<IUserCreate> = () => {
 
     const requiredFields = [
         "title",
+        "video",
     ];
 
     return <Create

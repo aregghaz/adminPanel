@@ -5,7 +5,6 @@ import {AdminApi} from "../../../api/admin-api/admin-api";
 import {IPageEdit} from "../../../types/admin";
 
 
-
 const VideoEdit: React.FC<IPageEdit> = ({id, path}) => {
     const {t} = useTranslation();
     const crudKey = "video";
@@ -21,7 +20,7 @@ const VideoEdit: React.FC<IPageEdit> = ({id, path}) => {
     useEffect(() => {
         (
             async () => {
-                if(id){
+                if (id) {
                     const data = await AdminApi.getItemData(crudKey, id);
                     setData(data);
                 }
@@ -29,6 +28,10 @@ const VideoEdit: React.FC<IPageEdit> = ({id, path}) => {
         )();
 
     }, [id]);
+    const requiredFields = [
+        "title",
+        "video",
+    ];
     return (
         data &&
         <Edit
@@ -37,7 +40,7 @@ const VideoEdit: React.FC<IPageEdit> = ({id, path}) => {
             fields={fields}
             title={""}
             children={t("update")}
-            requiredFields={[]}
+            requiredFields={requiredFields}
             selectRange
         />
     );

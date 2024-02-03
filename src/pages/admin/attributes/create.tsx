@@ -29,6 +29,7 @@ const AttributesCreate: React.FC<IUserCreate> = () => {
     }, []);
     const requiredFields = [
         "title",
+        "types",
     ];
 
     return data && <Create

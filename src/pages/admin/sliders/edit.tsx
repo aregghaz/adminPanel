@@ -30,6 +30,10 @@ const SliderEdit: React.FC<IPageEdit> = ({id, path}) => {
         )();
 
     }, [id]);
+    const requiredFields = [
+        "image",
+        "position",
+    ];
     return (
         data &&
         <Edit
@@ -38,7 +42,7 @@ const SliderEdit: React.FC<IPageEdit> = ({id, path}) => {
             fields={fields}
             title={""}
             children={t("update")}
-            requiredFields={[]}
+            requiredFields={requiredFields}
             selectRange
         />
     );

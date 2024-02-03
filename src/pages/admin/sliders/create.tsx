@@ -20,6 +20,7 @@ const SliderCreate: React.FC<IUserCreate> = () => {
 
     const requiredFields = [
         "image",
+        "position",
     ];
 
     return <Create

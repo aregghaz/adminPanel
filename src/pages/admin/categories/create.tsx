@@ -36,6 +36,9 @@ const CategoryCreate: React.FC<IUserCreate> = () => {
     }, []);
     const requiredFields = [
         "title",
+        "description",
+        "meta_title",
+        "meta_desc",
     ];
 
     return data && <Create

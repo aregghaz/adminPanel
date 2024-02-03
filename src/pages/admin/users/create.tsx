@@ -26,7 +26,6 @@ const UsersCreate: React.FC<IUserCreate> = () => {
             autoComplete: "new-password",
             placeholder: "Password"
         },
-        {name: "status", type: "select", label: "status", placeholder: "status"},
         {name: "subscribed", type: "select", label: "subscribed", placeholder: "subscribed"},
     ];
     useEffect(() => {
@@ -41,6 +40,8 @@ const UsersCreate: React.FC<IUserCreate> = () => {
     }, []);
     const requiredFields = [
         "name",
+        "lastName",
+        "email",
         'phone',
         'password'
     ];

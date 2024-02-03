@@ -5,7 +5,6 @@ import {AdminApi} from "../../../api/admin-api/admin-api";
 import {IPageEdit} from "../../../types/admin";
 
 
-
 const AttributesEdit: React.FC<IPageEdit> = ({id, path}) => {
     const {t} = useTranslation();
     const crudKey = "attributes";
@@ -20,9 +19,9 @@ const AttributesEdit: React.FC<IPageEdit> = ({id, path}) => {
     useEffect(() => {
         (
             async () => {
-                if(id){
+                if (id) {
                     const data = await AdminApi.getItemData(crudKey, id);
-                    console.log(data,'datadata')
+                    console.log(data, 'datadata')
                     setData(data);
                 }
 
@@ -31,6 +30,11 @@ const AttributesEdit: React.FC<IPageEdit> = ({id, path}) => {
         )();
 
     }, []);
+
+    const requiredFields = [
+        "title",
+        "types"
+    ]
     return (
         data &&
         <Edit
@@ -39,7 +43,7 @@ const AttributesEdit: React.FC<IPageEdit> = ({id, path}) => {
             fields={fields}
             title={""}
             children={t("update")}
-            requiredFields={[]}
+            requiredFields={requiredFields}
             selectRange
         />
     );

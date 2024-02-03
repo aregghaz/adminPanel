@@ -59,7 +59,9 @@ const ProductEdit: React.FC<IPageEdit> = ({id, path}) => {
         "price",
         'brand_id',
         'quantity',
-        'categories'
+        'categories',
+        'meta_title',
+        'description',
     ];
     return (
         data &&

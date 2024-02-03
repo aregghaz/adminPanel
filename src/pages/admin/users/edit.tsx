@@ -40,6 +40,14 @@ const UserEdit: React.FC<IPageEdit> = ({id, path}) => {
         )();
 
     }, [id]);
+
+    const requiredFields = [
+        "name",
+        "lastName",
+        "email",
+        'phone',
+        'password'
+    ];
     return (
         data &&
         <>
@@ -50,7 +58,7 @@ const UserEdit: React.FC<IPageEdit> = ({id, path}) => {
                 fields={fields}
                 title={""}
                 children={t("update")}
-                requiredFields={[]}
+                requiredFields={requiredFields}
                 selectRange
             />
         </>
