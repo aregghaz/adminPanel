@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from "react";
 import s from './multi-file-upload.module.scss'
 import {AdminApi} from "../../api/admin-api/admin-api";
-import axios from "axios";
 import {fakeUrl} from "../../utils/getFieldLabel";
 
 interface ISingleFileUpload {
@@ -35,19 +34,53 @@ const MultiFile: React.FC<ISingleFileUpload> = (
         return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
     }
 
+    const getImage = async (item:any) =>{
+        return fetch(fakeUrl + item.path)
+            .then(res => res.blob()) // Gets the response and returns it as a blob
+            .then(blob => {
+                // Here's where you get access to the blob
+                // And you can use it for whatever you want
+                // Like calling ref().put(blob)
+                // Here, I use it to make an image appear on the page
+                // let objectURL = URL.createObjectURL(blob);
+                // let myImage = new Image();
+                // myImage.src = objectURL;
+                return blob
+            })
+    }
     useEffect(() => {
         console.log(data, 'data')
+
         data.map(async (item) => {
-            InputChange((
-                    await axios.get(fakeUrl + item.path, {
-                        responseType: 'blob',
-                    })
-                ).data as Blob
-            )
+            const asd = await getImage(item)
+            console.log(asd,'1asd')
+            InputChange({target:{files:[asd]}})
+            //     fetch(fakeUrl + item.path)
+            //         .then(res => res.blob()) // Gets the response and returns it as a blob
+            //         .then(blob => {
+            //             // Here's where you get access to the blob
+            //             // And you can use it for whatever you want
+            //             // Like calling ref().put(blob)
+            //             // Here, I use it to make an image appear on the page
+            //             let objectURL = URL.createObjectURL(blob);
+            //             let myImage = new Image();
+            //             myImage.src = objectURL;
+            //             return myImage
+            //         })
+            //     // (
+            //     //     await axios.get(fakeUrl + item.path, {
+            //     //         headers: {
+            //     //             "Content-Type": "application/octet-stream",
+            //     //         },
+            //     //         responseType: 'blob',
+            //     //     })
+            //     // ).data as Blob
+            // )
             // x.send()
         })
     }, [])
     const InputChange = (e: any) => {
+        console.log(e,'q')
         // if (e.target.files && e.target.files.length > 0) {
         for (let i = 0; i < e.target.files.length; i++) {
             let reader = new FileReader();
@@ -70,7 +103,7 @@ const MultiFile: React.FC<ISingleFileUpload> = (
                             filename: e.target.files[i].name,
                             filetype: e.target.files[i].type,
                             fileimage: reader.result,
-                            datetime: e.target.files[i].lastModifiedDate.toLocaleString('en-IN'),
+                      //      datetime: e.target.files[i].lastModifiedDate.toLocaleString('en-IN'),
                             filesize: filesizes(e.target.files[i].size)
                         }
                     ]
@@ -138,10 +171,11 @@ const MultiFile: React.FC<ISingleFileUpload> = (
                                                 datetime,
                                                 filesize
                                             } = data;
+                                            console.log(fileimage)
                                             return (
                                                 <div className={s.file_atc_box} key={id}>
                                                     {
-                                                        filename.match(/.(jpg|jpeg|png|gif|svg)$/i) ?
+                                                        fileimage.match(/.(jpg|jpeg|png|gif|svg)$/i) ?
                                                             <div className={s.file_image}><img src={fileimage}
                                                                                                alt=""/></div> :
                                                             <div className={s.file_image}><i
