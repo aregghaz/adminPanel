@@ -5,27 +5,23 @@ import {AdminApi} from "../../../api/admin-api/admin-api";
 import {IPageEdit} from "../../../types/admin";
 
 
-const NewsEdit: React.FC<IPageEdit> = ({id, path}) => {
+
+const TagsEdit: React.FC<IPageEdit> = ({id, path}) => {
     const {t} = useTranslation();
-    const crudKey = "news";
+    const crudKey = "tags";
     const [data, setData] = useState(null);
     const fields: Array<any> = [
         {name: "id", type: "hidden", label: "id", placeholder: "id"},
         {name: "title", type: "input", label: "title", placeholder: "title"},
-        {name: 'image', type: 'file', label: 'image'},
-        {name: 'video', type: 'input', label: 'video'},
-        {name: 'meta_title', type: 'input', label: 'meta_title'},
-        {name: 'meta_key', type: 'input', label: 'meta_key'},
-        {name: "meta_desc", type: "textarea", label: "meta_desc", placeholder: "meta_desc"},
-        {name: "status", type: "select", label: "status", placeholder: "status"},
-        {name: "content", type: "richText", label: "content", placeholder: "content"},
+        {name: 'position', type: 'input', inputType:'number', label: 'position'},
     ];
+
 
 
     useEffect(() => {
         (
             async () => {
-                if (id) {
+                if(id){
                     const data = await AdminApi.getItemData(crudKey, id);
                     setData(data);
                 }
@@ -34,12 +30,8 @@ const NewsEdit: React.FC<IPageEdit> = ({id, path}) => {
 
     }, [id]);
     const requiredFields = [
-        "title",
-        "meta_title",
-        "meta_desc",
-        "meta_key",
-        "content",
-    ]
+        "position",
+    ];
     return (
         data &&
         <Edit
@@ -54,4 +46,4 @@ const NewsEdit: React.FC<IPageEdit> = ({id, path}) => {
     );
 };
 
-export default NewsEdit;
+export default TagsEdit;

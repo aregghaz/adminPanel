@@ -56,7 +56,7 @@ const CrudTable: React.FC<ICrudTable> = (
                 dataLength={resetOrNotTable.length} //This is important field to render the next data
                 next={fetchMoreData}
                 hasMore={resetOrNotTable.length > 0}
-                loader={<h4>загрузка</h4>}
+                loader={''}
                 height={800}
             >
                 <table className={s.table} ref={tableRef}>

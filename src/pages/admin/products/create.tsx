@@ -64,15 +64,18 @@ const ProductCreate: React.FC<IUserCreate> = () => {
         'description',
     ];
 
-    return data && <Create
-        crudKey={crudKey}
-        data={data}
-        fields={fields}
-        requiredFields={requiredFields}
-        title={""}
-        children={"create"}
-        selectRange
-    />;
+    return data && <>
+
+        <Create
+            crudKey={crudKey}
+            data={data}
+            fields={fields}
+            requiredFields={requiredFields}
+            title={""}
+            children={"create"}
+            selectRange
+        />
+    </>
 
 };
 

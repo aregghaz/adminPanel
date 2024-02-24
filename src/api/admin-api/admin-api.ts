@@ -24,7 +24,16 @@ export const AdminApi = {
     getItemData(crudKey: string, id: number) {
         return axios.get(`${fakeUrl}/api/${crudKey}/${id}`).then(res => res.data);
     },
-    get(crudKey: string,showMore?: number,query?:string) {
+    get(crudKey: string, showMore?: number, query?: string) {
         return axios.get(`${fakeUrl}/api/${crudKey}?showMore=${showMore}&query=${query}`).then(res => res.data);
+    },
+    saveImages(images: { id: number, images: Array<any> }) {
+        const config = {
+            headers: {
+                'content-type': 'multipart/form-data',
+            },
+        };
+        return axios.post(`${fakeUrl}/api/upload-images`, images, config).then(res => res.data);
+
     },
 };

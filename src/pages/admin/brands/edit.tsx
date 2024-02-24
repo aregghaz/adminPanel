@@ -34,7 +34,6 @@ const BrandsEdit: React.FC<IPageEdit> = ({id, path}) => {
 
     const requiredFields = [
         "title",
-        "image",
         "description",
         "meta_title",
         "meta_desc"

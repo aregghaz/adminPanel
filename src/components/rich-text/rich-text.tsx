@@ -7,6 +7,7 @@ import s from "../text-field/text-field.module.scss";
 interface IRichText {
     handleEditorChange: any;
     menubar?: boolean;
+    menu?: boolean;
     initialValue: string;
     label: string;
     height?: number;
@@ -17,17 +18,21 @@ interface IRichText {
 const RichText: React.FC<IRichText> = (
     {
         handleEditorChange,
-        menubar = true,
+        menubar= 'favs file edit view insert format tools table help',
+        menu= {
+            favs: {title: 'My Favorites', items: 'code visualaid | searchreplace | emoticons'}
+        },
         initialValue,
         // name,
          label,
         height = 500,
-        plugins = [
-            "advlist directionality autolink autosave link image lists charmap print preview hr anchor pagebreak",
-            "searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking",
-            "table contextmenu textcolor paste textcolor"
+        plugins =[
+            'advlist autolink link image lists charmap print preview hr anchor pagebreak',
+            'searchreplace wordcount visualblocks visualchars code fullscreen insertdatetime media nonbreaking',
+            'table emoticons template paste help'
         ],
-        toolbar = 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
+        toolbar= 'insertfile undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image | print preview media | forecolor backcolor emoticons',
+
     }
 ) => {
 
@@ -45,13 +50,18 @@ const RichText: React.FC<IRichText> = (
             <Editor
                 apiKey='0x0vt21r124ntoyvayagzne12v3yte3g3138dyxtvn8d70t6'
                 value={initialValue}
-
+                menu={menu}
                 init={{
-                    height: height,
-                    menubar: menubar,
-                    plugins: plugins,
-                    toolbar: toolbar,
-                    directionality: 'ltr'
+                    selector: '#myTextarea',
+                    height: 500,
+                    width: 500,
+                    plugins: ' searchreplace autolink directionality visualblocks visualchars image link media  codesample table charmap pagebreak nonbreaking anchor  insertdatetime advlist lists wordcount help charmap linkchecker emoticons autosave',
+                    toolbar: [
+                        'undo redo print spellcheckdialog formatpainter |alignleft aligncenter alignright alignjustify ',
+                        'bold italic underline forecolor backcolor | link image |  blocks fontfamily fontsize',
+
+                    ]
+
                 }}
                 onEditorChange={handleEditorChange}
             /></>

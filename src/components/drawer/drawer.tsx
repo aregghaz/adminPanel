@@ -19,6 +19,7 @@ import {ReactComponent as Video} from "../../svgs/video.svg";
 import {ReactComponent as News} from "../../svgs/news.svg";
 import {ReactComponent as Banners} from "../../svgs/banners.svg";
 import {ReactComponent as Brends} from "../../svgs/brends.svg";
+import {ReactComponent as Tags} from "../../svgs/tags.svg";
 
 
 const Drawer = ({children}: { children: React.ReactNode }) => {
@@ -97,6 +98,11 @@ const Drawer = ({children}: { children: React.ReactNode }) => {
             item: "Слайдер",
             page: '/sliders',
             icon: <Slider/>
+        }, {
+            id: 11,
+            item: "tags",
+            page: '/tags',
+            icon: <Tags/>
         }
     ];
 

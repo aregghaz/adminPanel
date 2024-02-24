@@ -31,7 +31,6 @@ const SliderEdit: React.FC<IPageEdit> = ({id, path}) => {
 
     }, [id]);
     const requiredFields = [
-        "image",
         "position",
     ];
     return (

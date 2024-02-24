@@ -41,6 +41,9 @@ import VideoCreate from "./pages/admin/video/create";
 import SlidersList from "./pages/admin/sliders/list";
 import SliderCreate from "./pages/admin/sliders/create";
 import SliderEdit from "./pages/admin/sliders/edit";
+import TagsList from "./pages/admin/tags/list";
+import TagsCreate from "./pages/admin/tags/create";
+import TagsEdit from "./pages/admin/tags/edit";
 
 
 const App = (): JSX.Element => (
@@ -82,6 +85,10 @@ const App = (): JSX.Element => (
                 <SlidersList path="/sliders"/>
                 <SliderCreate path="/sliders/create"/>
                 <SliderEdit path="/sliders/:id"/>
+
+                <TagsList path="/tags"/>
+                <TagsCreate path="/tags/create"/>
+                <TagsEdit path="/tags/:id"/>
 
 
 
