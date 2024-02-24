@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from "react";
 import s from './multi-file-upload.module.scss'
 import {AdminApi} from "../../api/admin-api/admin-api";
+import axios from "axios";
 
 interface ISingleFileUpload {
     id: number,
@@ -32,54 +33,55 @@ const MultiFile: React.FC<ISingleFileUpload> = (
         const i = Math.floor(Math.log(bytes) / Math.log(k));
         return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
     }
+
     useEffect(() => {
-        console.log(data,'data')
-        data.map((item) => {
-            var x = new XMLHttpRequest();
-            x.open('GET', item.path);
-            x.responseType = 'blob';
-            var blob = x.response;
-            console.log(blob,'blob')
-            InputChange({target: {files: [blob]}})
+        console.log(data, 'data')
+        data.map(async (item) => {
+            InputChange((
+                    await axios.get(item.path, {
+                        responseType: 'blob',
+                    })
+                ).data as Blob
+            )
             // x.send()
         })
     }, [])
     const InputChange = (e: any) => {
-       // if (e.target.files && e.target.files.length > 0) {
-            for (let i = 0; i < e.target.files.length; i++) {
-                let reader = new FileReader();
-                let file = e.target.files[i];
-                reader.onloadend = () => {
-                    setImages((preValue: any) => {
-                        return [
-                            ...preValue,
-                            {
-                                id: i,
-                                img: e.target.files[i],
-                            }
-                        ]
-                    });
-                    SetSelectedFile((preValue: any) => {
-                        return [
-                            ...preValue,
-                            {
-                                id: i,
-                                filename: e.target.files[i].name,
-                                filetype: e.target.files[i].type,
-                                fileimage: reader.result,
-                                datetime: e.target.files[i].lastModifiedDate.toLocaleString('en-IN'),
-                                filesize: filesizes(e.target.files[i].size)
-                            }
-                        ]
-                    });
-                }
-                if (e.target.files[i]) {
-                    console.log(file)
-                    reader.readAsDataURL(file);
-                }
+        // if (e.target.files && e.target.files.length > 0) {
+        for (let i = 0; i < e.target.files.length; i++) {
+            let reader = new FileReader();
+            let file = e.target.files[i];
+            reader.onloadend = () => {
+                setImages((preValue: any) => {
+                    return [
+                        ...preValue,
+                        {
+                            id: i,
+                            img: e.target.files[i],
+                        }
+                    ]
+                });
+                SetSelectedFile((preValue: any) => {
+                    return [
+                        ...preValue,
+                        {
+                            id: i,
+                            filename: e.target.files[i].name,
+                            filetype: e.target.files[i].type,
+                            fileimage: reader.result,
+                            datetime: e.target.files[i].lastModifiedDate.toLocaleString('en-IN'),
+                            filesize: filesizes(e.target.files[i].size)
+                        }
+                    ]
+                });
             }
+            if (e.target.files[i]) {
+                console.log(file)
+                reader.readAsDataURL(file);
+            }
+        }
 
-       // }
+        // }
     }
 
 
