@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import s from './multi-file-upload.module.scss'
 import {AdminApi} from "../../api/admin-api/admin-api";
 import axios from "axios";
+import {fakeUrl} from "../../utils/getFieldLabel";
 
 interface ISingleFileUpload {
     id: number,
@@ -38,7 +39,7 @@ const MultiFile: React.FC<ISingleFileUpload> = (
         console.log(data, 'data')
         data.map(async (item) => {
             InputChange((
-                    await axios.get(item.path, {
+                    await axios.get(fakeUrl + item.path, {
                         responseType: 'blob',
                     })
                 ).data as Blob
