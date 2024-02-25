@@ -34,6 +34,11 @@ export const AdminApi = {
             },
         };
         return axios.post(`${fakeUrl}/api/upload-images`, images, config).then(res => res.data);
-
     },
+    deleteImage(id:number){
+        return axios.get(`${fakeUrl}/api/delete-image/${id}`).then(res => res.data);
+    } ,
+    getImages(id:number){
+        return axios.get(`${fakeUrl}/api/get-images/${id}`).then(res => res.data);
+    }
 };

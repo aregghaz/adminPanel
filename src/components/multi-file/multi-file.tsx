@@ -6,6 +6,8 @@ import {fakeUrl} from "../../utils/getFieldLabel";
 interface ISingleFileUpload {
     id: number,
     data: Array<any>
+    loading: boolean
+    setLoading: any
 }
 
 interface IState {
@@ -17,14 +19,29 @@ interface IState {
     filesize: ''
 }
 
-const MultiFile: React.FC<ISingleFileUpload> = (
-    {id, data}
+const MultiFile: React.FC<ISingleFileUpload> = ({
+                                                    id,
+                                                    data,
+                                                    setLoading,
+                                                    loading
+}
 ) => {
 
     const [selectedfile, SetSelectedFile] = useState<Array<any>>([]);
+    const [oldImage, setOldImage] = useState<Array<any>>(data);
     const [images, setImages] = useState<Array<any>>([]);
 
-
+    useEffect(() => {
+        (
+            async () => {
+                if (id) {
+                    const data = await AdminApi.getImages(id);
+                    setOldImage(data.data);
+                    SetSelectedFile([])
+                }
+            }
+        )();
+    }, [loading]);
     const filesizes = (bytes: number, decimals = 2) => {
         if (bytes === 0) return '0 Bytes';
         const k = 1024;
@@ -34,83 +51,55 @@ const MultiFile: React.FC<ISingleFileUpload> = (
         return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
     }
 
-    const getImage = async (item: any) => {
-        return fetch(fakeUrl + item.path)
-            .then(res => res.blob()) // Gets the response and returns it as a blob
-            .then(blob => {
-                // Here's where you get access to the blob
-                // And you can use it for whatever you want
-                // Like calling ref().put(blob)
-                // Here, I use it to make an image appear on the page
-                // let objectURL = URL.createObjectURL(blob);
-                // let myImage = new Image();
-                // myImage.src = objectURL;
-                return blob
-            })
-    }
 
-    async function createFile(item: any) {
 
-        return  await fetch(fakeUrl + item.path, { mode: 'no-cors'}).then(r => r.blob()).then(blobFile => new File([blobFile], 'test', {  type: 'image/jpeg'}));
-
-        // let response = await fetch(fakeUrl + item.path);
-        // let data = await response.blob();
-        // let metadata = {
-        //     type: 'image/jpeg'
-        // };
-        // console.log(new File([data], "test.jpg", metadata),'datadata')
-        // return new File([data], "test.jpg", metadata)
-    }
-
-    useEffect(() => {
-        data.map(async (item) => {
-            const asd = await createFile(item)
-            InputChange({target: {files: [asd]}})
-
-        })
-    }, [])
-    const InputChange = (e: any) => {
-        console.log(e, 'q')
-        // if (e.target.files && e.target.files.length > 0) {
-        for (let i = 0; i < e.target.files.length; i++) {
-            let reader = new FileReader();
-            let file = e.target.files[i];
-            reader.onloadend = () => {
-                setImages((preValue: any) => {
-                    return [
-                        ...preValue,
-                        {
-                            id: i,
-                            img: e.target.files[i],
-                        }
-                    ]
-                });
-                SetSelectedFile((preValue: any) => {
-                    return [
-                        ...preValue,
-                        {
-                            id: i,
-                            filename: e.target.files[i].name,
-                            filetype: e.target.files[i].type,
-                            fileimage: reader.result,
-                            datetime: e.target.files[i].lastModifiedDate.toLocaleString('en-IN'),
-                            filesize: filesizes(e.target.files[i].size)
-                        }
-                    ]
-                });
+    const InputChange =
+        (e: any) => {
+            console.log(e, 'q')
+            // if (e.target.files && e.target.files.length > 0) {
+            for (let i = 0; i < e.target.files.length; i++) {
+                let reader = new FileReader();
+                let file = e.target.files[i];
+                reader.onloadend = () => {
+                    setImages((preValue: any) => {
+                        return [
+                            ...preValue,
+                            {
+                                id: i,
+                                img: e.target.files[i],
+                            }
+                        ]
+                    });
+                    SetSelectedFile((preValue: any) => {
+                        return [
+                            ...preValue,
+                            {
+                                id: i,
+                                filename: e.target.files[i].name,
+                                filetype: e.target.files[i].type,
+                                fileimage: reader.result,
+                                // datetime: e.target.files[i].lastModifiedDate.toLocaleString('en-IN'),
+                                filesize: filesizes(e.target.files[i].size)
+                            }
+                        ]
+                    });
+                }
+                if (e.target.files[i]) {
+                    console.log(file)
+                    reader.readAsDataURL(file);
+                }
             }
-            if (e.target.files[i]) {
-                console.log(file)
-                reader.readAsDataURL(file);
-            }
+
+            // }
         }
 
-        // }
+    const deleteOldImage = async (id: number) => {
+        await AdminApi.deleteImage(id);
+        const oldImageData = oldImage.filter((item) => item.id !== id)
+        setOldImage(oldImageData)
     }
-
-
     const DeleteSelectFile = (id: number) => {
-        if (window.confirm("Are you sure you want to delete this Image?")) {
+        if (window.confirm("Вы уверены в том, что хотите удалить данное изображение?")) {
             const result = selectedfile.filter((data: any) => data.id !== id);
             SetSelectedFile(result);
             const result2 = images.filter((data: any) => data.id !== id);
@@ -122,16 +111,16 @@ const MultiFile: React.FC<ISingleFileUpload> = (
         e.preventDefault();
         e.target.reset();
         if (selectedfile.length > 0) {
-            const data = AdminApi.saveImages({images: images, id: id})
+            ////FIXME ADD NOTIFICATION
+            AdminApi.saveImages({images: images, id: id})
+            setLoading(!loading)
         } else {
-            alert('Please select file')
+            alert('Пожалуйста, выберите файл')
         }
     }
 
 
-    return (
-        <>
-
+    return (<>
             <div>
                 <div className={s.card}>
                     <div className={s.card_body}>
@@ -161,7 +150,7 @@ const MultiFile: React.FC<ISingleFileUpload> = (
                                                 datetime,
                                                 filesize
                                             } = data;
-                                            console.log(filename)
+
                                             return (
                                                 <div className={s.file_atc_box} key={id}>
                                                     {
@@ -175,7 +164,7 @@ const MultiFile: React.FC<ISingleFileUpload> = (
                                                         <h6>{filename}</h6>
                                                         <p></p>
                                                         <p>
-                                                            <span>Size 11111: {filesize}</span>
+                                                            <span>Size: {filesize}</span>
                                                             <span>Modified Time : {datetime}
                                                                     </span>
                                                         </p>
@@ -194,6 +183,35 @@ const MultiFile: React.FC<ISingleFileUpload> = (
                                     <button type="submit" className="btn btn-primary form-submit">Upload
                                     </button>
                                 </div>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <br/>
+                                <div className="kb-attach-box mb-3">
+                                    {
+                                        oldImage.map((data, index) => {
+                                            const {
+                                                id,
+                                                path,
+                                            } = data;
+
+                                            return (
+                                                <div className={s.file_atc_box} key={id}>
+                                                    <div className={s.file_image}>
+                                                        <img src={fakeUrl + path} alt=""/></div>
+                                                    <div className={s.file_detail}>
+                                                        <div className={s.file_actions}>
+                                                            <button type="button" className={s.file_action_btn}
+                                                                    onClick={() => deleteOldImage(id)}>Delete
+                                                            </button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )
+                                        })
+                                    }
+                                </div>
+
                             </form>
                         </div>
                     </div>

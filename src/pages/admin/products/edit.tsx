@@ -10,6 +10,8 @@ const ProductEdit: React.FC<IPageEdit> = ({id, path}) => {
     const {t} = useTranslation();
     const crudKey = "products";
     const [data, setData] = useState<any>(null);
+    const [loading, setLoading] = useState(false);
+
     const fields: Array<any> = [
         {name: 'id', type: 'hidden', label: 'id'},
         {name: "title", type: "input", label: "title", placeholder: "title"},
@@ -67,7 +69,7 @@ const ProductEdit: React.FC<IPageEdit> = ({id, path}) => {
     return (
         data &&
         <>
-            {id && <MultiFile data={data.images} id={id}/>}
+            {id && <MultiFile loading={loading} setLoading={setLoading} data={data.images} id={id}/>}
             <Edit
                 crudKey={crudKey}
                 data={data}
