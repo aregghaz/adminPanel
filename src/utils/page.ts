@@ -1,6 +1,5 @@
 import {AdminApi} from "../api/admin-api/admin-api";
 import {navigate} from "@reach/router";
-import {useState} from "react";
 
 let state = 0;
 const PageAction = (
@@ -30,6 +29,12 @@ const PageAction = (
         setIsModalOpen(false);
 
     };
+    const handlerGroupDelete = async () => {
+        await AdminApi.groupDelete(crudKey, ids);
+        setLoading(!loading)
+        ///   setIsModalOpen(false);
+
+    };
 
     const handlerSelectClient = async () => {
         ///  if (event.ctrlKey || event.shiftKey) {
@@ -39,7 +44,7 @@ const PageAction = (
                 return prevState.filter((value) => value !== state);
             });
         } else {
-            setIds((prevState:any) => {
+            setIds((prevState: any) => {
                 return [
                     ...prevState,
                     state
@@ -63,6 +68,9 @@ const PageAction = (
                 break;
             case "delete":
                 await handlerDeleteModal();
+                break;
+            case "groupDelete":
+                await handlerGroupDelete();
                 break;
 
         }

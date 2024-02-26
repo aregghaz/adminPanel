@@ -9,6 +9,7 @@ import {ReactComponent as Import} from "../../images/Import.svg";
 // import Filters from "../../images/filters.svg";
 import {ReactComponent as Search} from "../../images/Search.svg";
 import {ReactComponent as Close} from "../../images/Close.svg";
+import {ReactComponent as TrashIcon} from "../../images/trash.svg";
 
 // import AssignVendorIcon from "../../images/add-company-icon.svg";
 // import AssignIcon from "../../images/car-travel-plus-add-svgrepo-com.svg";
@@ -22,11 +23,13 @@ interface INavigationTab {
     // onSearchInput: (event: { search: string }) => void,
 ///    openSearch: () => void,
     open: boolean,
+    isDelete?: boolean,
     tableRef: any,
     setQuery: any,
     setLoading: any,
     loading: any,
     setOpen: any,
+    handlerAction: (action: string) => void;
 
 }
 
@@ -38,6 +41,8 @@ const NavigationTab: React.FC<INavigationTab> = (
         setLoading,
         loading,
         setOpen,
+        handlerAction,
+        isDelete=true,
         open
     }) => {
     const openSearch = () => {
@@ -55,15 +60,16 @@ const NavigationTab: React.FC<INavigationTab> = (
     return (
         <div style={{display: "flex", flexDirection: 'row'}}>
             <div style={{display: "flex", gap: "10px", padding: 20}}>
-                {/*{isAssignVednor && <div className={s.import_block}>*/}
-                {/*    <div className={s.iconAbbr}>*/}
-                {/*        Assign Vendor*/}
-                {/*    </div>*/}
-                {/*    <AssignVendorIcon*/}
-                {/*        className={`${s.icon} ${s.iconVendor}  ${typeId === 5 || typeId === 6 || ids.length == 0 ? s.disabled_action : s.enabled_action}`}*/}
-                {/*        onClick={() => handleActionMiddleware()}*/}
-                {/*    />*/}
-                {/*</div>}*/}
+                {isDelete && <div className={s.import_block}>
+                    <div className={s.iconAbbr}>
+                        удалить
+                    </div>
+                    <TrashIcon
+                        height="24px"
+                      //  className={}
+                        onClick={() => handlerAction('groupDelete')}
+                    />
+                </div>}
                 {/*{isClaimTrip && <div className={s.import_block}>*/}
                 {/*    <div className={s.iconAbbr}>*/}
                 {/*        Claim Trip*/}

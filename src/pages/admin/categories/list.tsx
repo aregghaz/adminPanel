@@ -62,6 +62,8 @@ const CategoriesList: React.FC<IProductsList> = () => {
                 setLoading={setLoading}
                 setOpen={setOpen}
                 setQuery={setQuery}
+                handlerAction={handlerAction}
+
             />
             <CrudTable
                 data={data}
