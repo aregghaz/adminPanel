@@ -10,4 +10,4 @@ const getFieldLabel = (t: any, label: string, name: string, requiredFields: Arra
 export default getFieldLabel;
 
 //export const fakeUrl = 'http://127.0.0.1:8000'
-export const fakeUrl = 'http://brand.speedshop.am'
+export const fakeUrl = 'http://back.adminpanelbrand.tw1.ru'
