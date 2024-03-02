@@ -1,3 +1,20 @@
+.existingImageBlock {
+  width: 300px;
+  margin-top: 20px;
+}
+
+.existingImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.error {
+  margin-bottom: 10px;
+  color: #8B0000;
+}
+
 .wrapper {
   width: 100%;
   height: 85px;
@@ -18,10 +35,6 @@
 
 .uploadButtonLabel {
   color: #757575;
-}
-
-.errorInput {
-  color: #DC143C;
 }
 
 .uploadFileText > svg {
@@ -66,14 +79,6 @@
 
 .datePickerLabel {
   color: #19347a;
-}
-
-.error {
-  position: absolute;
-  top: 105%;
-  left: 1%;
-  color: #DC143C;
-  font-size: 12px;
 }
 
 /*# sourceMappingURL=single-file-upload.module.css.map */

@@ -52,22 +52,21 @@
 //    pointer-events: none;
 //}
 //
-//.existingImageBlock {
-//    width: 300px;
-//    margin-top: 20px;
-//}
-//
-//.existingImage {
-//    width: 100%;
-//    height: 100%;
-//    object-fit: cover;
-//    border-radius: 5px;
-//}
-//
-//.error {
-//    margin-bottom: 10px;
-//    color: #8B0000;
-//}
+.existingImageBlock {
+    width: 300px;
+    margin-top: 20px;
+}
+.existingImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.error {
+    margin-bottom: 10px;
+    color: #8B0000;
+}
 
 .wrapper {
     * {

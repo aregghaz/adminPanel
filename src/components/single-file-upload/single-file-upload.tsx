@@ -21,12 +21,20 @@ const SingleFileUpload: React.FC<ISingleFileUpload> = (
         name,
         label,
         onChange,
+        oldImage
     }) => {
 
+    const [change, setChange] = useState(false)
     const [fileName, setFileName] = useState("")
+    console.log(change)
     return (
         <>
             {error && !fileName && <span className={s.error}>{error}</span>}
+                 {oldImage && (
+                     <div className={s.existingImageBlock}>
+                         <img className={s.existingImage} src={!change ? oldImage: URL.createObjectURL(oldImage)} alt={name}/>
+                     </div>
+                 )}
             <div className={s.wrapper}>
                 <div className={s.uploadButtonWrapper}>
                     <div className={s.uploadButtonLabel}>
@@ -41,7 +49,7 @@ const SingleFileUpload: React.FC<ISingleFileUpload> = (
                                 onChange(e)
                                 if(e.target.files){
                                     setFileName(e.target.files[0].name)
-
+                                    setChange(true)
                                 }
                             }} />
                             <span className={`${s.filename} ${error && !fileName && s.errorInput}`} style={{

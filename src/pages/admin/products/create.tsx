@@ -32,13 +32,13 @@ const ProductCreate: React.FC<IUserCreate> = () => {
             label: "date_special_price",
             placeholder: "date_special_price"
         },
-
         {name: 'categories', type: 'multiSelect', label: 'categories'},
         {name: 'attributes', type: 'multiSelect', label: 'attributes', placeholder: 'attributes'},
         {name: 'meta_title', type: 'input', label: 'meta_title'},
         {name: 'meta_key', type: 'input', label: 'meta_key'},
         {name: "meta_desc", type: "textarea", label: "meta_desc", placeholder: "meta_desc"},
         {name: "description", type: "richText", label: "description", placeholder: "description"},
+        {name: "image", type: "file", label: "image", placeholder: "image"},
         {name: 'attributes', type: 'attributes', label: 'attributes'},
 
 
