@@ -24,6 +24,7 @@ export const AdminApi = {
     create(crudKey: string) {
         return axios.get(`${fakeUrl}/api/${crudKey}/create`).then(res => res.data);
     },
+
     getItemData(crudKey: string, id: number) {
         return axios.get(`${fakeUrl}/api/${crudKey}/${id}`).then(res => res.data);
     },

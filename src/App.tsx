@@ -44,6 +44,10 @@ import SliderEdit from "./pages/admin/sliders/edit";
 import TagsList from "./pages/admin/tags/list";
 import TagsCreate from "./pages/admin/tags/create";
 import TagsEdit from "./pages/admin/tags/edit";
+import CallBackList from "./pages/admin/callBack/list";
+import ContactEdit from "./pages/admin/contact/edit";
+import OrderPrice from "./pages/admin/price/list";
+import Questions from "./pages/admin/questions/list";
 
 
 const App = (): JSX.Element => (
@@ -89,6 +93,11 @@ const App = (): JSX.Element => (
                 <TagsList path="/tags"/>
                 <TagsCreate path="/tags/create"/>
                 <TagsEdit path="/tags/:id"/>
+
+                <CallBackList path="/call-back"/>
+                <ContactEdit path="/contacts"/>
+                <OrderPrice path="/order-price"/>
+                <Questions path="/questions"/>
 
 
 

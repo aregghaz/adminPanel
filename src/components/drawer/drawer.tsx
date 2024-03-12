@@ -20,6 +20,11 @@ import {ReactComponent as News} from "../../svgs/news.svg";
 import {ReactComponent as Banners} from "../../svgs/banners.svg";
 import {ReactComponent as Brends} from "../../svgs/brends.svg";
 import {ReactComponent as Tags} from "../../svgs/tags.svg";
+import {ReactComponent as Form} from "../../svgs/form.svg";
+
+import Dropdown from "../dropdown/dropdown";
+import {actions} from "../../store/auth";
+import {useDispatch} from "react-redux";
 
 
 const Drawer = ({children}: { children: React.ReactNode }) => {
@@ -50,7 +55,7 @@ const Drawer = ({children}: { children: React.ReactNode }) => {
     const menuItemsFirst: any = [
         {
             id: 1,
-            item: "home",
+            item: "Главная",
             page: '/',
             icon: <HomeIcon/>
         }, {
@@ -79,36 +84,63 @@ const Drawer = ({children}: { children: React.ReactNode }) => {
             page: '/users',
             icon: <CompanyIcon/>
         }, {
-            id: 7,
-            item: "Баннеры",
-            page: '/banners',
-            icon: <Banners/>
-        }, {
-            id: 8,
-            item: "Новости",
-            page: '/news',
-            icon: <News/>
-        }, {
-            id: 9,
-            item: "Видеоблог",
-            page: '/video',
-            icon: <Video/>
-        }, {
-            id: 10,
-            item: "Слайдер",
-            page: '/sliders',
-            icon: <Slider/>
-        }, {
             id: 11,
-            item: "tags",
+            item: "Теги",
             page: '/tags',
             icon: <Tags/>
         }
     ];
-
+    const menuFormItem: any = [{
+        id: 12,
+        item: "callBack",
+        page: '/call-back',
+        icon: <Tags/>
+    }, {
+        id: 14,
+        item: "requestPrice",
+        page: '/order-price',
+        icon: <Tags/>
+    }, {
+        id: 14,
+        item: "questions",
+        page: '/questions',
+        icon: <Tags/>
+    }];
+    const menuPages: any = [{
+        id: 7,
+        item: "Баннеры",
+        page: '/banners',
+        icon: <Banners/>
+    }, {
+        id: 8,
+        item: "Новости",
+        page: '/news',
+        icon: <News/>
+    }, {
+        id: 9,
+        item: "Видеоблог",
+        page: '/video',
+        icon: <Video/>
+    }, {
+        id: 10,
+        item: "Слайдер",
+        page: '/sliders',
+        icon: <Slider/>
+    }, {
+        id: 13,
+        item: "contacts",
+        page: '/contacts',
+        icon: <Tags/>
+    }]
     const setActiveIcon = (pageId: number) => {
         localStorage.setItem("page", `${pageId}`);
     };
+    const dispatch = useDispatch();
+    const handlerLogOut = async () => {
+        await localStorage.removeItem("access_token");
+        dispatch(actions.logOut());
+        navigate("/login");
+    }
     return (
         <>
             <nav className={s.header_nav}>
@@ -156,9 +188,8 @@ const Drawer = ({children}: { children: React.ReactNode }) => {
                                             <Button
                                                 className={s.logOutButton}
                                                 type={"blank"}
-                                                onClick={() => {
-                                                    // handlerLogOut();
-                                                    navigate("/login");
+                                                onClick={async () => {
+                                                    await handlerLogOut();
                                                 }}
                                             >
                                                 <span className={s.icon}>
@@ -217,6 +248,45 @@ const Drawer = ({children}: { children: React.ReactNode }) => {
                                     )
                                 )
                         }
+                        <li key="pages">
+                            <Dropdown key={t('admin:forms')} icon={<Form/>} title={t('admin:forms')}>
+                                {menuFormItem.map(({item, page}: any) => {
+                                    return (
+                                        <li className={s.item} key={item}>
+                                            <Link
+                                                to={page}
+                                                key={item.id}
+                                                className={`${s.link} ${selectedPage === item.id ? s.active_icon : s.passive_icon}`}
+
+                                                //  className={`${styles.link} ${styles.secondaryLink}`}
+                                            >
+                                                {t(`admin:${item}`)}
+                                            </Link>
+                                        </li>
+                                    );
+                                })}
+                            </Dropdown>
+                        </li>
+                        <li key="form">
+                            <Dropdown icon={<News/>} key={t('admin:pages')} title={t('admin:pages')}>
+                                {menuPages.map(({item, page}: any) => {
+                                    return (
+                                        <li className={s.item} key={item}>
+                                            <Link
+                                                key={item.id}
+                                                to={page}
+                                                className={`${s.link} ${selectedPage === item.id ? s.active_icon : s.passive_icon}`}
+
+                                                //  className={`${styles.link} ${styles.secondaryLink}`}
+                                            >
+                                                {t(`admin:${item}`)}
+                                            </Link>
+                                        </li>
+                                    );
+                                })}
+                            </Dropdown>
+                        </li>
+
                     </ul>
                 </nav>
                 <div className={s.main_content}

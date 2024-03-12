@@ -14,6 +14,7 @@ const CrudTable: React.FC<ICrudTable> = (
         isDelete,
         isRemove,
         isInfo,
+        isCreate=true,
         tableRef,
         fetchMoreData,
         handlerAction,
@@ -45,13 +46,15 @@ const CrudTable: React.FC<ICrudTable> = (
 
     return (
         <>
-            <div className={s.addBtnWrapper}>
-                {
-                    <Button type="green" className={s.add} onClick={() => handlerAction('add', 0)}>
-                        <span>+</span>
-                    </Button>
-                }
-            </div>
+            {
+             isCreate &&  (<div className={s.addBtnWrapper}>
+                    {
+                        <Button type="green" className={s.add} onClick={() => handlerAction('add', 0)}>
+                            <span>+</span>
+                        </Button>
+                    }
+                </div>)
+            }
             <InfiniteScroll
                 dataLength={resetOrNotTable.length} //This is important field to render the next data
                 next={fetchMoreData}
@@ -87,6 +90,7 @@ interface ICrudTable {
     isDelete: boolean
     isEdit: boolean
     isRemove: boolean
+    isCreate?: boolean
     isInfo: boolean
     action: boolean
     className: string

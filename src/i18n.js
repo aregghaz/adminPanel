@@ -32,6 +32,7 @@ const resources = {
         admin: {
             id:'Ид',
             name:'Название',
+            names:'Имя',
             description:'Описание',
             price:'Цена',
             special_price:'Специальная цена',
@@ -68,6 +69,15 @@ const resources = {
             remove_all:'убрать все',
             position:'позиция',
             type:'тип',
+            forms:'Формы',
+            pages:'Страницы',
+            callBack:'Перезвонить',
+            contacts:'Контакты',
+            requestPrice:'Заявка на счет',
+            field_required:'Поле обязательное',
+            teg_id:'Тег',
+            questions:'Вопросы',
+            tags:'Теги',
 
             record_successfully_edited:'запись успешно изменена',
             record_successfully_added:'запись успешно добавлена',

@@ -136,11 +136,15 @@
     height: auto;
     display: flex;
     align-items: flex-start;
+    flex-direction: row;
     //flex-direction: ;
     gap: 10px;
     //border: 1px solid red;
 }
-
+.itemsRow{
+    flex-direction: column;
+    display: flex;
+}
 .saveIcon{
     //margin-left: -35px;
     cursor: pointer;

@@ -40,9 +40,6 @@ const CategoriesEdit: React.FC<IPageEdit> = ({id, path}) => {
     }, []);
     const requiredFields = [
         "title",
-        "description",
-        "meta_title",
-        "meta_desc",
     ]
     return (
         data &&

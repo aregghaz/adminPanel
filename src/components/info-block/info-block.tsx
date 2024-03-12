@@ -4,82 +4,74 @@ import cls from "./info-block.module.scss";
 
 
 interface IProps {
-    clientById: any,
-    idData?: number,
-    calculateRoute: (newData: any) => void
+    data: any,
 }
 
 
-const InfoBlock: FC<IProps> = ({ clientById, calculateRoute }) => {
+const InfoBlock: FC<IProps> = ({ data }) => {
     /// const infoData: any = items.find(item => item.id === idData);
-    const newData = clientById;
+
     const { t } = useTranslation();
 
 
     return (
         <div className={cls.block}>
-            <div className={cls.items}>
-                {
-                    newData &&
-                    <>
+            {
+                data &&
+                <>
+                    <div className={cls.itemsRow}>
                         <div className={cls.item}>
-                            <span className={cls.b_text}>{t("fullName")}: </span>
-                            {newData.fullName}
+                            <span className={cls.b_text}>{t("admin:names")}: </span>
+                            {data.name}
                         </div>
                         <div className={cls.item}>
-                            <span className={cls.b_text}>{t("date_of_service")}: </span>
-                            {newData.date_of_service}
+                            <span className={cls.b_text}>{t("admin:lastName")}: </span>
+                            {data.lastName}
                         </div>
                         <div className={cls.item}>
-                            <span className={cls.b_text}>{t("pick_up")}: </span>
-                            {newData.pick_up}
-                        </div>
-
-                        <div className={cls.item}>
-                            <span className={cls.b_text}>{t("drop_down")}: </span>
-                            {newData.drop_down}
+                            <span className={cls.b_text}>{t("admin:phone")}: </span>
+                            {data.phone}
                         </div>
 
                         <div className={cls.item}>
-                            <span className={cls.b_text}>{t("pick_up_address")}: </span>
-                            {newData.origin}
+                            <span className={cls.b_text}>{t("admin:email")}: </span>
+                            {data.email}
+                        </div>
+                    </div>
+
+                    <div className={cls.itemsRow}>
+                        <div className={cls.item}>
+                            <span className={cls.b_text}>{t("admin:company")}: </span>
+                            {data.company}
                         </div>
                         <div className={cls.item}>
-                            <span className={cls.b_text}>{t("origin_comment")}: </span>
-                            {newData.origin_comment}
+                            <span className={cls.b_text}>{t("admin:ihh")}: </span>
+                            {data.ihh}
                         </div>
                         <div className={cls.item}>
-                            <span className={cls.b_text}>{t("origin_phone")}: </span>
-                            {newData.origin_phone}
+                            <span className={cls.b_text}>{t("admin:kpp")}: </span>
+                            {data.kpp}
                         </div>
                         <div className={cls.item}>
-                            <span className={cls.b_text}>{t("destination")}: </span>
-                            {newData.destination}
+                            <span className={cls.b_text}>{t("admin:bik")}: </span>
+                            {data.bik}
                         </div>
 
                         <div className={cls.item}>
-                            <span className={cls.b_text}>{t("destination_comments")}: </span>
-                            {newData.destination_comments}
+                            <span className={cls.b_text}>{t("admin:pc")}: </span>
+                            {data.pc}
                         </div>
                         <div className={cls.item}>
-                            <span className={cls.b_text}>{t("destination_phone")}: </span>
-                            {newData.destination_phone}
+                            <span className={cls.b_text}>{t("admin:address")}: </span>
+                            {data.address}
                         </div>
-                        <div className={cls.item}>
-                            <span className={cls.b_text}>{t("weight")}: </span>
-                            {newData.weight}
-                        </div>
-                        <div className={cls.item}>
-                            <span className={cls.b_text}>{t("height")}: </span>
-                            {newData.height}
-                        </div>
-
-                        <div className={cls.item}>
-                            <div className={cls.showBtn} onClick={() => calculateRoute(newData)}> Show map</div>
-                        </div>
-                    </>
-                }
-            </div>
+                    </div>
+                    <div className={cls.item}>
+                        <span className={cls.b_text}>{t("admin:notes")}: </span>
+                        {data.notes}
+                    </div>
+                </>
+            }
         </div>
     );
 };

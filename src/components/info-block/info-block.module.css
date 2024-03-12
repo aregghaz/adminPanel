@@ -124,7 +124,13 @@
   height: auto;
   display: flex;
   align-items: flex-start;
+  flex-direction: row;
   gap: 10px;
+}
+
+.itemsRow {
+  flex-direction: column;
+  display: flex;
 }
 
 .saveIcon {

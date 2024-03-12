@@ -33,6 +33,7 @@ const ProductEdit: React.FC<IPageEdit> = ({id, path}) => {
             placeholder: "date_special_price"
         },
         {name: 'status', type: 'select', label: 'status'},
+        {name: 'teg_id', type: 'select', label: 'teg_id'},
         {name: 'categories', type: 'multiSelect', label: 'categories'},
         {name: 'attributes', type: 'multiSelect', label: 'attributes', placeholder: 'attributes'},
         {name: 'meta_title', type: 'input', label: 'meta_title'},
@@ -62,8 +63,8 @@ const ProductEdit: React.FC<IPageEdit> = ({id, path}) => {
         'brand_id',
         'quantity',
         'categories',
-        'meta_title',
-        'description',
+        // 'meta_title',
+        // 'description',
     ];
     return (
         data &&

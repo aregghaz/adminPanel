@@ -35,9 +35,7 @@ const NewsEdit: React.FC<IPageEdit> = ({id, path}) => {
     }, [id]);
     const requiredFields = [
         "title",
-        "meta_title",
-        "meta_desc",
-        "meta_key",
+        "image",
         "content",
     ]
     return (

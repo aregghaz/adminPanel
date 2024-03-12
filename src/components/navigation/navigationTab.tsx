@@ -60,14 +60,14 @@ const NavigationTab: React.FC<INavigationTab> = (
     return (
         <div style={{display: "flex", flexDirection: 'row'}}>
             <div style={{display: "flex", gap: "10px", padding: 20}}>
-                {isDelete && <div className={s.import_block}>
+                {isDelete && <div className={s.import_block}  onClick={() => handlerAction('groupDelete')}>
                     <div className={s.iconAbbr}>
                         удалить
                     </div>
                     <TrashIcon
                         height="24px"
                       //  className={}
-                        onClick={() => handlerAction('groupDelete')}
+
                     />
                 </div>}
                 {/*{isClaimTrip && <div className={s.import_block}>*/}

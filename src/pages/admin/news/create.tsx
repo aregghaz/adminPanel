@@ -25,9 +25,6 @@ const NewsCreate: React.FC<IUserCreate> = () => {
     const requiredFields = [
         "title",
         "image",
-        "meta_title",
-        "meta_desc",
-        "meta_key",
         "content",
     ];
 

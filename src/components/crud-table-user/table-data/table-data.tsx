@@ -9,7 +9,7 @@ interface ITableData {
     click?: boolean,
     item: any,
     children: any,
-    handlerAction?: (action: string,id: number) => void
+    handlerAction?: (action: string, id: number) => void
 }
 
 const TableData: React.FC<ITableData> = (
@@ -29,9 +29,9 @@ const TableData: React.FC<ITableData> = (
             colSpan={colspan || 1}
 
             rowSpan={rowspan || 1}
-            onClick={(event) =>  !click ? click : handlerAction ? handlerAction( "get",item["id"]) : false}
+            onClick={(event) => !click ? click : handlerAction ? handlerAction("get", item["id"]) : false}
         >
-            <div className={(className === "origin_comment" || className === "destination_comments") ? s.addressWrapper : undefined}>
+            <div>
                 {children}
             </div>
         </td>
