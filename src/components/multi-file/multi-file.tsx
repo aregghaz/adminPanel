@@ -34,7 +34,6 @@ const MultiFile: React.FC<ISingleFileUpload> = ({
     useEffect(() => {
         (
             async () => {
-                console.log(id,loading,'123213')
                 if (id) {
                     const data = await AdminApi.getImages(id);
                     setOldImage(data.data);
@@ -114,8 +113,10 @@ const MultiFile: React.FC<ISingleFileUpload> = ({
         console.log(selectedfile.length > 0,selectedfile.length,'1232')
         if (selectedfile.length > 0) {
             ////FIXME ADD NOTIFICATION
-            AdminApi.saveImages({images: images, id: id})
-            setLoading(!loading)
+           const data = await AdminApi.saveImages({images: images, id: id})
+            // setLoading(!loading)
+            setOldImage(data.data);
+            SetSelectedFile([])
         } else {
             alert('Пожалуйста, выберите файл')
         }
