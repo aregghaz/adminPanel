@@ -110,6 +110,7 @@ const MultiFile: React.FC<ISingleFileUpload> = ({
     const FileUploadSubmit = async (e: any) => {
         e.preventDefault();
         e.target.reset();
+        console.log(selectedfile.length > 0,selectedfile.length,'1232')
         if (selectedfile.length > 0) {
             ////FIXME ADD NOTIFICATION
             AdminApi.saveImages({images: images, id: id})
