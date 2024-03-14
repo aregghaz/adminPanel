@@ -34,6 +34,7 @@ const MultiFile: React.FC<ISingleFileUpload> = ({
     useEffect(() => {
         (
             async () => {
+                console.log(id,loading,'123213')
                 if (id) {
                     const data = await AdminApi.getImages(id);
                     setOldImage(data.data);
