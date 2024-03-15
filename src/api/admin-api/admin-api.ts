@@ -11,6 +11,9 @@ export const AdminApi = {
     groupDelete(crudKey: string, ids: Array<number>) {
         return axios.post(`${fakeUrl}/api/${crudKey}/groupDelete`,{"ids":ids}).then(res => res.data);
     },
+    groupAddTag(crudKey: string, ids: Array<number>) {
+        return axios.post(`${fakeUrl}/api/${crudKey}/groupAddTeg`,{"ids":ids}).then(res => res.data);
+    },
     store(formData: FormData, crudKey: string) {
         return axios.post(`${fakeUrl}/api/${crudKey}`, formData).then(res => res.data);
     },

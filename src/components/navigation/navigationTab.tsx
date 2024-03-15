@@ -10,6 +10,7 @@ import {ReactComponent as Import} from "../../images/Import.svg";
 import {ReactComponent as Search} from "../../images/Search.svg";
 import {ReactComponent as Close} from "../../images/Close.svg";
 import {ReactComponent as TrashIcon} from "../../images/trash.svg";
+import {ReactComponent as AssignIcon} from "../../images/car-travel-plus-add-svgrepo-com.svg";
 
 // import AssignVendorIcon from "../../images/add-company-icon.svg";
 // import AssignIcon from "../../images/car-travel-plus-add-svgrepo-com.svg";
@@ -24,6 +25,7 @@ interface INavigationTab {
 ///    openSearch: () => void,
     open: boolean,
     isDelete?: boolean,
+    IsAssignTag?: boolean,
     tableRef: any,
     setQuery: any,
     setLoading: any,
@@ -42,7 +44,8 @@ const NavigationTab: React.FC<INavigationTab> = (
         loading,
         setOpen,
         handlerAction,
-        isDelete=true,
+        isDelete = true,
+        IsAssignTag = true,
         open
     }) => {
     const openSearch = () => {
@@ -60,14 +63,13 @@ const NavigationTab: React.FC<INavigationTab> = (
     return (
         <div style={{display: "flex", flexDirection: 'row'}}>
             <div style={{display: "flex", gap: "10px", padding: 20}}>
-                {isDelete && <div className={s.import_block}  onClick={() => handlerAction('groupDelete')}>
+                {isDelete && <div className={s.import_block} onClick={() => handlerAction('groupDelete')}>
                     <div className={s.iconAbbr}>
                         удалить
                     </div>
                     <TrashIcon
                         height="24px"
-                      //  className={}
-
+                        //  className={}
                     />
                 </div>}
                 {/*{isClaimTrip && <div className={s.import_block}>*/}
@@ -88,15 +90,15 @@ const NavigationTab: React.FC<INavigationTab> = (
                 {/*        onClick={() => handleActionMiddleware(4, "reRoute")}*/}
                 {/*    />*/}
                 {/*</div>}*/}
-                {/*{IsAssignCar && <div className={s.import_block}>*/}
-                {/*    <div className={s.iconAbbr}>*/}
-                {/*        Assign Car*/}
-                {/*    </div>*/}
-                {/*    <AssignIcon*/}
-                {/*        className={`${s.icon} ${s.iconCar} ${typeId === 2 || typeId === 4 || typeId === 5 || typeId === 6 || ids.length == 0 ? s.disabled_action : s.enabled_action}`}*/}
-                {/*        onClick={() => handleActionMiddleware(99, "assign")}*/}
-                {/*    />*/}
-                {/*</div>}*/}
+                {IsAssignTag && <div className={s.import_block}>
+                    <div className={s.iconAbbr}>
+                        Assign Car
+                    </div>
+                    <AssignIcon
+                        className={`${s.icon} ${s.iconCar} `}
+                        onClick={() => handlerAction( "addTag")}
+                    />
+                </div>}
                 {/*{isShowFiltre && <div className={s.import_block}>*/}
                 {/*    <div className={s.iconAbbr}>*/}
                 {/*        Filters*/}

@@ -34,6 +34,12 @@ const PageAction = (
         setLoading(!loading)
         ///   setIsModalOpen(false);
 
+    }
+    const handlerAddTag = async () => {
+        await AdminApi.groupDelete(crudKey, ids);
+        setLoading(!loading)
+        ///   setIsModalOpen(false);
+
     };
 
     const handlerSelectClient = async () => {
@@ -68,6 +74,9 @@ const PageAction = (
                 break;
             case "delete":
                 await handlerDeleteModal();
+                break;
+            case "addTag":
+                await handlerAddTag();
                 break;
             case "groupDelete":
                 await handlerGroupDelete();
