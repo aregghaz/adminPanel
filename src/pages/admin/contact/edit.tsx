@@ -27,6 +27,10 @@ const ContactEdit: React.FC<IProductsList> = () => {
         {name: "sub_tiktok", type: "input", label: "sub_tiktok", placeholder: "sub_tiktok"},
         {name: "sub_youtube", type: "input", label: "sub_youtube", placeholder: "sub_youtube"},
         {name: "sub_vk", type: "input", label: "sub_vk", placeholder: "sub_vk"},
+        {name: "sub_od", type: "input", label: "sub_od", placeholder: "sub_od"},
+        {name: "sub_x", type: "input", label: "sub_x", placeholder: "sub_x"},
+        {name: "lang", type: "input", label: "lang", placeholder: "lang"},
+        {name: "long", type: "input", label: "long", placeholder: "long"},
 
 
     ];
