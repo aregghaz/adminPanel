@@ -13,6 +13,8 @@ const CategoriesEdit: React.FC<IPageEdit> = ({id, path}) => {
         {name: "id", type: "hidden", label: "id", placeholder: "id"},
         {name: "title", type: "input", label: "title", placeholder: "title"},
         {name: "categories", type: "select", label: "categories", placeholder: "categories"},
+        {name: "top", type: "select", label: "top", placeholder: "top"},
+
         {name: "image", type: "file", label: "image", placeholder: "image"},
         {name: "banner", type: "file", label: "banner", placeholder: "banner"},
         {name: "meta_title", type: "input", label: "meta_title", placeholder: "meta_title"},

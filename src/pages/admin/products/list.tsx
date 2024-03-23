@@ -1,5 +1,4 @@
 import React, {useEffect, useRef, useState} from "react";
-import {useTranslation} from "react-i18next";
 import {AdminApi} from "../../../api/admin-api/admin-api";
 import PageAction from "../../../utils/page";
 import DeleteModal from "../../../components/modal/deleteModal";
@@ -15,7 +14,7 @@ const ProductsList: React.FC<IProductsList> = () => {
     const [data, setData] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [loading, setLoading] = useState(false);
-    const {t} = useTranslation();
+    const [actionType, setActionType] = useState('');
     const [open, setOpen] = useState<boolean>(false);
     const [query, setQuery] = useState("");
     useEffect(() => {
@@ -45,6 +44,7 @@ const ProductsList: React.FC<IProductsList> = () => {
     const countRef = useRef(2);
     const [ids, setIds] = useState([]);
     const handlerAction = async (action: string, id?: number) => {
+        setActionType(action)
         return PageAction(crudKey, setLoading, loading, action, id, setIsModalOpen, ids, setIds)
     };
     const fetchMoreData = async () => {
@@ -61,6 +61,7 @@ const ProductsList: React.FC<IProductsList> = () => {
                 open={open}
                 tableRef={tableRef}
                 loading={loading}
+                IsAssignTag={true}
                 setLoading={setLoading}
                 setOpen={setOpen}
                 setQuery={setQuery}
@@ -81,6 +82,8 @@ const ProductsList: React.FC<IProductsList> = () => {
                 isRemove
             />
             <DeleteModal
+                ids={ids}
+                actionType={actionType}
                 handlerAction={handlerAction}
                 isModalOpen={isModalOpen}
                 setIsModalOpen={setIsModalOpen}

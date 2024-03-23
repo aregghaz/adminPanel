@@ -16,6 +16,7 @@ const CategoryCreate: React.FC<IUserCreate> = () => {
     const fields: Array<any> = [
         {name: "title", type: "input", label: "title", placeholder: "title"},
         {name: "categories", type: "select", label: "categories", placeholder: "categories"},
+        {name: "top", type: "select", label: "top", placeholder: "top"},
         {name: "image", type: "file", label: "image", placeholder: "image"},
         {name: "banner", type: "file", label: "banner", placeholder: "banner"},
         {name: 'attributes', type: 'multiSelect', label: 'attributes'},

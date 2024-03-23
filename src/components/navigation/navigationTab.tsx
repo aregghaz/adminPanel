@@ -18,6 +18,7 @@ import {ReactComponent as AssignIcon} from "../../images/car-travel-plus-add-svg
 // import ClaimTrip from "../../images/tripAdd1.svg"
 // import RemoveIcon from "../../images/tripCansle1.svg";
 // import DataPicker from "../data-picker/data-picker";
+import {ReactComponent as Tags} from "../../svgs/tags.svg";
 
 
 interface INavigationTab {
@@ -45,7 +46,7 @@ const NavigationTab: React.FC<INavigationTab> = (
         setOpen,
         handlerAction,
         isDelete = true,
-        IsAssignTag = true,
+        IsAssignTag = false,
         open
     }) => {
     const openSearch = () => {
@@ -58,7 +59,6 @@ const NavigationTab: React.FC<INavigationTab> = (
     const onSearchInput = async (event: { search: string }) => {
         setQuery(event.search);
         setLoading(!loading)
-        ///    await getClientData(event.search, date);
     };
     return (
         <div style={{display: "flex", flexDirection: 'row'}}>
@@ -69,43 +69,18 @@ const NavigationTab: React.FC<INavigationTab> = (
                     </div>
                     <TrashIcon
                         height="24px"
-                        //  className={}
                     />
                 </div>}
-                {/*{isClaimTrip && <div className={s.import_block}>*/}
-                {/*    <div className={s.iconAbbr}>*/}
-                {/*        Claim Trip*/}
-                {/*    </div>*/}
-                {/*    <ClaimTrip*/}
-                {/*        className={`${s.icon} ${s.iconClime} ${typeId === 1 || typeId === 4 || typeId === 5 || typeId === 6 || ids.length == 0 ? s.disabled_action : s.enabled_action}`}*/}
-                {/*        onClick={() => handleActionMiddleware(1, "default")}*/}
-                {/*    />*/}
-                {/*</div>}*/}
-                {/*{isReRoute && <div className={s.import_block}>*/}
-                {/*    <div className={s.iconAbbr}>*/}
-                {/*        ReRoute*/}
-                {/*    </div>*/}
-                {/*    <RemoveIcon*/}
-                {/*        className={`${s.icon} ${s.iconClime} ${typeId === 2 || typeId === 4 || typeId === 5 || typeId === 6 || ids.length == 0 ? s.disabled_action : s.enabled_action}`}*/}
-                {/*        onClick={() => handleActionMiddleware(4, "reRoute")}*/}
-                {/*    />*/}
-                {/*</div>}*/}
                 {IsAssignTag && <div className={s.import_block}>
                     <div className={s.iconAbbr}>
-                        Assign Car
+                       add tag
                     </div>
-                    <AssignIcon
-                        className={`${s.icon} ${s.iconCar} `}
-                        onClick={() => handlerAction( "addTag")}
+                    <Tags
+                        // style={{fill:'#3F7AAD'}}
+                        className={` ${s.iconTest} `}
+                        onClick={() => handlerAction("addTag")}
                     />
                 </div>}
-                {/*{isShowFiltre && <div className={s.import_block}>*/}
-                {/*    <div className={s.iconAbbr}>*/}
-                {/*        Filters*/}
-                {/*    </div>*/}
-                {/*    <Filters height="24px" onClick={showFilter} className={s.iconTest}/>*/}
-                {/*</div>}*/}
-
                 <div className={s.import_block}>
                     <div className={s.iconAbbr}>
                         Download Excel

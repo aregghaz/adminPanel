@@ -35,9 +35,11 @@ const PageAction = (
         ///   setIsModalOpen(false);
 
     }
+
     const handlerAddTag = async () => {
-        await AdminApi.groupDelete(crudKey, ids);
-        setLoading(!loading)
+        // await AdminApi.groupDelete(crudKey, ids);
+        // setLoading(!loading)
+        setIsModalOpen(true)
         ///   setIsModalOpen(false);
 
     };

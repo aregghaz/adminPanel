@@ -1,17 +1,170 @@
-/* Error: Can't find stylesheet to import.
- *   ,
- * 2 | @import "resources/frontend/styles/mixins";
- *   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- *   '
- *   navigationTab.module.scss 2:9  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a   \2577 \a 2 \2502  @import \"resources/frontend/styles/mixins\";\a   \2502          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   navigationTab.module.scss 2:9  root stylesheet";
+.upload_block,
+.import_block {
+  width: 50px;
+  height: 60px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+  background-color: white;
+  position: relative;
+  color: #3F7AAD;
 }
+.upload_block > label,
+.import_block > label {
+  transform: translateY(0);
+  transition: 0.5s;
+}
+.upload_block:hover > label[for=uploadFile],
+.import_block:hover > label[for=uploadFile] {
+  transition: 0.5s;
+  transform: translateY(-10px);
+}
+.upload_block:hover > label[for=downloadTableExcel],
+.import_block:hover > label[for=downloadTableExcel] {
+  transition: 0.5s;
+  transform: translateY(5px);
+}
+.upload_block label,
+.import_block label {
+  cursor: pointer;
+}
+.upload_block:hover,
+.import_block:hover {
+  background-color: #0C96D1;
+  color: white;
+  border-color: transparent;
+}
+.upload_block .iconAbbr,
+.import_block .iconAbbr {
+  position: absolute;
+  top: -35%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  min-width: 40px;
+  height: 15px;
+  font-size: 10px;
+  background-color: #19347a;
+  color: white;
+  padding: 2px 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  opacity: 0;
+  visibility: hidden;
+  transition: 0.2s;
+  white-space: nowrap;
+}
+.upload_block:hover > .iconAbbr,
+.import_block:hover > .iconAbbr {
+  opacity: 1;
+  visibility: visible;
+}
+.upload_block .iconClime,
+.import_block .iconClime {
+  fill: #3F7AAD;
+}
+.upload_block:hover > .iconClime,
+.import_block:hover > .iconClime {
+  fill: white;
+}
+
+.import_block:hover {
+  background-color: #0C96D1;
+}
+.import_block:hover .iconTest {
+  fill: white;
+  stroke: white;
+}
+.import_block:hover .iconTest svg {
+  fill: white;
+}
+
+.header_input_block {
+  width: 0;
+  overflow: visible;
+  display: flex;
+  position: relative;
+  align-items: center;
+}
+.header_input_block input {
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  height: 50px;
+  margin: 0;
+  color: black !important;
+  width: 250px;
+  padding: 0 10px;
+  outline: none;
+}
+
+.header_input_block.active {
+  width: 600px;
+  transition: 1s;
+  opacity: 1;
+  visibility: visible;
+}
+.header_input_block.active > div {
+  margin: 0 10px;
+}
+
+.header_input_block.passive {
+  transition: 1s;
+  width: 0;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.disabled_action {
+  pointer-events: none;
+  opacity: 0.3;
+  user-select: none;
+  padding: 6px;
+}
+.disabled_action:hover {
+  fill: white;
+}
+
+.history, .assignVendor, .info, .edit, .delete, .reRoute, .claim {
+  visibility: hidden;
+}
+
+.historySpan:hover .history, .infoSpan:hover .info, .editSpan:hover .edit, .deleteSpan:hover .delete, .reRouteSpan:hover .reRoute, .claimSpan:hover .claim {
+  visibility: visible;
+}
+
+.assignVendorSpan:hover .assignVendor {
+  visibility: visible;
+}
+
+.iconTest {
+  fill: #3F7AAD;
+  stroke: #3F7AAD;
+}
+
+.iconVendor {
+  stroke-width: 3px;
+  stroke: #3F7AAD;
+  fill: none;
+}
+
+.import_block:hover .iconVendor {
+  stroke: white;
+  opacity: 1;
+}
+
+.iconCar {
+  fill: none;
+  stroke: #3F7AAD;
+  stroke-width: 2px;
+}
+
+.import_block:hover .iconCar {
+  stroke: white;
+}
+
+/*# sourceMappingURL=navigationTab.module.css.map */

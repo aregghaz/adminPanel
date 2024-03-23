@@ -37,6 +37,7 @@ const resources = {
             price:'Цена',
             special_price:'Специальная цена',
             teg:'Тег',
+            addTeg:'Добавить тег',
             brand:'Бренд',
             brands:'Бренд',
             types:'Виды',
@@ -78,6 +79,7 @@ const resources = {
             teg_id:'Тег',
             questions:'Вопросы',
             tags:'Теги',
+            yes:'Добавить',
 
             record_successfully_edited:'запись успешно изменена',
             record_successfully_added:'запись успешно добавлена',

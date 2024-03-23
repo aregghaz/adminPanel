@@ -47,5 +47,12 @@ export const AdminApi = {
     } ,
     getImages(id:number){
         return axios.get(`${fakeUrl}/api/get-images/${id}`).then(res => res.data);
+    } ,
+    getTag(){
+        return axios.get(`${fakeUrl}/api/getTagsSelect`).then(res => res.data);
+    },
+    addGroupTed(ids:Array<number>, tegId:number){
+        return axios.post(`${fakeUrl}/api/getTagsSelect`, {ids:ids, tegId:tegId }).then(res => res.data);
     }
+
 };

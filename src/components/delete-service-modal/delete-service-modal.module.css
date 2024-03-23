@@ -3,7 +3,7 @@
  * 2 | @import "resources/frontend/styles/mixins";
  *   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
  *   '
- *   delete-service-modal.module.scss 2:9  root stylesheet */
+ *   add-tag.module.scss 2:9  root stylesheet */
 
 body::before {
   font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",

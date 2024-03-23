@@ -43,7 +43,7 @@ interface ISelect {
     label?: string
     isMulti?: boolean
     authCheckboxLabelStyle?: string
-    labelStyle?: string
+    labelStyle?: any
     error?: any
     handlerMenuOpen?: () => void
     handlerMenuClose?: () => void
@@ -137,7 +137,7 @@ const Select: React.FC<ISelect> = (
         <>
             {error && !value && <div className={s.error}>{error}</div>}
 
-            {label && <label className={s.label} style={{
+            {label && <label className={`${s.label} ${labelStyle}`} style={{
                 color: error && !value ? "crimson" : value ? "#194b76" : "#757575",
             }} htmlFor={name}>{t(label)}</label>}
             <div className={s.wrapper}>
