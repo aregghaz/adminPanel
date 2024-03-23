@@ -74,7 +74,7 @@ const Dashboard: React.FC<IDashboard> = () => {
                                 {item.status}
                             </div>
                             <div>
-                                {item.total}
+                                {item.total} ₽
                             </div>
                             <div>
                                 {timestampToDate(item.updated)}

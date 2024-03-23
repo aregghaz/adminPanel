@@ -25,7 +25,7 @@ const InfoOrder: FC<IProps> = ({data}) => {
                         <div className={cls.itemsRow}>
                             <div className={cls.itemsColumn}>
                                 <span className={cls.b_text}>{t("admin:total")} : </span>
-                                {data.grant_total}
+                                {data.grant_total} ₽
 
                             </div>
                             <div className={cls.itemsColumn}>

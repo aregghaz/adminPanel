@@ -21,6 +21,7 @@ import {ReactComponent as Banners} from "../../svgs/banners.svg";
 import {ReactComponent as Brends} from "../../svgs/brends.svg";
 import {ReactComponent as Tags} from "../../svgs/tags.svg";
 import {ReactComponent as Form} from "../../svgs/form.svg";
+import {ReactComponent as Ruble} from "../../svgs/ruble.svg";
 
 import Dropdown from "../dropdown/dropdown";
 import {actions} from "../../store/auth";
@@ -90,9 +91,9 @@ const Drawer = ({children}: { children: React.ReactNode }) => {
             icon: <Tags/>
         }, {
             id: 16,
-            item: "orders",
+            item: "Заказы",
             page: '/orders',
-            icon: <Tags/>
+            icon: <Ruble/>
         }
     ];
     const menuFormItem: any = [{

@@ -88,7 +88,7 @@ const TableBody: React.FC<ITableBody> = (
                                                             <TableData key={key} item={item} className={key}
                                                                        click={isRemove}
                                                                        handlerAction={handlerAction}>
-                                                                {item[key] + '₽'}
+                                                                {item[key] + ' ₽'}
 
                                                             </TableData>)
                                                     case "image":
