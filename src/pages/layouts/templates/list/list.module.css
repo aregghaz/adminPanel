@@ -15,7 +15,6 @@
 }
 
 .tableContainer {
-  padding: 0 20px;
   width: 100%;
 }
 
@@ -39,7 +38,7 @@
   border-radius: 50%;
 }
 .add span {
-  width: 45px;
+  width: 50px;
   height: 50px;
   display: flex;
   align-items: center;
@@ -47,7 +46,7 @@
   border-radius: 50%;
   color: #F7F7F7;
   font-size: 24px;
-  box-shadow: 0 0 4px #D63D3D;
+  box-shadow: 0 0 4px #0C96D1;
 }
 
 .filters {
@@ -141,7 +140,7 @@
   -webkit-box-align: center;
   align-items: center;
   height: 100%;
-  color: #D63D3D;
+  color: #0C96D1;
   cursor: pointer;
 }
 .table_upper_tab_item:hover {
@@ -161,7 +160,7 @@
 }
 
 .activeTab {
-  background-color: #D63D3D;
+  background-color: #0C96D1;
   color: #F7F7F7;
 }
 
@@ -291,7 +290,7 @@
   border: 1px solid #19347a;
 }
 .buttons .yesButton {
-  background-color: #D63D3D;
+  background-color: #0C96D1;
   color: #fff;
   border-color: transparent;
 }

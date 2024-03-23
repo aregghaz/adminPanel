@@ -38,7 +38,6 @@ const InfoBlock: FC<IProps> = ({ data }) => {
                             {data.email}
                         </div>
                     </div>
-
                     <div className={cls.itemsRow}>
                         <div className={cls.item}>
                             <span className={cls.b_text}>{t("admin:company")}: </span>

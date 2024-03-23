@@ -88,6 +88,11 @@ const Drawer = ({children}: { children: React.ReactNode }) => {
             item: "Теги",
             page: '/tags',
             icon: <Tags/>
+        }, {
+            id: 16,
+            item: "orders",
+            page: '/orders',
+            icon: <Tags/>
         }
     ];
     const menuFormItem: any = [{
@@ -101,7 +106,7 @@ const Drawer = ({children}: { children: React.ReactNode }) => {
         page: '/order-price',
         icon: <Tags/>
     }, {
-        id: 14,
+        id: 15,
         item: "questions",
         page: '/questions',
         icon: <Tags/>

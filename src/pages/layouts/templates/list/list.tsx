@@ -42,7 +42,7 @@ const List: React.FC<IList> = (
     }) => {
     const { t } = useTranslation();
     return (
-        <>
+        <div>
             <div className={s.addBtnWrapper}>
                 {
                     isCreate &&
@@ -69,7 +69,7 @@ const List: React.FC<IList> = (
                 </div>
             </div>
 
-        </>
+        </div>
     );
 };
 

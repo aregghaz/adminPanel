@@ -48,6 +48,7 @@ import CallBackList from "./pages/admin/callBack/list";
 import ContactEdit from "./pages/admin/contact/edit";
 import OrderPrice from "./pages/admin/price/list";
 import Questions from "./pages/admin/questions/list";
+import OrdersList from "./pages/admin/orders/list";
 
 
 const App = (): JSX.Element => (
@@ -98,6 +99,8 @@ const App = (): JSX.Element => (
                 <ContactEdit path="/contacts"/>
                 <OrderPrice path="/order-price"/>
                 <Questions path="/questions"/>
+
+                <OrdersList path="/orders"/>
 
 
 

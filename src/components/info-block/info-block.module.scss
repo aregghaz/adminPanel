@@ -1,357 +1,380 @@
 @import "../../styles/variables";
 
-.block {
-    width: 100%;
-    min-height: 200px;
-    height: auto;
-    background-color: white;
-    margin: 20px;
+.addressBlock {
+  width: 100%;
+  min-height: 100px;
+  height: auto;
+  background-color: white;
+  display: flex;
+  gap: 20px;
+  padding-right: 40px;
+border-bottom: 1px solid $menuColor;
+  & * {
+    //border: 1px solid black;
+  }
+}
+.userBlock{
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  width: 100%;
+  div{
     display: flex;
-    gap: 20px;
-    padding-right: 40px;
-    & * {
-        //border: 1px solid black;
-    }
+    width: 400px;
+    flex-direction: column;
+  }
 }
 
-.infoLeft {
-    width: 40%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    border-right: 0.1px solid $borderColor;
-    padding-right: 20px;
+.block {
+  margin: 20px;
+  gap: 20px;
+  padding-right: 40px;
+  display: flex;
+  flex-direction: column;
 }
+
+
 
 .addon {
-    width: 100%;
-    height: auto;
-    min-height: 100px;
-    display: flex;
-    //border: 1px solid black;
-    border-bottom: 1px solid $borderColor;
-    border-top: 1px solid $borderColor;
-    padding: 15px 0;
+  width: 100%;
+  height: auto;
+  min-height: 100px;
+  display: flex;
+  //border: 1px solid black;
+  border-bottom: 1px solid $borderColor;
+  border-top: 1px solid $borderColor;
+  padding: 15px 0;
 }
 
 .addonInfo {
-    width: 100%;
-    height: auto;
-    //border: 1px solid black;
+  width: 100%;
+  height: auto;
+  //border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+
+  & > p {
+    color: $borderColor;
     display: flex;
-    flex-direction: column;
-    row-gap: 20px;
+    column-gap: 10px;
 
-    & > p {
-        color: $borderColor;
-        display: flex;
-        column-gap: 10px;
-
-        & > span {
-            color: gray;
-        }
+    & > span {
+      color: gray;
     }
+  }
 }
 
 .infoLeftName {
-    width: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+
+  .username {
+    font-size: 25px;
+  }
+
+  span {
+    color: gray;
     display: flex;
-    justify-content: space-between;
-    flex-wrap:wrap;
-    align-items: center;
-
-    .username {
-        font-size: 25px;
-    }
-
-    span {
-        color: gray;
-        display: flex;
-        gap: 20px;
-    }
+    gap: 20px;
+  }
 }
 
 .infoLeftTop {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .infoLeftBottom {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 
 .infoRight {
-    width: 60%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .infoRightTop {
-    widht: 100%;
-    height: 70%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  widht: 100%;
+  height: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .infoRightBottom {
-    width: 100%;
-    height: 30%;
-    display: flex;
-    flex-direction: column;
-    gap: 30px;
+  width: 100%;
+  height: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
 }
 
 .classLabel {
-    font-size: 20px;
-    color: $borderColor;
+  font-size: 20px;
+  color: $borderColor;
 }
 
 .itemLabel {
-    color: $borderColor;
-    white-space: nowrap;
+  color: $borderColor;
+  white-space: nowrap;
 }
 
 .itemValue {
-    color: gray;
+  color: gray;
 }
 
 .class {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .item {
-    width: 100%;
-    height: auto;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: row;
-    //flex-direction: ;
-    gap: 10px;
-    //border: 1px solid red;
+  width: 100%;
+  height: auto;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
+  //flex-direction: ;
+  gap: 10px;
+  //border: 1px solid red;
 }
-.itemsRow{
-    flex-direction: column;
-    display: flex;
+
+.itemsRow {
+  flex-direction: column;
+  display: flex;
+  gap: 5px;
+  width: 800px;
 }
-.saveIcon{
-    //margin-left: -35px;
-    cursor: pointer;
+.itemsProduct{
+ // border: 1px solid black;
+}
+.itemsColumn {
+  flex-direction: row;
+  display: flex;
+
+}
+
+.saveIcon {
+  //margin-left: -35px;
+  cursor: pointer;
 }
 
 .timepicker {
-    width: auto;
+  width: auto;
 }
 
 .items {
-    width: 100%;
-    height: auto;
-    padding-left: 30px;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  width: 100%;
+  height: auto;
+  padding-left: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .selectDiv {
-    width: 100%;
-    height: 90%;
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 
 }
 
 .mapDiv {
-    width: 100%;
-    height: 100%;
-    min-height: 500px;
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
 }
 
 .directionDiv {
-    width: 50%;
-    height: 100%;
+  width: 50%;
+  height: 100%;
 }
 
 .directions {
-    color: gray;
+  color: gray;
 
-    & > b {
-        color: $borderColor;
-    }
+  & > b {
+    color: $borderColor;
+  }
 }
 
 .seperator {
-    width: 100%;
-    height: 1px;
-    background-color: $borderColor;
+  width: 100%;
+  height: 1px;
+  background-color: $borderColor;
 }
 
 .infoRightBottomTextareas {
-    width: 100%;
-    height: auto;
-    display: flex;
-    column-gap: 20px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  column-gap: 20px;
 }
 
 .itemTextarea {
-    width: 100%;
-    height: auto;
-    display: flex;
-    flex-direction: column;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
 
-    & > textarea {
-        width: 100%;
-    }
+  & > textarea {
+    width: 100%;
+  }
 }
 
 .updateButton {
-    height: auto;
-    display: flex;
-    //justify-content: flex-end;
-    align-items: center;
-    cursor: pointer;
-    position: relative;
-    outline: none;
-    border: none;
-    background-color: transparent;
+  height: auto;
+  display: flex;
+  //justify-content: flex-end;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+  outline: none;
+  border: none;
+  background-color: transparent;
 
-    & > .updateButtonLabel {
-        //width: 40px;
-        white-space: nowrap;
-        background-color: #19347a;
-        color: #fff;
-        text-align: center;
-        border-radius: 6px;
-        padding: 3px 7px;
-        position: absolute;
-        z-index: 1;
-        top: -20px;
-        left: 50%;
-        transform: translateX(-50%);
-        font-size: 10px;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-        pointer-events: none;
-        transistion: 0.5s;
-        opacity: 0;
-    }
+  & > .updateButtonLabel {
+    //width: 40px;
+    white-space: nowrap;
+    background-color: #19347a;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 3px 7px;
+    position: absolute;
+    z-index: 1;
+    top: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 10px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    pointer-events: none;
+    transistion: 0.5s;
+    opacity: 0;
+  }
 
-    &:hover > .updateButtonLabel {
-        opacity: 1;
-    }
+  &:hover > .updateButtonLabel {
+    opacity: 1;
+  }
 }
 
 
-.iconsWrapper{
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.iconsWrapper {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 
-    .mapIcon{
+  .mapIcon {
 
-        fill: #3F7AAD;
-        transition: .5s;
-    }
+    fill: #3F7AAD;
+    transition: .5s;
+  }
 
-    .mapIcon:hover{
-        transform: translateY(-5px);
-        fill: $asteriskColor;
-    }
+  .mapIcon:hover {
+    transform: translateY(-5px);
+    fill: $asteriskColor;
+  }
 
-    .updateIcon{
-        fill: none;
-        stroke: #3F7AAD;
-        transition: .5s;
+  .updateIcon {
+    fill: none;
+    stroke: #3F7AAD;
+    transition: .5s;
 
-    }
+  }
 
-    .updateIcon:hover{
-        transform: translateY(-5px);
-        stroke: $asteriskColor;
-    }
+  .updateIcon:hover {
+    transform: translateY(-5px);
+    stroke: $asteriskColor;
+  }
 }
 
 .classInfo {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
 }
 
 .classSave {
-    width: 150px;
-    height: 50px;
-    background-color: $asteriskColor;
-    border-radius: 25px;
-    color: white;
-    border: none;
-    cursor: pointer;
+  width: 150px;
+  height: 50px;
+  background-color: $asteriskColor;
+  border-radius: 25px;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
 .itemLabelBox {
-    width: 18%;
-    display: flex;
-    align-items: center;
-    height: 100%;
+  width: 18%;
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 .addInfo {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .item1 {
-    display: flex;
-    flex-direction: column;
-    row-gap: 20px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
 }
 
 .itemsSelects {
-    display: flex;
-    width: 100%;
-    column-gap: 10px;
+  display: flex;
+  width: 100%;
+  column-gap: 10px;
 }
 
 .itemsSelect {
-    width: 100%;
+  width: 100%;
 }
 
-.saveIcon{
-    fill: #3F7AAD;
-    transition: .5s;
+.saveIcon {
+  fill: #3F7AAD;
+  transition: .5s;
 }
 
-.saveIcon:hover{
-    fill: $asteriskColor;
+.saveIcon:hover {
+  fill: $asteriskColor;
 }
 
-.updateLabelTop{
-    margin-top: -5px;
+.updateLabelTop {
+  margin-top: -5px;
 }
 
-.showMapLabel{
-    margin-top: 0;
+.showMapLabel {
+  margin-top: 0;
 }
 
-.updateLabel{
-    margin-top: -5px;
+.updateLabel {
+  margin-top: -5px;
 }
 
 .adminUpdate {
-    border: none;
-    outline: none;
-    background-color: transparent;
+  border: none;
+  outline: none;
+  background-color: transparent;
 }

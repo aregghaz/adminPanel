@@ -3,7 +3,7 @@ import {fakeUrl} from "../../utils/getFieldLabel";
 
 export const AdminApi = {
     dashboard() {
-        return axios.get(`${fakeUrl}/api/admin/dashboard`).then(res => res.data);
+        return axios.get(`${fakeUrl}/api/getLatestOrders`).then(res => res.data);
     },
     delete(crudKey: string, id: number) {
         return axios.delete(`${fakeUrl}/api/${crudKey}/${id}`).then(res => res.data);
@@ -53,6 +53,10 @@ export const AdminApi = {
     },
     addGroupTed(ids:Array<number>, tegId:number){
         return axios.post(`${fakeUrl}/api/getTagsSelect`, {ids:ids, tegId:tegId }).then(res => res.data);
+    },
+    getSingleOrder(id:number){
+        return axios.get(`${fakeUrl}/api/auth/single-orders/${id}`).then(res => res.data);
+
     }
 
 };

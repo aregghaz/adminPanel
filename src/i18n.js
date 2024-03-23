@@ -80,6 +80,8 @@ const resources = {
             questions:'Вопросы',
             tags:'Теги',
             yes:'Добавить',
+            buyer:'покупатель',
+            total:'сумма',
 
             record_successfully_edited:'запись успешно изменена',
             record_successfully_added:'запись успешно добавлена',
