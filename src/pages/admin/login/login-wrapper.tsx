@@ -57,7 +57,6 @@ const LoginWrapper: React.FC<ILoginWrapper> = () => {
             }
         }
         setLoading(true);
-        console.log(user,'useruser')
         setUserFound(!!user)
     };
 
