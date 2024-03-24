@@ -33,7 +33,9 @@ border-bottom: 1px solid $menuColor;
   flex-direction: column;
 }
 
-
+.b_text{
+  text-transform: capitalize;
+}
 
 .addon {
   width: 100%;

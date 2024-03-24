@@ -28,6 +28,10 @@
   flex-direction: column;
 }
 
+.b_text {
+  text-transform: capitalize;
+}
+
 .addon {
   width: 100%;
   height: auto;
