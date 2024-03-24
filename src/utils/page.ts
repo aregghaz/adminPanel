@@ -80,6 +80,9 @@ const PageAction = (
             case "addTag":
                 await handlerAddTag();
                 break;
+            case "changeStatus":
+                await handlerAddTag();
+                break;
             case "groupDelete":
                 await handlerGroupDelete();
                 break;

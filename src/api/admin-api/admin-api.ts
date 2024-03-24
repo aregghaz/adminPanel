@@ -51,8 +51,14 @@ export const AdminApi = {
     getTag(){
         return axios.get(`${fakeUrl}/api/getTagsSelect`).then(res => res.data);
     },
+    getStatus(){
+        return axios.get(`${fakeUrl}/api/getStatusSelect`).then(res => res.data);
+    },
     addGroupTed(ids:Array<number>, tegId:number){
         return axios.post(`${fakeUrl}/api/getTagsSelect`, {ids:ids, tegId:tegId }).then(res => res.data);
+    },
+    addGroupStatus(ids:Array<number>, statusId:number){
+        return axios.post(`${fakeUrl}/api/change-status`, {ids:ids, statusId:statusId }).then(res => res.data);
     },
     getSingleOrder(id:number){
         return axios.get(`${fakeUrl}/api/auth/single-orders/${id}`).then(res => res.data);

@@ -26,7 +26,7 @@ const OrdersList: React.FC<IProductsList> = () => {
                 setData(data);
             }
         )();
-    }, [loading]);
+    }, [loading,isModalOpen]);
 
 
     const titles: Array<string> = [
@@ -62,6 +62,7 @@ const OrdersList: React.FC<IProductsList> = () => {
             {Object.keys(singleData).length > 0 && <InfoOrder data={singleData}/>}
             <NavigationTab
                 open={open}
+                IsAssignStatus={true}
                 tableRef={tableRef}
                 loading={loading}
                 IsAssignTag={false}

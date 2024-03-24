@@ -3,6 +3,7 @@ import {useTranslation} from "react-i18next";
 import cls from "./info-block.module.scss";
 import timestampToDate from "../../utils/timestampToDate";
 import {fakeUrl} from "../../utils/getFieldLabel";
+import {OrderMode} from "../../constants/helpers";
 
 
 interface IProps {
@@ -30,7 +31,7 @@ const InfoOrder: FC<IProps> = ({data}) => {
                             </div>
                             <div className={cls.itemsColumn}>
                                 <span className={cls.b_text}>{t("admin:status")} : </span>
-                                {data.status}
+                                {OrderMode[data.status]}
                             </div>
                             <div className={cls.itemsColumn}>
                                 <span className={cls.b_text}>{t("admin:updated")} : </span>

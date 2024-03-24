@@ -56,6 +56,7 @@ const customStylesMobile: any = {
 
 interface IAddTagModal {
     isOpen: boolean;
+    actionType?: string;
     ids?: Array<number>
     handleCloseModal: () => void;
     handlerAction: (action: string) => void;
@@ -64,6 +65,7 @@ interface IAddTagModal {
 const AddTagModal: React.FC<IAddTagModal> = (
     {
         isOpen,
+        actionType,
         handleCloseModal,
         handlerAction,
         ids
@@ -75,14 +77,24 @@ const AddTagModal: React.FC<IAddTagModal> = (
 
     const handlerGroupAddTeg = async () => {
         if (ids) {
-            await AdminApi.addGroupTed(ids, selected.id)
+            if (actionType === 'addTag') {
+                await AdminApi.addGroupTed(ids, selected.id)
+            } else {
+                await AdminApi.addGroupStatus(ids, selected.id)
+            }
             handleCloseModal()
         }
 
     }
     const getData = async () => {
-        const dataTag = await AdminApi.getTag();
-        setData(dataTag.data)
+        let data;
+        if (actionType === 'addTag') {
+            data = await AdminApi.getTag();
+        } else {
+            data = await AdminApi.getStatus();
+        }
+
+        setData(data.data)
     }
     useEffect(() => {
 

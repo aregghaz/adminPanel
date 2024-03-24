@@ -19,6 +19,7 @@ import {ReactComponent as AssignIcon} from "../../images/car-travel-plus-add-svg
 // import RemoveIcon from "../../images/tripCansle1.svg";
 // import DataPicker from "../data-picker/data-picker";
 import {ReactComponent as Tags} from "../../svgs/tags.svg";
+import {ReactComponent as StatusSvg} from "../../svgs/status.svg";
 
 
 interface INavigationTab {
@@ -27,6 +28,7 @@ interface INavigationTab {
     open: boolean,
     isDelete?: boolean,
     IsAssignTag?: boolean,
+    IsAssignStatus?: boolean,
     tableRef: any,
     setQuery: any,
     setLoading: any,
@@ -47,6 +49,7 @@ const NavigationTab: React.FC<INavigationTab> = (
         handlerAction,
         isDelete = true,
         IsAssignTag = false,
+        IsAssignStatus = false,
         open
     }) => {
     const openSearch = () => {
@@ -79,6 +82,16 @@ const NavigationTab: React.FC<INavigationTab> = (
                         // style={{fill:'#3F7AAD'}}
                         className={` ${s.iconTest} `}
                         onClick={() => handlerAction("addTag")}
+                    />
+                </div>}
+                {IsAssignStatus && <div className={s.import_block}>
+                    <div className={s.iconAbbr}>
+                       change status
+                    </div>
+                    <StatusSvg
+                        // style={{fill:'#3F7AAD'}}
+                        className={` ${s.iconTest} `}
+                        onClick={() => handlerAction("changeStatus")}
                     />
                 </div>}
                 <div className={s.import_block}>

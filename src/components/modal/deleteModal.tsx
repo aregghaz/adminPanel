@@ -28,8 +28,9 @@ const DeleteModal: FC<IDeleteModal> = ({
     };
 
 
-    if (actionType === 'addTag') {
+    if (actionType === 'addTag' || actionType ==='changeStatus') {
         return <AddTagModal
+            actionType={actionType}
             isOpen={isModalOpen}
             ids={ids}
             handleCloseModal={handlerCloseModal}
