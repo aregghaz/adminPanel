@@ -60,7 +60,6 @@ const ProductEdit: React.FC<IPageEdit> = ({id, path}) => {
     const requiredFields = [
         "title",
         "price",
-        'brand_id',
         'quantity',
         'categories',
         // 'meta_title',

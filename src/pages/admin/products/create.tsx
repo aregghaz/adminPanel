@@ -58,7 +58,6 @@ const ProductCreate: React.FC<IUserCreate> = () => {
     const requiredFields = [
         "title",
         "price",
-        'brand_id',
         'quantity',
         'categories',
         // 'meta_title',
