@@ -98,7 +98,7 @@ const Select: React.FC<ISelect> = (
         allowValueClear = true,
         styles = {},
         isCheckbox = false,
-        isSearchable = false,
+        isSearchable = true,
         placeholder = "",
         options,
         onChange,
@@ -183,9 +183,10 @@ const Select: React.FC<ISelect> = (
                                 {IndicatorSeparator: () => null}}
                         options={options}
                         name={name}
-                        isSearchable={isSearchable}
+                        isSearchable={true}
                         onChange={onChange}
                         ///FIXME: ADD THIS PART
+
                         isDisabled={isDisabled}
                         /// isOptionDisabled={() => 5 >= 3}
                         getOptionLabel={getOptionLabel}

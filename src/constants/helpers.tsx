@@ -2,7 +2,20 @@ import React from "react";
 
 import {IOption} from "../components/select/select";
 
-
+export enum Month {
+    'Январь',
+    'Февраль',
+    'Март',
+    'Апрель',
+    'Май',
+    'Июнь',
+    'Июль',
+    'Август',
+    'Сентябрь',
+    'Октябрь',
+    'Ноябрь',
+    'Декабрь',
+};
 export enum OrderMode {
     "delayed",
     "обработка",

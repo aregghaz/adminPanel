@@ -5,6 +5,12 @@ export const AdminApi = {
     dashboard() {
         return axios.get(`${fakeUrl}/api/getLatestOrders`).then(res => res.data);
     },
+    yearProfit() {
+        return axios.get(`${fakeUrl}/api/year-profit`).then(res => res.data);
+    },
+    orderCount() {
+        return axios.get(`${fakeUrl}/api/order-count`).then(res => res.data);
+    },
     delete(crudKey: string, id: number) {
         return axios.delete(`${fakeUrl}/api/${crudKey}/${id}`).then(res => res.data);
     },

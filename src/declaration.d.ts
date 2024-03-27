@@ -12,6 +12,7 @@ declare module 'react-currency-input-field'
 declare module 'react-image-gallery'
 declare module 'redux-thunk'
 declare module 'react-infinite-scroll-component'
+declare module 'recharts'
 
 
 declare module "*.scss" {

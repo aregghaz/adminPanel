@@ -1,6 +1,9 @@
 .root {
   position: relative;
   height: auto;
+  display: flex;
+  padding: 0 20px;
+  flex-direction: column;
 }
 .root > h1 {
   margin-left: 30px;
@@ -11,24 +14,36 @@
 
 .latest_div {
   margin-left: 25px;
-  width: 500px;
-  height: 900px;
+  display: flex;
+  flex-direction: row;
+}
+
+.mount_price {
+  display: flex;
+  height: 300px;
+}
+
+.inner_div {
   display: flex;
   flex-direction: column;
+  height: 300px;
+  width: 50%;
+  margin: 10px 20px;
+}
+.inner_div div {
+  text-align: center;
+  text-transform: capitalize;
 }
 
 .latest_div_item {
+  color: #0C96D1;
+  border: 1px solid #0C96D1;
   display: flex;
   width: 100%;
   flex-direction: row;
 }
 .latest_div_item div {
-  display: flex;
-  flex-direction: column;
-  width: 25%;
-  text-align: center;
-  color: #0C96D1;
-  border: 1px solid #0C96D1;
+  width: 23%;
 }
 
 .lates_div_id {

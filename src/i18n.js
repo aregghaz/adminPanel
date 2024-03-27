@@ -35,6 +35,7 @@ const resources = {
             kpp: 'КПП',
             bik: 'БИК',
             pc: 'Р/С',
+            user: 'покупатель',
             url: 'URL',
             video: 'видео',
             notes: 'примечания',
