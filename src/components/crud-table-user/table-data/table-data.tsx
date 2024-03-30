@@ -29,7 +29,15 @@ const TableData: React.FC<ITableData> = (
             colSpan={colspan || 1}
 
             rowSpan={rowspan || 1}
-            onClick={(event) => !click ? click : handlerAction ? handlerAction("get", item["id"]) : false}
+            onClick={(event) => {
+                console.log(event.detail, 'event.detail')
+                if (event.detail === 1 && handlerAction) {
+                    handlerAction("addItem", item["id"])
+                } else if (event.detail === 2 && handlerAction) {
+                    handlerAction("get", item["id"])
+                }
+            }
+            }
         >
             <div>
                 {children}

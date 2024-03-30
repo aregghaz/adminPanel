@@ -129,7 +129,6 @@ const FormikHandler: React.FC<IFormikHandler> = (
                     options={selectOptions ? selectOptions[item.name] : selectOptions}
                     /// options={selectOptions}
                     label={getFieldLabel(t, item.label, item.name, requiredFields)}
-
                     onChange={(option: IOption) => setFieldValue(item.name, option)}
                     /// label={t(item.label)}
                     isSearchable={false}

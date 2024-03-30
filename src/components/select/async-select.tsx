@@ -1,12 +1,12 @@
-import React, { useRef, useState } from "react";
+import React, {useRef, useState} from "react";
 import Select from "react-select/async";
-import { components, OptionProps, OptionTypeBase } from "react-select";
-import { IOption } from "./select";
+import {components} from "react-select";
+import {IOption} from "./select";
 // @ts-ignore
-import { OptionsType } from "react-select/src/types";
+import {OptionsType} from "react-select/src/types";
 import Checkbox from "../checkbox/checkbox";
 import useLocalStorage from "../../hooks/use-local-storage";
-import { selectStylesFunction } from "../../utils/cssUtils";
+import {selectStylesFunction} from "../../utils/cssUtils";
 
 import s from "./select.module.scss";
 
@@ -58,7 +58,7 @@ const AsyncSelect: React.FC<IAsyncSelect> = (
         isMulti = false
     }) => {
     const [themeType] = useLocalStorage("theme", "light");
-    const selectRef:any = useRef(null);
+    const selectRef: any = useRef(null);
     const handleOptionRemove: React.MouseEventHandler<HTMLButtonElement> = (e): void => {
         e.preventDefault();
         console.log(selectRef.current.value);
@@ -90,7 +90,7 @@ const AsyncSelect: React.FC<IAsyncSelect> = (
                     components={isCheckbox ? {
                         Option,
                         IndicatorSeparator: () => null
-                    } : { IndicatorSeparator: () => null }}
+                    } : {IndicatorSeparator: () => null}}
                     defaultOptions
                     cacheOptions
                     isSearchable={isSearchable}

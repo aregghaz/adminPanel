@@ -55,6 +55,7 @@ const resources = {
             long:'Долгота',
             address:'Адрес',
             id:'Ид',
+            orderId:'Ид',
             fullName:'Полное имя',
             company:'Компания',
             address_1:'адрес 1',

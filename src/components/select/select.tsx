@@ -1,12 +1,13 @@
 import React, {useRef} from "react";
 import useLocalStorage from "../../hooks/use-local-storage";
 import Checkbox from "../checkbox/checkbox";
-import ReactSelect, {components, MenuProps, OptionProps, OptionTypeBase} from "react-select";
+import ReactSelect, {components} from "react-select";
 import {useTranslation} from "react-i18next";
 import {selectStylesFunction} from "../../utils/cssUtils";
 import s from "./select.module.scss";
 import Button from "../button/button";
 import {ReactComponent as RemoveIcon} from "../../svgs/removeIcon.svg"
+import {JSX} from "react/jsx-runtime";
 
 export interface IOption {
     id: number;
@@ -23,8 +24,9 @@ export interface IOptionMultiselect {
 }
 
 interface IMenu {
-    props: any;
-    handlerAdd: () => void;
+    props?: any;
+    options: any;
+    ///  handlerAdd: () => void;
 }
 
 interface ISelect {
@@ -66,33 +68,6 @@ const Option = (props: any) => {
     </components.Option>);
 };
 
-const Menu: React.FC<IMenu> = ({props, handlerAdd}: any) => {
-    const {t} = useTranslation();
-    return (
-        <components.Menu {...props} >
-            <>
-                <ul className={s.customMenuList}>
-                    {
-                        props.options
-                            .map((item:any, index:number) => (
-                                    <li
-                                        key={index}
-                                        onClick={() => props.selectOption(item)}
-                                    >
-                                        {t(item.label)}
-                                    </li>
-                                )
-                            )
-                    }
-                </ul>
-                <div className={s.addBtn} onClick={handlerAdd}>
-                    {t("add_new_type")} +
-                </div>
-            </>
-        </components.Menu>
-    );
-};
-
 const Select: React.FC<ISelect> = (
     {
         allowValueClear = true,
@@ -107,13 +82,13 @@ const Select: React.FC<ISelect> = (
         value,
         name,
         label,
-        isMulti = false,
+        isMulti = true,
         authCheckboxLabelStyle,
         labelStyle,
         handlerMenuClose,
         handlerMenuOpen,
         hideSelectedOptions = false,
-        isMenuAdd = false,
+        isMenuAdd = true,
         isDisabled = false,
         //   handlerAdd,
         error,
@@ -121,9 +96,31 @@ const Select: React.FC<ISelect> = (
 ) => {
     const {t} = useTranslation();
     const [themeType] = useLocalStorage("theme", "light");
+    //  const [value, setValue] = useState([]);
     const selectRef: any = useRef(null)
     const markAll = () => {
         onChange(options);
+    };
+    const Menu = () => {
+
+        const asd: { label: JSX.Element; options: any; }[] = []
+        options && options.map((item: any) => {
+            asd.push({
+                label: (() => {
+                    return (
+                        <div
+                            onClick={() => onChange(item.options)}
+                        >
+                            {item.label}
+                        </div>
+                    );
+                })(),
+                options: item.options
+            })
+        })
+        console.log(asd, 'asdasd')
+        return asd;
+
     };
 
     const unMarkAll = () => {
@@ -167,28 +164,15 @@ const Select: React.FC<ISelect> = (
                         styles={selectStylesFunction(styles, error)}
                         className={s.select}
                         placeholder={t(`admin:${placeholder}`)}
-                        components={isCheckbox ? {
-                                Option,
-                                IndicatorSeparator: () => null
-                            }
-                            :
-                            isMenuAdd ?
-                                {
-                                    IndicatorSeparator: () => null
-
-                                    // Menu: (props) => <Menu props={props} handlerAdd={handlerAdd}/>,
-                                    // IndicatorSeparator: () => null
-                                }
-                                :
-                                {IndicatorSeparator: () => null}}
-                        options={options}
+                        components={{
+                            IndicatorSeparator: () => null
+                        }
+                        }
+                        options={Menu()}
                         name={name}
                         isSearchable={true}
                         onChange={onChange}
-                        ///FIXME: ADD THIS PART
-
                         isDisabled={isDisabled}
-                        /// isOptionDisabled={() => 5 >= 3}
                         getOptionLabel={getOptionLabel}
                         getOptionValue={getOptionValue}
                         value={value}

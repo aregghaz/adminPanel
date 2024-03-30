@@ -32,6 +32,7 @@ const OrdersList: React.FC<IProductsList> = () => {
     const titles: Array<string> = [
         'id',
         'action',
+        'orderId',
         'user',
         'status',
         'total',
@@ -42,7 +43,8 @@ const OrdersList: React.FC<IProductsList> = () => {
     const [ids, setIds] = useState([]);
     const handlerAction = async (action: string, id?: number) => {
         setActionType(action)
-        if(action === "get" && id){
+        console.log(    action,'action')
+        if(action === "addItem" && id){
            const singleDataOrder = await AdminApi.getSingleOrder(id)
             setSingleData(singleDataOrder)
         }else{
