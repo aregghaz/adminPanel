@@ -20,6 +20,7 @@ import {ReactComponent as AssignIcon} from "../../images/car-travel-plus-add-svg
 // import DataPicker from "../data-picker/data-picker";
 import {ReactComponent as Tags} from "../../svgs/tags.svg";
 import {ReactComponent as StatusSvg} from "../../svgs/status.svg";
+import {ReactComponent as Ruble} from "../../svgs/ruble.svg";
 
 
 interface INavigationTab {
@@ -27,6 +28,7 @@ interface INavigationTab {
 ///    openSearch: () => void,
     open: boolean,
     isDelete?: boolean,
+    IsAssignPrice?: boolean,
     IsAssignTag?: boolean,
     IsAssignStatus?: boolean,
     tableRef: any,
@@ -46,6 +48,7 @@ const NavigationTab: React.FC<INavigationTab> = (
         setLoading,
         loading,
         setOpen,
+        IsAssignPrice,
         handlerAction,
         isDelete = true,
         IsAssignTag = false,
@@ -74,24 +77,31 @@ const NavigationTab: React.FC<INavigationTab> = (
                         height="24px"
                     />
                 </div>}
-                {IsAssignTag && <div className={s.import_block}>
+                {IsAssignTag && <div className={s.import_block}  onClick={() => handlerAction("addTag")}>
                     <div className={s.iconAbbr}>
                        add tag
                     </div>
                     <Tags
                         // style={{fill:'#3F7AAD'}}
                         className={` ${s.iconTest} `}
-                        onClick={() => handlerAction("addTag")}
                     />
                 </div>}
-                {IsAssignStatus && <div className={s.import_block}>
+                {IsAssignStatus && <div className={s.import_block}  onClick={() => handlerAction("changeStatus")}>
                     <div className={s.iconAbbr}>
                        change status
                     </div>
                     <StatusSvg
                         // style={{fill:'#3F7AAD'}}
                         className={` ${s.iconTest} `}
-                        onClick={() => handlerAction("changeStatus")}
+                    />
+                </div>}
+                {IsAssignPrice && <div className={s.import_block} onClick={() => handlerAction("assignPrice")}>
+                    <div className={s.iconAbbr}>
+                       change status
+                    </div>
+                    <Ruble
+                        // style={{fill:'#3F7AAD'}}
+                        className={` ${s.iconTest} `}
                     />
                 </div>}
                 <div className={s.import_block}>

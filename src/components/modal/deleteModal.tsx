@@ -1,6 +1,7 @@
 import React, {FC} from "react";
 import DeleteServiceModal from "../delete-service-modal/delete-service-modal";
 import AddTagModal from "../add-tag/add-tag-modal";
+import ChangePrice from "../change-price-modal/change-price-modal";
 
 interface IDeleteModal {
     isModalOpen: boolean,
@@ -28,8 +29,16 @@ const DeleteModal: FC<IDeleteModal> = ({
     };
 
 
-    if (actionType === 'addTag' || actionType ==='changeStatus') {
+    if (actionType === 'addTag' || actionType === 'changeStatus') {
         return <AddTagModal
+            actionType={actionType}
+            isOpen={isModalOpen}
+            ids={ids}
+            handleCloseModal={handlerCloseModal}
+            handlerAction={handlerAction}
+        />
+    } else if (actionType === 'assignPrice') {
+        return <ChangePrice
             actionType={actionType}
             isOpen={isModalOpen}
             ids={ids}

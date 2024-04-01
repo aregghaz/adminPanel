@@ -12,8 +12,9 @@ interface IDataPicker {
     selectRange: boolean,
     type?: boolean,
     name: string;
-    value: any;
+    value?: any;
     style?: any;
+    className?: any;
 
     error?: any;
 
@@ -28,6 +29,7 @@ const DataPicker: React.FC<IDataPicker> = (
         label,
         type = false,
         value,
+        className,
         style = {},
         error ='',
         singleFileUpload = false,
@@ -38,7 +40,7 @@ const DataPicker: React.FC<IDataPicker> = (
     const outsideClickHandler = (e: any) => {
         setShow(false)
     }
-    console.log(value,'valuevaluevalue')
+    console.log(show,'valuevaluevalue')
     useOnClickOutside(calendarRef, outsideClickHandler)
     return (
         <>
@@ -50,10 +52,10 @@ const DataPicker: React.FC<IDataPicker> = (
                     color: value ? "grey" : "C4C4C4",
                     // border: !singleFileUpload && error && !value ? "1px solid crimson" : type ? "none" : "",
                 }} type="text" className={`${s.input} ${error && !value && s.errorInput}`}
-                value={value && value[0] !== null ? `${timestampToDate(value[0])} - ${timestampToDate(value[1])}` : ""}
+                value={(value && value[0] !== null ) ? `${timestampToDate(value[0])} - ${timestampToDate(value[1])}` : ""}
                 onClick={() => setShow(!show)}
                 readOnly={true}/>
-            {show && <div className={s.dataPicker} ref={calendarRef}>
+            {show && <div className={`${s.dataPicker} ${className}`} ref={calendarRef}>
                 <Calendar
                 formats="MM-dd-yyyy"
                 selected={new Date().toLocaleDateString()}

@@ -66,6 +66,12 @@ export const AdminApi = {
     addGroupStatus(ids:Array<number>, statusId:number){
         return axios.post(`${fakeUrl}/api/change-status`, {ids:ids, statusId:statusId }).then(res => res.data);
     },
+    addGroupDiscount(ids:Array<number>, value:{
+        dates: '',
+        discount: "0",
+    }){
+        return axios.post(`${fakeUrl}/api/products/add-discount`, {ids:ids, value:value }).then(res => res.data);
+    },
     getSingleOrder(id:number){
         return axios.get(`${fakeUrl}/api/auth/single-orders/${id}`).then(res => res.data);
 

@@ -59,6 +59,7 @@ const ProductsList: React.FC<IProductsList> = () => {
             {/* <InfoBlock  items={data}/> */}
             <NavigationTab
                 open={open}
+                IsAssignPrice={true}
                 tableRef={tableRef}
                 loading={loading}
                 IsAssignTag={true}

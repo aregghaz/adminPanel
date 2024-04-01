@@ -1,11 +1,37 @@
 .modalBody {
-  text-align: center;
   width: 100%;
 }
 @media only screen and (max-width: 768px) {
   .modalBody {
     padding: 0 25px;
   }
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+}
+
+.dateInput {
+  display: contents;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+.inputDiv {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
 .icon {
@@ -42,7 +68,7 @@
 
 .buttonAdd {
   background-color: #0C96D1;
-  width: 100%;
+  width: 70%;
   height: 60px;
   border-radius: 25px;
   margin-top: 20px;
