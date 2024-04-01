@@ -33,7 +33,7 @@ const ProductCreate: React.FC<IUserCreate> = () => {
             placeholder: "date_special_price"
         },
         {name: 'teg_id', type: 'select', label: 'teg_id'},
-        {name: 'categories', type: 'multiSelect', label: 'categories'},
+        {name: 'categories', type: 'selectGroup', label: 'categories'},
         {name: 'attributes', type: 'multiSelect', label: 'attributes', placeholder: 'attributes'},
         {name: 'meta_title', type: 'input', label: 'meta_title'},
         {name: 'meta_key', type: 'input', label: 'meta_key'},

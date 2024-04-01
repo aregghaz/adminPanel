@@ -34,7 +34,7 @@ const ProductEdit: React.FC<IPageEdit> = ({id, path}) => {
         },
         {name: 'status', type: 'select', label: 'status'},
         {name: 'teg_id', type: 'select', label: 'teg_id'},
-        {name: 'categories', type: 'multiSelect', label: 'categories'},
+        {name: 'categories', type: 'selectGroup', label: 'categories'},
         {name: 'attributes', type: 'multiSelect', label: 'attributes', placeholder: 'attributes'},
         {name: 'meta_title', type: 'input', label: 'meta_title'},
         {name: 'meta_key', type: 'input', label: 'meta_key'},

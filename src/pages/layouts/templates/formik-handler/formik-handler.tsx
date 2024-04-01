@@ -16,7 +16,7 @@ import Autocomplete from "../../../../components/autocomplate/autocomplete";
 import Password from "../../../../components/password/password";
 
 export interface IItem {
-    type: "input" | "password" | "autocomplete" | "address" | "timePicker" | "checkbox" | "richText" | "textarea" | "select" | "file" | "textField" | "radio" | "datepicker" | "multiSelect" | "attributes" | "hidden";
+    type: "input" | "password" | "selectGroup" | "autocomplete" | "address" | "timePicker" | "checkbox" | "richText" | "textarea" | "select" | "file" | "textField" | "radio" | "datepicker" | "multiSelect" | "attributes" | "hidden";
     inputType: string;
     name: string;
     value?: string | boolean | File | IOption;
@@ -134,6 +134,23 @@ const FormikHandler: React.FC<IFormikHandler> = (
                     isSearchable={false}
                     name={item.name}
                     placeholder={t(item.label)}
+                    allowValueClear={item.allowValueClear}
+                    error={errors[item.name]}
+                />
+            );
+        case "selectGroup":
+            return (
+                <Select
+                    value={values[item.name]}
+                    getOptionValue={(option: IOption) => option.value}
+                    getOptionLabel={(option: IOption) => t(option.label)}
+                    options={values.selectOptions ? values.selectOptions[item.name] : selectOptions[item.name]}
+                    onChange={(option: IOption) => setFieldValue(item.name, option)}
+                    label={getFieldLabel(t, item.label, item.name, requiredFields)}
+                    isSearchable={true}
+                    name={item.name}
+                    isMulti={true}
+                    placeholder={item.placeholder ? t(item.placeholder) : item.name}
                     allowValueClear={item.allowValueClear}
                     error={errors[item.name]}
                 />
