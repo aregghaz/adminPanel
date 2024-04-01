@@ -14,6 +14,7 @@ import TimePickers from "../../../../components/time-picker/timepicker";
 import DataPicker from "../../../../components/data-picker/data-picker";
 import Autocomplete from "../../../../components/autocomplate/autocomplete";
 import Password from "../../../../components/password/password";
+import SelectGroup from "../../../../components/select/selectGroup";
 
 export interface IItem {
     type: "input" | "password" | "selectGroup" | "autocomplete" | "address" | "timePicker" | "checkbox" | "richText" | "textarea" | "select" | "file" | "textField" | "radio" | "datepicker" | "multiSelect" | "attributes" | "hidden";
@@ -140,7 +141,7 @@ const FormikHandler: React.FC<IFormikHandler> = (
             );
         case "selectGroup":
             return (
-                <Select
+                <SelectGroup
                     value={values[item.name]}
                     getOptionValue={(option: IOption) => option.value}
                     getOptionLabel={(option: IOption) => t(option.label)}
