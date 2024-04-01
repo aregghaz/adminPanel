@@ -109,7 +109,7 @@ const Select: React.FC<ISelect> = (
                 label: (() => {
                     return (
                         <div
-                            onClick={() => onChange(item.options)}
+                            onClick={() => onChange(item.value)}
                         >
                             {item.label}
                         </div>
