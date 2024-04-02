@@ -83,7 +83,7 @@ const TableBody: React.FC<ITableBody> = (
                                             let itemData = "";
                                             if (key !== 'id') {
                                                 switch (key) {
-                                                    case "price":
+                                                    case "price" || 'special_price' :
                                                         return (
                                                             <TableData key={key} item={item} className={key}
                                                                        click={isRemove}
