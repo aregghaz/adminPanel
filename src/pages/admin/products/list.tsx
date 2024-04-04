@@ -60,7 +60,7 @@ const ProductsList: React.FC<IProductsList> = () => {
             <NavigationTab
                 open={open}
                 IsAssignPrice={true}
-                IsRemovePrice={true}
+                IsRemovePrice={false}
                 tableRef={tableRef}
                 loading={loading}
                 IsAssignTag={true}

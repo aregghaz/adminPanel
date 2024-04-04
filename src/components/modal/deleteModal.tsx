@@ -22,7 +22,7 @@ const DeleteModal: FC<IDeleteModal> = ({
                                            setIsModalOpen,
                                            ids,
                                            handlerAction,
-                                           actionType = null,
+                                           actionType,
                                        }) => {
     const handlerCloseModal = () => {
         setIsModalOpen(false);

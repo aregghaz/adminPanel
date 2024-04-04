@@ -10,5 +10,5 @@ const getFieldLabel = (t: any, label: string, name: string, requiredFields: Arra
 export default getFieldLabel;
 
 
-export const fakeUrl = 'http://127.0.0.1:8000'
-///export const fakeUrl = 'https://www.back.brend-instrument.ru'
+//export const fakeUrl = 'http://127.0.0.1:8000'
+export const fakeUrl = 'https://www.back.brend-instrument.ru'
