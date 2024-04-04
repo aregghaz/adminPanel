@@ -30,10 +30,9 @@ const TableData: React.FC<ITableData> = (
 
             rowSpan={rowspan || 1}
             onClick={(event) => {
-                console.log(event.detail, 'event.detail')
-                if (event.detail === 1 && handlerAction) {
+                if (event.detail === 2 && handlerAction) {
                     handlerAction("addItem", item["id"])
-                } else if (event.detail === 2 && handlerAction) {
+                } else if (event.detail === 1 && handlerAction) {
                     handlerAction("get", item["id"])
                 }
             }

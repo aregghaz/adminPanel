@@ -86,6 +86,9 @@ const PageAction = (
             case "assignPrice":
                 await handlerAddTag();
                 break;
+            case "removePrice":
+                await handlerAddTag();
+                break;
             case "groupDelete":
                 await handlerGroupDelete();
                 break;

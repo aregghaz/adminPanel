@@ -47,6 +47,7 @@ const DeleteModal: FC<IDeleteModal> = ({
         />
     } else {
         return <DeleteServiceModal
+            actionType={actionType}
             isOpen={isModalOpen}
             handleCloseModal={handlerCloseModal}
             handlerAction={handlerAction}

@@ -30,6 +30,7 @@ interface INavigationTab {
     isDelete?: boolean,
     IsAssignPrice?: boolean,
     IsAssignTag?: boolean,
+    IsRemovePrice?: boolean,
     IsAssignStatus?: boolean,
     tableRef: any,
     setQuery: any,
@@ -49,6 +50,7 @@ const NavigationTab: React.FC<INavigationTab> = (
         loading,
         setOpen,
         IsAssignPrice,
+        IsRemovePrice,
         handlerAction,
         isDelete = true,
         IsAssignTag = false,
@@ -96,6 +98,15 @@ const NavigationTab: React.FC<INavigationTab> = (
                     />
                 </div>}
                 {IsAssignPrice && <div className={s.import_block} onClick={() => handlerAction("assignPrice")}>
+                    <div className={s.iconAbbr}>
+                       change status
+                    </div>
+                    <Ruble
+                        // style={{fill:'#3F7AAD'}}
+                        className={` ${s.iconTest} `}
+                    />
+                </div>}
+                {IsRemovePrice && <div className={s.import_block} onClick={() => handlerAction("removePrice")}>
                     <div className={s.iconAbbr}>
                        change status
                     </div>

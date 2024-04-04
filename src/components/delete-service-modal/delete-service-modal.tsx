@@ -55,6 +55,7 @@ const customStylesMobile: any = {
 interface IDeleteServiceModal {
     isOpen: boolean;
     handleCloseModal: () => void;
+    actionType?:  string;
     handlerAction: (action: string) => void;
 }
 
@@ -62,6 +63,7 @@ const DeleteServiceModal: React.FC<IDeleteServiceModal> = (
     {
         isOpen,
         handleCloseModal,
+        actionType='',
         handlerAction
     }) => {
     const {t} = useTranslation();
