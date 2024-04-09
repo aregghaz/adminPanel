@@ -58,7 +58,6 @@ const ChangePrice: React.FC<IAddTagModal> = (
 
     const handlerGroupAddTeg = async () => {
         if (ids) {
-            console.log(ids, value)
             await AdminApi.addGroupDiscount(ids, value)
             handleCloseModal()
         }

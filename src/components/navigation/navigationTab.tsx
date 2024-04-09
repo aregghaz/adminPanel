@@ -21,6 +21,7 @@ import {ReactComponent as AssignIcon} from "../../images/car-travel-plus-add-svg
 import {ReactComponent as Tags} from "../../svgs/tags.svg";
 import {ReactComponent as StatusSvg} from "../../svgs/status.svg";
 import {ReactComponent as Ruble} from "../../svgs/ruble.svg";
+import {ReactComponent as Remove} from "../../svgs/remove.svg";
 
 
 interface INavigationTab {
@@ -110,7 +111,7 @@ const NavigationTab: React.FC<INavigationTab> = (
                     <div className={s.iconAbbr}>
                        change status
                     </div>
-                    <Ruble
+                    <Remove
                         // style={{fill:'#3F7AAD'}}
                         className={` ${s.iconTest} `}
                     />

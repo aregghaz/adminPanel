@@ -2,7 +2,7 @@ import {AdminApi} from "../api/admin-api/admin-api";
 import {navigate} from "@reach/router";
 
 let state = 0;
-const PageAction = (
+const  PageAction = (
     crudKey: string,
     setLoading: any,
     loading: boolean,
@@ -41,6 +41,12 @@ const PageAction = (
         // setLoading(!loading)
         setIsModalOpen(true)
         ///   setIsModalOpen(false);
+
+    };
+    const handlerGroupRemovePrice = async () => {
+        await AdminApi.groupDeletePrice();
+        setLoading(!loading)
+        setIsModalOpen(false)
 
     };
 
@@ -91,6 +97,9 @@ const PageAction = (
                 break;
             case "groupDelete":
                 await handlerGroupDelete();
+                break;
+            case "removePriceData":
+                await handlerGroupRemovePrice();
                 break;
 
         }

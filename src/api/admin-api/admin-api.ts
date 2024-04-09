@@ -15,10 +15,10 @@ export const AdminApi = {
         return axios.delete(`${fakeUrl}/api/${crudKey}/${id}`).then(res => res.data);
     },
     groupDelete(crudKey: string, ids: Array<number>) {
-        return axios.post(`${fakeUrl}/api/${crudKey}/groupDelete`,{"ids":ids}).then(res => res.data);
+        return axios.post(`${fakeUrl}/api/${crudKey}/groupDelete`, {"ids": ids}).then(res => res.data);
     },
     groupAddTag(crudKey: string, ids: Array<number>) {
-        return axios.post(`${fakeUrl}/api/${crudKey}/groupAddTeg`,{"ids":ids}).then(res => res.data);
+        return axios.post(`${fakeUrl}/api/${crudKey}/groupAddTeg`, {"ids": ids}).then(res => res.data);
     },
     store(formData: FormData, crudKey: string) {
         return axios.post(`${fakeUrl}/api/${crudKey}`, formData).then(res => res.data);
@@ -48,32 +48,36 @@ export const AdminApi = {
         };
         return axios.post(`${fakeUrl}/api/upload-images`, images, config).then(res => res.data);
     },
-    deleteImage(id:number){
+    deleteImage(id: number) {
         return axios.get(`${fakeUrl}/api/delete-image/${id}`).then(res => res.data);
-    } ,
-    getImages(id:number){
+    },
+    getImages(id: number) {
         return axios.get(`${fakeUrl}/api/get-images/${id}`).then(res => res.data);
-    } ,
-    getTag(){
+    },
+    getTag() {
         return axios.get(`${fakeUrl}/api/getTagsSelect`).then(res => res.data);
     },
-    getStatus(){
+    getStatus() {
         return axios.get(`${fakeUrl}/api/getStatusSelect`).then(res => res.data);
     },
-    addGroupTed(ids:Array<number>, tegId:number){
-        return axios.post(`${fakeUrl}/api/getTagsSelect`, {ids:ids, tegId:tegId }).then(res => res.data);
+    addGroupTed(ids: Array<number>, tegId: number) {
+        return axios.post(`${fakeUrl}/api/getTagsSelect`, {ids: ids, tegId: tegId}).then(res => res.data);
     },
-    addGroupStatus(ids:Array<number>, statusId:number){
-        return axios.post(`${fakeUrl}/api/change-status`, {ids:ids, statusId:statusId }).then(res => res.data);
+    addGroupStatus(ids: Array<number>, statusId: number) {
+        return axios.post(`${fakeUrl}/api/change-status`, {ids: ids, statusId: statusId}).then(res => res.data);
     },
-    addGroupDiscount(ids:Array<number>, value:{
+    addGroupDiscount(ids: Array<number>, value: {
         dates: '',
         discount: "0",
-    }){
-        return axios.post(`${fakeUrl}/api/products/add-discount`, {ids:ids, value:value }).then(res => res.data);
+    }) {
+        return axios.post(`${fakeUrl}/api/products/add-discount`, {ids: ids, value: value}).then(res => res.data);
     },
-    getSingleOrder(id:number){
+    getSingleOrder(id: number) {
         return axios.get(`${fakeUrl}/api/auth/single-orders/${id}`).then(res => res.data);
+
+    },
+    groupDeletePrice() {
+        return axios.get(`${fakeUrl}/api/groupDeletePrice`).then(res => res.data);
 
     }
 

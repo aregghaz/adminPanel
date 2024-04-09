@@ -55,7 +55,7 @@ const customStylesMobile: any = {
 interface IDeleteServiceModal {
     isOpen: boolean;
     handleCloseModal: () => void;
-    actionType?:  string;
+    actionType?: string;
     handlerAction: (action: string) => void;
 }
 
@@ -63,14 +63,23 @@ const DeleteServiceModal: React.FC<IDeleteServiceModal> = (
     {
         isOpen,
         handleCloseModal,
-        actionType='',
+        actionType = '',
         handlerAction
     }) => {
     const {t} = useTranslation();
     const {width} = useWindowResize();
 
+    let textData = ''
+    let actionTypeNew = ''
 
-    return (
+    if (actionType === 'removePrice') {
+        textData = 'asasasasas'
+        actionTypeNew = 'removePriceData'
+    } else if (actionType === 'deleteModal') {
+        actionTypeNew = 'deleteModal'
+        textData = t("Do you want to delete")
+    }
+    return  (
         <Modal
             isOpen={isOpen}
             style={width < 767 ? customStylesMobile : customStyles}
@@ -84,9 +93,9 @@ const DeleteServiceModal: React.FC<IDeleteServiceModal> = (
                 </div>
 
                 <i className={`binicon- ${s.icon}`}/>
-                <p className={s.text}>{t("Do you want to delete")}</p>
+                <p className={s.text}>{textData}</p>
                 <div className={s.buttons}>
-                    <Button type={"green"} onClick={() => handlerAction('deleteModal')}
+                    <Button type={"green"} onClick={() => handlerAction(actionTypeNew)}
                             className={s.button}>{t("yes")}</Button>
                     <Button type={"transparent"} onClick={handleCloseModal}
                             className={`${s.button} ${s.buttonNo}`}>{t("no")}</Button>
