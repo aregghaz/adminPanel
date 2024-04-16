@@ -82,32 +82,32 @@ const InfoOrder: FC<IProps> = ({data}) => {
                                     <span className={cls.b_text}>{t("admin:email")}: </span>
                                     {data.user.email}
                                 </div>
-                                <div className={cls.item}>
-                                    <span className={cls.b_text}>{t("admin:company")}: </span>
-                                    {data.address.company}
-                                </div>
+                                {/*<div className={cls.item}>*/}
+                                {/*    <span className={cls.b_text}>{t("admin:company")}: </span>*/}
+                                {/*    {data.address.company}*/}
+                                {/*</div>*/}
                             </div>
                             <div className={cls.itemsRow}>
                                 <div className={cls.item}>
                                     <span className={cls.b_text}>{t("admin:address_1")}: </span>
                                     {data.address.address_1}
                                 </div>
-                                <div className={cls.item}>
-                                    <span className={cls.b_text}>{t("admin:address_2")}: </span>
-                                    {data.address.address_2}
-                                </div>
-                                <div className={cls.item}>
-                                    <span className={cls.b_text}>{t("admin:region")}: </span>
-                                    {data.address.region}
-                                </div>
+                                {/*<div className={cls.item}>*/}
+                                {/*    <span className={cls.b_text}>{t("admin:address_2")}: </span>*/}
+                                {/*    {data.address.address_2}*/}
+                                {/*</div>*/}
+                                {/*<div className={cls.item}>*/}
+                                {/*    <span className={cls.b_text}>{t("admin:region")}: </span>*/}
+                                {/*    {data.address.region}*/}
+                                {/*</div>*/}
                                 <div className={cls.item}>
                                     <span className={cls.b_text}>{t("admin:city")}: </span>
                                     {data.address.city}
                                 </div>
-                                <div className={cls.item}>
-                                    <span className={cls.b_text}>{t("admin:country")}: </span>
-                                    {data.address.country}
-                                </div>
+                                {/*<div className={cls.item}>*/}
+                                {/*    <span className={cls.b_text}>{t("admin:country")}: </span>*/}
+                                {/*    {data.address.country}*/}
+                                {/*</div>*/}
                             </div>
                         </>}
                     </div>
