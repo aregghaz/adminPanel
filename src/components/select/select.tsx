@@ -131,7 +131,7 @@ const Select: React.FC<ISelect> = (
     };
     const handleOptionRemove: React.MouseEventHandler<HTMLButtonElement> = (e): void => {
         e.preventDefault()
-        selectRef.current.select.clearValue()
+        selectRef.current.clearValue()
     }
     return (
         <>
