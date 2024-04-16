@@ -4,6 +4,7 @@ import Calendar from "react-calendar";
 import timestampToDate from "../../utils/timestampToDate";
 import "react-calendar/dist/Calendar.css";
 import useOnClickOutside from "../../hooks/use-on-click-outside";
+import {ReactComponent as Close} from "../../images/Close.svg";
 
 interface IDataPicker {
     setFieldValue: (name: string, date: string) => void;
@@ -46,15 +47,19 @@ const DataPicker: React.FC<IDataPicker> = (
         <>
             {error && !value && <span className={s.error}>{error}</span>}
             {label && <label style={{color: error && !value ? "crimson" : value ? "#194b76" : "#757575"}} className={s.label}>{label}</label>}
-            <input
-                style={{
-                    ...style,
-                    color: value ? "grey" : "C4C4C4",
-                    // border: !singleFileUpload && error && !value ? "1px solid crimson" : type ? "none" : "",
-                }} type="text" className={`${s.input} ${error && !value && s.errorInput}`}
-                value={(value && value[0] !== null ) ? `${timestampToDate(value[0])} - ${timestampToDate(value[1])}` : ""}
-                onClick={() => setShow(!show)}
-                readOnly={true}/>
+           <div className={s.inputDiv}>
+               <input
+                   style={{
+                       ...style,
+                       color: value ? "grey" : "C4C4C4",
+                       // border: !singleFileUpload && error && !value ? "1px solid crimson" : type ? "none" : "",
+                   }} type="text" className={`${s.input} ${error && !value && s.errorInput}`}
+                   value={(value && value[0] !== null ) ? `${timestampToDate(value[0])} - ${timestampToDate(value[1])}` : ""}
+                   onClick={() => setShow(!show)}
+                   readOnly={true}/>
+               <Close onClick={() =>  setFieldValue(name, '')} />
+           </div>
+
             {show && <div className={`${s.dataPicker} ${className}`} ref={calendarRef}>
                 <Calendar
                 formats="MM-dd-yyyy"

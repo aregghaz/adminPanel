@@ -1,17 +1,36 @@
-/* Error: Can't find stylesheet to import.
- *   ,
- * 2 | @import "resources/frontend/styles/mixins";
- *   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
- *   '
- *   data-picker.module.scss 2:9  root stylesheet */
-
-body::before {
-  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
-      "Droid Sans Mono", monospace, monospace;
-  white-space: pre;
-  display: block;
-  padding: 1em;
-  margin-bottom: 1em;
-  border-bottom: 2px solid black;
-  content: "Error: Can't find stylesheet to import.\a   \2577 \a 2 \2502  @import \"resources/frontend/styles/mixins\";\a   \2502          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a   \2575 \a   data-picker.module.scss 2:9  root stylesheet";
+.dataPicker {
+  width: 100%;
+  position: absolute !important;
+  top: 110%;
+  left: 50%;
+  z-index: 3 !important;
+  transform: translateX(-50%);
 }
+
+.input {
+  cursor: pointer;
+  user-select: none;
+  position: relative;
+  width: 100%;
+  height: 50px;
+  padding-left: 10px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
+  outline: none;
+  color: gray;
+  border-bottom: 1px solid #19347a;
+}
+@media only screen and (max-width: 768px) {
+  .input {
+    font-size: 12px;
+  }
+}
+
+.inputDiv {
+  display: flex;
+  flex-direction: row;
+}
+
+/*# sourceMappingURL=data-picker.module.css.map */
