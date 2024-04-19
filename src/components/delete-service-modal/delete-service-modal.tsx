@@ -71,11 +71,11 @@ const DeleteServiceModal: React.FC<IDeleteServiceModal> = (
 
     let textData = ''
     let actionTypeNew = ''
-
+    console.log(actionType,'actionType')
     if (actionType === 'removePrice') {
         textData = 'asasasasas'
         actionTypeNew = 'removePriceData'
-    } else if (actionType === 'deleteModal') {
+    } else {
         actionTypeNew = 'deleteModal'
         textData = t("Do you want to delete")
     }

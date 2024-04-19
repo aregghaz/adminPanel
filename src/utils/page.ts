@@ -67,6 +67,7 @@ const  PageAction = (
         }
     };
     const handlerAction = async () => {
+        console.log(action,'action222')
         switch (action) {
             case "get":
                 await handlerSelectClient();

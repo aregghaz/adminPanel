@@ -45,6 +45,7 @@ const ProductsList: React.FC<IProductsList> = () => {
     const [ids, setIds] = useState([]);
     const handlerAction = async (action: string, id?: number) => {
         setActionType(action)
+        console.log(action,'action')
         return PageAction(crudKey, setLoading, loading, action, id, setIsModalOpen, ids, setIds)
     };
     const fetchMoreData = async () => {
