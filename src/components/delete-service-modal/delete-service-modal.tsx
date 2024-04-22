@@ -71,13 +71,12 @@ const DeleteServiceModal: React.FC<IDeleteServiceModal> = (
 
     let textData = ''
     let actionTypeNew = ''
-    console.log(actionType,'actionType')
     if (actionType === 'removePrice') {
-        textData = 'asasasasas'
+        textData = t("Хотите удалить специальные цены?")
         actionTypeNew = 'removePriceData'
     } else {
         actionTypeNew = 'deleteModal'
-        textData = t("Do you want to delete")
+        textData = t("Хотите удалить?")
     }
     return  (
         <Modal
@@ -96,9 +95,9 @@ const DeleteServiceModal: React.FC<IDeleteServiceModal> = (
                 <p className={s.text}>{textData}</p>
                 <div className={s.buttons}>
                     <Button type={"green"} onClick={() => handlerAction(actionTypeNew)}
-                            className={s.button}>{t("yes")}</Button>
+                            className={s.button}>{t("admin:yes")}</Button>
                     <Button type={"transparent"} onClick={handleCloseModal}
-                            className={`${s.button} ${s.buttonNo}`}>{t("no")}</Button>
+                            className={`${s.button} ${s.buttonNo}`}>{t("admin:no")}</Button>
                 </div>
             </div>
         </Modal>

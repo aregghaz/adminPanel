@@ -162,7 +162,6 @@ const Drawer = ({children}: { children: React.ReactNode }) => {
                                 <Button
                                     type={"blank"}
                                     onClick={() => {
-                                        console.log(menuOpen);
                                         openAccountMenu();
                                     }}
                                 >
@@ -186,7 +185,7 @@ const Drawer = ({children}: { children: React.ReactNode }) => {
                                                     <ProfileSvg/>
                                                 </span>
                                                 <span className={s.iconLabel}>
-                                                    Profile
+                                                    Профиль
                                                 </span>
                                             </Button>
                                         </div>
@@ -202,7 +201,7 @@ const Drawer = ({children}: { children: React.ReactNode }) => {
                                                     <Logout/>
                                                 </span>
                                                 <span className={s.iconLabel}>
-                                                    Log out
+                                                    Выйти
                                                 </span>
                                             </Button>
                                         </div>

@@ -10,7 +10,6 @@ import {ReactComponent as Import} from "../../images/Import.svg";
 import {ReactComponent as Search} from "../../images/Search.svg";
 import {ReactComponent as Close} from "../../images/Close.svg";
 import {ReactComponent as TrashIcon} from "../../images/trash.svg";
-import {ReactComponent as AssignIcon} from "../../images/car-travel-plus-add-svgrepo-com.svg";
 
 // import AssignVendorIcon from "../../images/add-company-icon.svg";
 // import AssignIcon from "../../images/car-travel-plus-add-svgrepo-com.svg";
@@ -82,7 +81,7 @@ const NavigationTab: React.FC<INavigationTab> = (
                 </div>}
                 {IsAssignTag && <div className={s.import_block}  onClick={() => handlerAction("addTag")}>
                     <div className={s.iconAbbr}>
-                       add tag
+                        добавить метку
                     </div>
                     <Tags
                         // style={{fill:'#3F7AAD'}}
@@ -91,7 +90,7 @@ const NavigationTab: React.FC<INavigationTab> = (
                 </div>}
                 {IsAssignStatus && <div className={s.import_block}  onClick={() => handlerAction("changeStatus")}>
                     <div className={s.iconAbbr}>
-                       change status
+                        изменить статус
                     </div>
                     <StatusSvg
                         // style={{fill:'#3F7AAD'}}
@@ -100,7 +99,7 @@ const NavigationTab: React.FC<INavigationTab> = (
                 </div>}
                 {IsAssignPrice && <div className={s.import_block} onClick={() => handlerAction("assignPrice")}>
                     <div className={s.iconAbbr}>
-                       change status
+                        назначить цену
                     </div>
                     <Ruble
                         // style={{fill:'#3F7AAD'}}
@@ -109,7 +108,7 @@ const NavigationTab: React.FC<INavigationTab> = (
                 </div>}
                 {IsRemovePrice && <div className={s.import_block} onClick={() => handlerAction("removePrice")}>
                     <div className={s.iconAbbr}>
-                       change status
+                        удалить цену
                     </div>
                     <Remove
                         // style={{fill:'#3F7AAD'}}
@@ -118,7 +117,7 @@ const NavigationTab: React.FC<INavigationTab> = (
                 </div>}
                 <div className={s.import_block}>
                     <div className={s.iconAbbr}>
-                        Download Excel
+                        скачать Excel
                     </div>
                     <label htmlFor="downloadTableExcel">
                         <DownloadTableExcel
@@ -134,7 +133,7 @@ const NavigationTab: React.FC<INavigationTab> = (
                     openSearch();
                 }}>
                     <div className={s.iconAbbr}>
-                        {open ? "Close" : "Search"}
+                        {open ? "Закрыть" : "поиск"}
                     </div>
                     {open ? <Close className={s.iconTest}/> : <Search className={s.iconTest}/>}
                 </div>

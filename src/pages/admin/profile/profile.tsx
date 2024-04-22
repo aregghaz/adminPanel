@@ -4,6 +4,7 @@ import ProfileItem from "../../../components/profile-item/profile-item";
 import Password from "../../../components/password/password";
 import Modal from "react-modal";
 import {authAPI} from "../../../api/admin-api/auth-api";
+import {ReactComponent as Close} from "../../../images/Close.svg";
 
 interface VendorProfileProps {
     path?: string,
@@ -24,15 +25,15 @@ const VendorProfile: FC<VendorProfileProps> = ({}): React.ReactElement => {
         const asd = await authAPI.getUser(token);
         setData(asd.data ? [
             {
-                name: "Name",
+                name: "fullName",
                 data: `${asd.data.name} ${asd.data.lastName} ${asd.data.fatherName}`
             },
             {
-                name: "Email",
+                name: "email",
                 data: asd.data.email
             },
             {
-                name: "Number",
+                name: "number",
                 data: asd.data.phone,
             },
         ] : [])
@@ -48,22 +49,7 @@ const VendorProfile: FC<VendorProfileProps> = ({}): React.ReactElement => {
     const [error, setError] = useState<any>({})
 
 
-    // const customStyles: ReactModal.Styles = {
-    //     content: {
-    //         position: "fixed",
-    //         border: "none",
-    //         overflowY: "unset",
-    //         outline: "none",
-    //         top: "50%",
-    //         left: "50%",
-    //         transform: "translate(-50% , -50%)",
-    //     },
-    //     overlay: {
-    //         zIndex: 500,
-    //         background: "rgba(0, 0, 0, 0.35)",
-    //         backdropFilter: "blur(5px)"
-    //     }
-    // };
+
 
 
     const handlePasswordInputChange = (e: any) => {
@@ -134,7 +120,7 @@ const VendorProfile: FC<VendorProfileProps> = ({}): React.ReactElement => {
                                         setChange(false)
                                     }
                                     }>
-                                        <i className="cancelicon-"/>
+                                        <Close />
                                     </div>
 
 
@@ -145,7 +131,7 @@ const VendorProfile: FC<VendorProfileProps> = ({}): React.ReactElement => {
                                         value={password.currentPassword}
                                         onChange={handlePasswordInputChange}
                                         label={""}
-                                        placeholder={"Current password"}
+                                        placeholder={"Текущий пароль"}
                                         autoComplete={"new-password"}
                                     />
                                     <Password
@@ -153,7 +139,7 @@ const VendorProfile: FC<VendorProfileProps> = ({}): React.ReactElement => {
                                         value={password.newPassword}
                                         onChange={handlePasswordInputChange}
                                         label={""}
-                                        placeholder={"New password"}
+                                        placeholder={"Новый пароль"}
                                         autoComplete={"new-password"}
                                     />
                                     <Password
@@ -161,16 +147,16 @@ const VendorProfile: FC<VendorProfileProps> = ({}): React.ReactElement => {
                                         value={password.newPasswordAgain}
                                         onChange={handlePasswordInputChange}
                                         label={""}
-                                        placeholder={"New password again"}
+                                        placeholder={"Новый пароль еще раз"}
                                         autoComplete={"new-password"}
                                     />
                                     {
                                         error.passwordNotMatch && <>
-                                            <p style={{color: "red"}} className={cls.text}>Password not matching</p>
+                                            <p style={{color: "red"}} className={cls.text}>Пароль не соответствует</p>
                                         </>
                                     }
-                                    <button onClick={handlePasswordChange} className={cls.changePasswordEnd}>change
-                                        password
+                                    <button onClick={handlePasswordChange} className={cls.changePasswordEnd}>
+                                        изменить пароль
                                     </button>
                                 </div>
                             </Modal>
@@ -182,20 +168,21 @@ const VendorProfile: FC<VendorProfileProps> = ({}): React.ReactElement => {
                             edit ? <>
                                     <button onClick={() => {
                                         setEdit(false)
-                                    }}>Save
+                                    }}>
+                                        Сохранить
                                     </button>
                                     <button className={cls.changePassword} onClick={() => {
                                         setChange(true)
 
                                     }
                                     }>
-                                        Change Password
+                                        Изменить пароль
                                     </button>
                                 </>
                                 :
                                 <button onClick={() => {
                                     setEdit(true)
-                                }}>Edit Profile</button>
+                                }}>Редактировать профиль</button>
                         }
                     </div>
                 </div>

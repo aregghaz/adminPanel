@@ -1,5 +1,6 @@
-import React, {FC, useState} from "react"
+import React, {FC} from "react"
 import cls from "./profile-item.module.scss"
+import {useTranslation} from "react-i18next";
 
 interface ProfileItemProps {
     name: string,
@@ -14,9 +15,13 @@ const ProfileItem:FC<ProfileItemProps> = ({
     edit,
     onFieldEdit,
 }) => {
+    const {t} = useTranslation();
+
     return (
         <div className={cls.userData}>
-            <span className={cls.title}>{name}:</span>
+            <span className={cls.title}>
+                {t(`admin:${name}`)}
+            </span>
                 {
                     edit ?
                         <input className={cls.editInput} value={data} onChange={(e) => {

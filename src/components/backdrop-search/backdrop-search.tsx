@@ -27,7 +27,7 @@ const BackDropSearch: React.FC<IBackDropSearch> = ({ handlerSubmit }) => {
                                 name={"search"}
                                 value={values.search}
                                 type={"text"}
-                                placeholder={t("search")}
+                                placeholder={t("поиск")}
                                 onChange={handleChange}
 
                             />

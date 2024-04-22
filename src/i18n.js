@@ -30,7 +30,6 @@ const options = {
 const resources = {
     ru:{
         admin: {
-
             ihh: 'ИНН',
             kpp: 'КПП',
             bik: 'БИК',
@@ -39,6 +38,7 @@ const resources = {
             url: 'URL',
             video: 'видео',
             notes: 'примечания',
+            number: 'Телефон',
             phone_1: 'Телефон 1',
             phone_2:'Телефон 2',
             phone_3: 'Телефон 3',
@@ -114,6 +114,8 @@ const resources = {
             yes:'Добавить',
             buyer:'покупатель',
             total:'сумма',
+            discount:'скидка',
+            dates:'даты',
 
             record_successfully_edited:'запись успешно изменена',
             record_successfully_added:'запись успешно добавлена',
