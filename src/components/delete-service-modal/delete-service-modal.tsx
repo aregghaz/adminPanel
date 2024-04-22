@@ -95,7 +95,7 @@ const DeleteServiceModal: React.FC<IDeleteServiceModal> = (
                 <p className={s.text}>{textData}</p>
                 <div className={s.buttons}>
                     <Button type={"green"} onClick={() => handlerAction(actionTypeNew)}
-                            className={s.button}>{t("admin:yes")}</Button>
+                            className={s.button}>{t("admin:yesRemove")}</Button>
                     <Button type={"transparent"} onClick={handleCloseModal}
                             className={`${s.button} ${s.buttonNo}`}>{t("admin:no")}</Button>
                 </div>
