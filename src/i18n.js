@@ -113,6 +113,7 @@ const resources = {
             tags:'Теги',
             yes:'Добавить',
             yesRemove:'да',
+            no:'нет',
             buyer:'покупатель',
             total:'сумма',
             discount:'скидка',
