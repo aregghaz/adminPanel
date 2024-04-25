@@ -4,12 +4,12 @@ import PageAction from "../../../utils/page";
 import DeleteModal from "../../../components/modal/deleteModal";
 import CrudTable from "../../../components/crud-table-user/crud-table";
 
-interface ITagsList {
+interface IProductsList {
     path: string;
 }
 
-const TagsList: React.FC<ITagsList> = () => {
-    const crudKey = "tags";
+const SubscriptionList: React.FC<IProductsList> = () => {
+    const crudKey = "subscription";
 
     const [data, setData] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -31,10 +31,8 @@ const TagsList: React.FC<ITagsList> = () => {
     const titles: Array<string> = [
         'action',
         'id',
-        'title',
-        'slug',
-        'position',
-        'updated'
+        'email',
+        'updated',
     ];
     const [ids, setIds] = useState([]);
     const handlerAction = async (action: string, id?: number) => {
@@ -74,4 +72,4 @@ const TagsList: React.FC<ITagsList> = () => {
 };
 
 
-export default TagsList;
+export default SubscriptionList;

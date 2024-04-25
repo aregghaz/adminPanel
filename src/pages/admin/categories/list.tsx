@@ -29,8 +29,8 @@ const CategoriesList: React.FC<IProductsList> = () => {
 
     const titles: Array<string> = [
         'action',
-        'image',
         'id',
+        'image',
         'title',
         'slug',
         'parent',

@@ -31,6 +31,7 @@ const VideoList: React.FC<IProductsList> = () => {
 
     const titles: Array<string> = [
         'action',
+        'id',
         'title',
         'video',
         'updated',

@@ -30,6 +30,7 @@ const UsersList: React.FC<IProductsList> = () => {
 
     const titles: Array<string> = [
         'action',
+        'id',
         'name',
         'lastName',
         'fatherName',

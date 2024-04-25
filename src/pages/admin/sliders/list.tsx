@@ -30,6 +30,7 @@ const SlidersList: React.FC<IProductsList> = () => {
 
     const titles: Array<string> = [
         'action',
+        'id',
         'image',
         'position',
         'status',

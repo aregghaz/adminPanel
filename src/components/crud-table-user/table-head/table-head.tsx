@@ -54,7 +54,7 @@ const TableHead: React.FC<ITableHead> = (
                 titles && titles
                     .map((title, index) => {
                             let classNameField = `${s.tableTd}`;
-                            return title !== "id" && (
+                            return  (
                                 <th
                                     onClick={() => titleSort(title)}
                                     className={classNameField}

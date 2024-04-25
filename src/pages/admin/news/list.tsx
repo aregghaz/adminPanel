@@ -33,6 +33,7 @@ const NewsList: React.FC<IProductsList> = () => {
 
     const titles: Array<string> = [
         'action',
+        'id',
         'title',
         'slug',
         // 'content',

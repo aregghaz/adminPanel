@@ -111,6 +111,11 @@ const Drawer = ({children}: { children: React.ReactNode }) => {
         item: "questions",
         page: '/questions',
         icon: <Tags/>
+    }, {
+        id: 16,
+        item: "Подписка",
+        page: '/subscription',
+        icon: <Tags/>
     }];
     const menuPages: any = [{
         id: 7,

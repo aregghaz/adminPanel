@@ -81,7 +81,7 @@ const TableBody: React.FC<ITableBody> = (
                                 {
                                     keys.map((key: any, i: number) => {
                                             let itemData = "";
-                                            if (key !== 'id') {
+                                         //   if (key !== 'id') {
                                                 switch (key) {
                                                     case "price" || 'special_price' :
                                                         return (
@@ -122,7 +122,7 @@ const TableBody: React.FC<ITableBody> = (
                                                                 {item[key]}
                                                             </TableData>)
                                                 }
-                                            }
+                                            //}
 
                                             // return i !== 0 && (
                                             //     <TableData key={key} item={item} className={key} click={true}
