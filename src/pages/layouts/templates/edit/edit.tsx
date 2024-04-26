@@ -50,6 +50,8 @@ const Edit: React.FC<IEdit> = (
                 formData.append("image", values[property]);
             } else if (property === 'banner') {
                 formData.append("banner", values[property]);
+            }else if (property === 'icon') {
+                formData.append("icon", values[property]);
             }
         }
         formData.append("_method", "put");
