@@ -221,7 +221,7 @@ const Dashboard: React.FC<IDashboard> = () => {
                     </div>
                     {
                         data.map((item: any) => {
-                            return (<div className={s.latest_div_item}>
+                            return (<div className={`${s.latest_div_item} ${item.status_id == 4 ? s.done_order:''}`}>
                                 <div className={s.lates_div_id}>
                                     {item.id}
                                 </div>

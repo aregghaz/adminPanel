@@ -46,6 +46,11 @@
   width: 23%;
 }
 
+.done_order {
+  background-color: #D63D3D;
+  color: white;
+}
+
 .lates_div_id {
   width: 10% !important;
 }

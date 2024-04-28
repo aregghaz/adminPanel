@@ -42,10 +42,11 @@ const TableBody: React.FC<ITableBody> = (
                 data
                     .map((item, index) => {
                         const keys = Object.keys(item);
+                       /// console.log(item.special_price > 0) ,'item')
                         return keys.length > 0 && (
 
                             <TableRow key={index} data-rowid={item["id"]}
-                                      className={`${selectedIds?.includes(item["id"]) ? s.chosen : ""} ${s.tableBColor}`}>
+                                      className={`${selectedIds?.includes(item["id"]) ? s.chosen : ""} ${item.special_price > 0 ? s.special_price:''} ${s.tableBColor}`}>
                                 {/*className={`${s.tableBColor}`}>*/}
                                 {
                                     (isEdit || isDelete || isInfo) &&
