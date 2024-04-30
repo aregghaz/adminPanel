@@ -16,6 +16,7 @@ const ProductCreate: React.FC<IUserCreate> = () => {
     const fields: Array<any> = [
         {name: "title", type: "input", label: "title", placeholder: "title"},
         {name: "quantity", type: "input", inputType: 'number', label: "quantity", placeholder: "quantity"},
+        {name: "stock", type: "input",  label: "stock", placeholder: "stock"},
         {name: 'brand_id', type: 'select', label: 'brands'},
         {name: "price", type: "input", inputType: 'number', label: "price", placeholder: "price"},
         {

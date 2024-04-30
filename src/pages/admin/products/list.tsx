@@ -31,14 +31,14 @@ const ProductsList: React.FC<IProductsList> = () => {
         'action',
         'id',
         'image',
-
         'name',
+        'stock',
         'price',
         'special_price',
         'slug',
         'teg',
         'brand',
-        'categories',
+        // 'categories',
         'updated'
     ];
     const tableRef = useRef(null);
