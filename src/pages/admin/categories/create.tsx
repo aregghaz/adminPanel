@@ -30,7 +30,6 @@ const CategoryCreate: React.FC<IUserCreate> = () => {
         (
             async () => {
                 const data = await AdminApi.create(crudKey)
-
                 setData(data);
             }
         )();

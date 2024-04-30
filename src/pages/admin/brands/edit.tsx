@@ -14,6 +14,8 @@ const BrandsEdit: React.FC<IPageEdit> = ({id, path}) => {
         {name: "title", type: "input", label: "title", placeholder: "title"},
         {name: 'image', type: 'file', label: 'image'},
         {name: 'meta_title', type: 'input', label: 'meta_title'},
+        {name: "top", type: "select", label: "top", placeholder: "top"},
+
         {name: 'meta_key', type: 'input', label: 'meta_key'},
         {name: "meta_desc", type: "textarea", label: "meta_desc", placeholder: "meta_desc"},
         {name: "description", type: "richText", label: "description", placeholder: "description"},
