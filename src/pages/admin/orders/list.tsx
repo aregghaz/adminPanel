@@ -31,6 +31,7 @@ const OrdersList: React.FC<IProductsList> = () => {
 
     const titles: Array<string> = [
         'action',
+        'id',
         'orderId',
         'user',
         'status',

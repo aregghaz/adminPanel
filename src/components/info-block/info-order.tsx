@@ -67,7 +67,7 @@ const InfoOrder: FC<IProps> = ({data}) => {
                         })}
                     </div>
                     <div className={cls.addressBlock}>
-                        {data.address && <>
+                        {data.user && <>
                             <div className={cls.itemsRow}>
                                 <div className={cls.item}>
                                     <span className={cls.b_text}>{t("admin:fullName")}: </span>
