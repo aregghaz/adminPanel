@@ -10,7 +10,6 @@ Flmngr.load({
 });
 
 interface MyComponentProps {
-    num?: number;
     oldImage?: any;
     handleChange: any
     isMulti: boolean
@@ -18,7 +17,6 @@ interface MyComponentProps {
 
 export class FileManager extends React.Component<MyComponentProps> {
     render() {
-        console.log(this.props.oldImage, 'this.props.oldImage')
         return <>
             {this.props.oldImage && (
                 <div className={s.existingImageBlock}>

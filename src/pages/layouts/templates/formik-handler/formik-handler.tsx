@@ -161,8 +161,6 @@ const FormikHandler: React.FC<IFormikHandler> = (
             return (
                 <div style={{width: "100%"}}>
                     <FileManager
-                        num={1}
-                        // name={item.name}
                         isMulti={false}
                         oldImage={values[item.name]}
                         handleChange={(files: any) => {

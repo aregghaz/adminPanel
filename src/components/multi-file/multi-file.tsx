@@ -139,7 +139,6 @@ const MultiFile: React.FC<ISingleFileUpload> = ({
                                         {/*<input type="file" id="fileupload" className={s.file_upload_input}*/}
                                         {/*       onChange={InputChange} multiple/>*/}
                                         <FileManager
-                                            num={1}
                                             // name={item.name}
                                             isMulti={true}
                                             // oldImage={values[item.name]}
