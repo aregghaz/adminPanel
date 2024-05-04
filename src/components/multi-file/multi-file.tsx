@@ -85,6 +85,7 @@ const MultiFile: React.FC<ISingleFileUpload> = ({
                     });
                 }
                 if (e) {
+                    console.log(e,'asdasds')
                     reader.readAsDataURL(file);
                 }
             ///}
