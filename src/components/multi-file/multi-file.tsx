@@ -56,18 +56,17 @@ const MultiFile: React.FC<ISingleFileUpload> = ({
 
     const InputChange =
         (e: any) => {
-            console.log(e, 'q')
-            // if (e.target.files && e.target.files.length > 0) {
-            for (let i = 0; i < e.target.files.length; i++) {
+
+           // for (let i = 0; i < e.target.files.length; i++) {
                 let reader = new FileReader();
-                let file = e.target.files[i];
+                let file = e;
                 reader.onloadend = () => {
                     setImages((preValue: any) => {
                         return [
                             ...preValue,
                             {
-                                id: i,
-                                img: e.target.files[i],
+                                id: selectedfile.length+1,
+                                img: e,
                             }
                         ]
                     });
@@ -75,20 +74,20 @@ const MultiFile: React.FC<ISingleFileUpload> = ({
                         return [
                             ...preValue,
                             {
-                                id: i,
-                                filename: e.target.files[i].name,
-                                filetype: e.target.files[i].type,
+                                id: selectedfile.length+1,
+                                filename: e.target.files[selectedfile.length+1].name,
+                                filetype: e.target.files[selectedfile.length+1].type,
                                 fileimage: reader.result,
                                 // datetime: e.target.files[i].lastModifiedDate.toLocaleString('en-IN'),
-                                filesize: filesizes(e.target.files[i].size)
+                                filesize: filesizes(e.target.files[selectedfile.length+1].size)
                             }
                         ]
                     });
                 }
-                if (e.target.files[i]) {
+                if (e.target.files[selectedfile.length+1]) {
                     reader.readAsDataURL(file);
                 }
-            }
+            ///}
 
             // }
         }
@@ -140,7 +139,7 @@ const MultiFile: React.FC<ISingleFileUpload> = ({
                                         {/*       onChange={InputChange} multiple/>*/}
                                         <FileManager
                                             // name={item.name}
-                                            isMulti={true}
+                                            isMulti={false}
                                             // oldImage={values[item.name]}
                                             handleChange={InputChange}
                                         />
