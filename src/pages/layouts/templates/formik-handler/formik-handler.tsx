@@ -161,16 +161,17 @@ const FormikHandler: React.FC<IFormikHandler> = (
             return (
                 <div style={{width: "100%"}}>
                     <FileManager
-                        name={item.name}
-                        oldImage={values[item.name]}
-                        onChange={(files: any) => {
+                        num={1}
+                        // name={item.name}
+                        // oldImage={values[item.name]}
+                        handleChange={(files: any) => {
                             console.log(files,'files')
                             setFieldValue(item.name, files);
                         }}
-                        type={item.inputType}
-                        label={getFieldLabel(t, item.label, item.name, requiredFields)}
-                        value={values}
-                        error={errors[item.name]}
+                        // type={item.inputType}
+                        // label={getFieldLabel(t, item.label, item.name, requiredFields)}
+                        // value={values}
+                        // error={errors[item.name]}
 
                     />
                     {/*<SingleFileUpload*/}
