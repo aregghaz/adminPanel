@@ -1400,6 +1400,13 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.56.0.tgz#ef20350fec605a7f7035a01764731b2de0f3782b"
   integrity sha512-gMsVel9D7f2HLkBma9VbtzZRehRogVRfbr++f06nL2vnCGCNlzOD+/MUov/F4p8myyAHspEhVobgjpX64q5m6A==
 
+"@flmngr/flmngr-react@^2.0.4":
+  version "2.0.4"
+  resolved "https://registry.yarnpkg.com/@flmngr/flmngr-react/-/flmngr-react-2.0.4.tgz#cf507caec0cbbee83344987970729d592c0b6479"
+  integrity sha512-cQJbeVBVM9zGJt8D5zOHzZ67AUaPqf8MVNR9rrOBhJXHzuV0U0TMQQ8T40L+qgoTSZacqw3IAjlx1g8eMChumQ==
+  dependencies:
+    flmngr "^2.0.0"
+
 "@floating-ui/core@^1.5.3":
   version "1.5.3"
   resolved "https://registry.yarnpkg.com/@floating-ui/core/-/core-1.5.3.tgz#b6aa0827708d70971c8679a16cf680a515b8a52a"
@@ -5095,6 +5102,13 @@ flatted@^3.2.9:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.9.tgz#7eb4c67ca1ba34232ca9d2d93e9886e611ad7daf"
   integrity sha512-36yxDn5H7OFZQla0/jFJmbIKTdZAQHngCedGxiMmpNfEZM0sdEeT+WczLQrjK6D7o2aiyLYDnkw0R3JK0Qv1RQ==
 
+flmngr@^2.0.0:
+  version "2.0.13"
+  resolved "https://registry.yarnpkg.com/flmngr/-/flmngr-2.0.13.tgz#8429ba8f6e723df7ce6fec7548e5cecde0028c91"
+  integrity sha512-NWu+5cEzVsrk5BS3Ui3HU1R8LA02CbVJh8VMh9Y/egDRCd/9B2Y/1fwBaQmwQ6tZrsJ3sS8xYUzfm4+Ua7gJEg==
+  dependencies:
+    mime "^3.0.0"
+
 follow-redirects@^1.0.0, follow-redirects@^1.15.4:
   version "1.15.5"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.5.tgz#54d4d6d062c0fa7d9d17feb008461550e3ba8020"
@@ -7064,6 +7078,11 @@ mime@1.6.0:
   version "1.6.0"
   resolved "https://registry.yarnpkg.com/mime/-/mime-1.6.0.tgz#32cd9e5c64553bd58d19a568af452acff04981b1"
   integrity sha512-x0Vn8spI+wuJ1O6S7gnbaQg8Pxh4NNHb7KSINmEWKiPE4RKOplvijn+NkmYmmRgP68mc70j2EbeTFRsrswaQeg==
+
+mime@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/mime/-/mime-3.0.0.tgz#b374550dca3a0c18443b0c950a6a58f1931cf7a7"
+  integrity sha512-jSCU7/VB1loIWBZe14aEYHU/+1UMEHoaO7qxCOVJOw9GgH72VAWppxNcjU+x9a2k3GSIBXNKxXQFqRvvZ7vr3A==
 
 mimic-fn@^2.1.0:
   version "2.1.0"
