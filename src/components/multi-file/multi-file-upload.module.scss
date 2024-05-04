@@ -113,6 +113,12 @@ a, a:hover, a:focus {
     flex: 1;
     width: calc(100% - 210px);
 }
+.upload_button button{
+    background: inherit;
+    border: none;
+    fill:#0C96D1;
+    cursor: pointer;
+}
 .file_detail h6 {
     word-break: break-all;
     font-size: 13px;

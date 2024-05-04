@@ -3,6 +3,11 @@ import s from './multi-file-upload.module.scss'
 import {AdminApi} from "../../api/admin-api/admin-api";
 import {fakeUrl} from "../../utils/getFieldLabel";
 import FileManager from "../file";
+import {toast} from "react-toastify";
+import {useTranslation} from "react-i18next";
+import {ReactComponent as Upload} from "../../svgs/Upload.svg";
+import {ReactComponent as Trash} from "../../svgs/remove.svg";
+
 
 interface ISingleFileUpload {
     id: number,
@@ -43,15 +48,6 @@ const MultiFile: React.FC<ISingleFileUpload> = ({
             }
         )();
     }, [loading]);
-    const filesizes = (bytes: number, decimals = 2) => {
-        if (bytes === 0) return '0 Bytes';
-        const k = 1024;
-        const dm = decimals < 0 ? 0 : decimals;
-        const sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
-        const i = Math.floor(Math.log(bytes) / Math.log(k));
-        return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + ' ' + sizes[i];
-    }
-
 
     const InputChange =
         (e: any) => {
@@ -89,6 +85,7 @@ const MultiFile: React.FC<ISingleFileUpload> = ({
             setImages(result2);
         }
     }
+    const {t} = useTranslation();
 
     const FileUploadSubmit = async (e: any) => {
         e.preventDefault();
@@ -97,6 +94,11 @@ const MultiFile: React.FC<ISingleFileUpload> = ({
             const data = await AdminApi.saveImages({images: images, id: id})
             setOldImage(data.data);
             SetSelectedFile([])
+            const options = {
+                type: toast.TYPE.SUCCESS,
+                position: toast.POSITION.TOP_RIGHT
+            };
+            toast(t("admin:record_successfully_added"), options);
         } else {
             alert('Пожалуйста, выберите файл')
         }
@@ -117,13 +119,9 @@ const MultiFile: React.FC<ISingleFileUpload> = ({
                                 <div className={s.kb_file_upload}>
                                     <div className={s.file_upload_box}>
                                         <FileManager
-                                            // name={item.name}
                                             isMulti={false}
-                                            // oldImage={values[item.name]}
                                             handleChange={InputChange}
                                         />
-                                        <span>Drag and drop or <span
-                                            className={s.file_link}>Choose your files</span></span>
                                     </div>
                                 </div>
                                 <div className="kb-attach-box mb-3">
@@ -146,7 +144,7 @@ const MultiFile: React.FC<ISingleFileUpload> = ({
                                                         <h6>{fileimage}</h6>
                                                         <div className={s.file_actions}>
                                                             <button type="button" className={s.file_action_btn}
-                                                                    onClick={() => DeleteSelectFile(id)}>Delete
+                                                                    onClick={() => DeleteSelectFile(id)}><Trash/>
                                                             </button>
                                                         </div>
                                                     </div>
@@ -155,8 +153,8 @@ const MultiFile: React.FC<ISingleFileUpload> = ({
                                         })
                                     }
                                 </div>
-                                <div className="kb-buttons-box">
-                                    <button type="submit" className="btn btn-primary form-submit">Upload
+                                <div className={s.upload_button}>
+                                    <button type="submit"><Upload/>
                                     </button>
                                 </div>
                                 <br/>
@@ -178,7 +176,7 @@ const MultiFile: React.FC<ISingleFileUpload> = ({
                                                     <div className={s.file_detail}>
                                                         <div className={s.file_actions}>
                                                             <button type="button" className={s.file_action_btn}
-                                                                    onClick={() => deleteOldImage(id)}>Delete
+                                                                    onClick={() => deleteOldImage(id)}><Trash/>
                                                             </button>
                                                         </div>
                                                     </div>
