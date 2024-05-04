@@ -1,6 +1,7 @@
 import Flmngr from "@flmngr/flmngr-react";
 import * as React from "react";
 import {fakeUrl} from "../utils/getFieldLabel";
+import s from "./single-file-upload/single-file-upload.module.scss";
 
 Flmngr.load({
     apiKey: "FLMNFLMN",                                  // default free key
@@ -9,19 +10,19 @@ Flmngr.load({
 });
 interface MyComponentProps {
     num?: number;
+    oldImage?: any;
     handleChange:any
 }
 export class FileManager extends React.Component<MyComponentProps> {
-    constructor(props:any) {
-        super(props);
-        // Don't call this.setState() here!
-        this.state = { counter: 0 };
-        ///const {handleChange} = this.props;
-      ///  console.log(handleChange)
-    }
     render() {
-console.log(this.props)
-        return <button
+        console.log(this.props.oldImage,'this.props.oldImage')
+        return <>
+            {this.props.oldImage && (
+                <div className={s.existingImageBlock}>
+                    <img className={s.existingImage} src={this.props.oldImage} />
+                </div>
+            )}
+            <button
             onClick={(e) => {
                 e.preventDefault()
                 Flmngr.open({
@@ -37,7 +38,7 @@ console.log(this.props)
             }}
         >
             Open file manager
-        </button>
+        </button> </>
     }
 
 }
