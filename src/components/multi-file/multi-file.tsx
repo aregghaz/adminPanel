@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import s from './multi-file-upload.module.scss'
 import {AdminApi} from "../../api/admin-api/admin-api";
 import {fakeUrl} from "../../utils/getFieldLabel";
+import FileManager from "../file";
 
 interface ISingleFileUpload {
     id: number,
@@ -85,7 +86,6 @@ const MultiFile: React.FC<ISingleFileUpload> = ({
                     });
                 }
                 if (e.target.files[i]) {
-                    console.log(file)
                     reader.readAsDataURL(file);
                 }
             }
@@ -110,7 +110,7 @@ const MultiFile: React.FC<ISingleFileUpload> = ({
     const FileUploadSubmit = async (e: any) => {
         e.preventDefault();
         e.target.reset();
-        console.log(selectedfile.length > 0,selectedfile.length,'1232')
+
         if (selectedfile.length > 0) {
             ////FIXME ADD NOTIFICATION
            const data = await AdminApi.saveImages({images: images, id: id})
@@ -136,8 +136,15 @@ const MultiFile: React.FC<ISingleFileUpload> = ({
                             <form onSubmit={FileUploadSubmit}>
                                 <div className={s.kb_file_upload}>
                                     <div className={s.file_upload_box}>
-                                        <input type="file" id="fileupload" className={s.file_upload_input}
-                                               onChange={InputChange} multiple/>
+                                        {/*<input type="file" id="fileupload" className={s.file_upload_input}*/}
+                                        {/*       onChange={InputChange} multiple/>*/}
+                                        <FileManager
+                                            num={1}
+                                            // name={item.name}
+                                            isMulti={true}
+                                            // oldImage={values[item.name]}
+                                            handleChange={InputChange}
+                                        />
                                         <span>Drag and drop or <span
                                             className={s.file_link}>Choose your files</span></span>
                                     </div>
