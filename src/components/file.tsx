@@ -30,7 +30,7 @@ console.log(this.props)
                     onFinish: (files:any) => {
                         console.log("User picked:");
                         console.log(files);
-                        this.props.handleChange(files)
+                        this.props.handleChange(files[0].url)
                     }
                 });
 
