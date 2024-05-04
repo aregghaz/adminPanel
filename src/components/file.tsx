@@ -1,7 +1,11 @@
 import Flmngr from "@flmngr/flmngr-react";
 import * as React from "react";
 import {fakeUrl} from "../utils/getFieldLabel";
-
+Flmngr.load({
+    apiKey: "FLMNFLMN",                                  // default free key
+    urlFileManager: fakeUrl+'/flmngr', // demo server
+    urlFiles: fakeUrl+'/storage',             // demo file storage
+});
 export class MyButton extends React.Component {
 
     render() {
@@ -9,9 +13,6 @@ export class MyButton extends React.Component {
             onClick={() => {
 
                 Flmngr.open({
-                    apiKey: "FLMNFLMN",                                  // default free key
-                    urlFileManager: fakeUrl+'/api/flmngr', // demo server
-                    urlFiles: fakeUrl+'/storage',             // demo file storage
                     isMultiple: false,                                   // let selecting a single file
                     acceptExtensions: ["png", "jpg", "jpeg", "gif", "webp"],
                     onFinish: (files) => {
