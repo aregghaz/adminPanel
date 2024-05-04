@@ -16,18 +16,6 @@ export interface IOption {
     slug?: string;
 }
 
-export interface IOptionMultiselect {
-    id: number;
-    value: string;
-    label?: string;
-    slug?: string;
-}
-
-interface IMenu {
-    props?: any;
-    options: any;
-    ///  handlerAdd: () => void;
-}
 
 interface ISelect {
     styles?: any,
@@ -43,6 +31,7 @@ interface ISelect {
     value?: Array<IOption> | IOption
     name?: string
     label?: string
+    isShow?: boolean
     isMulti?: boolean
     authCheckboxLabelStyle?: string
     labelStyle?: any
@@ -51,28 +40,14 @@ interface ISelect {
     handlerMenuClose?: () => void
     hideSelectedOptions?: boolean
     isDisabled?: boolean
-    isMenuAdd?: boolean,
-    ///  handlerAdd: any
-
 }
 
-
-const Option = (props: any) => {
-    const {t} = useTranslation();
-    return (<components.Option {...props}>
-        <Checkbox
-            label={t(props.label)}
-            checked={props.isSelected}
-            labelStyle={props.selectProps.authCheckboxLabelStyle}
-        />
-    </components.Option>);
-};
 
 const SelectGroup: React.FC<ISelect> = (
     {
         allowValueClear = true,
         styles = {},
-        isCheckbox = false,
+        isShow = false,
         isSearchable = true,
         placeholder = "",
         options,
@@ -88,7 +63,6 @@ const SelectGroup: React.FC<ISelect> = (
         handlerMenuClose,
         handlerMenuOpen,
         hideSelectedOptions = false,
-        isMenuAdd = true,
         isDisabled = false,
         //   handlerAdd,
         error,
@@ -118,7 +92,6 @@ const SelectGroup: React.FC<ISelect> = (
                 options: item.options
             })
         })
-        console.log(asd, 'asdasd')
         return asd;
 
     };
@@ -138,7 +111,7 @@ const SelectGroup: React.FC<ISelect> = (
                 color: error && !value ? "crimson" : value ? "#194b76" : "#757575",
             }} htmlFor={name}>{t(label)}</label>}
             <div className={s.wrapper}>
-                <div className={s.buttonsSelect}>
+                {isShow && <div className={s.buttonsSelect}>
                     {isMulti && <><Button
                         type={"green"}
                         onClick={markAll}
@@ -156,7 +129,7 @@ const SelectGroup: React.FC<ISelect> = (
                         >
                             {t(`admin:remove_all`)}
                         </Button></>}
-                </div>
+                </div>}
                 <div className={s.selectWrapper}>
                     <ReactSelect
                         ref={selectRef}

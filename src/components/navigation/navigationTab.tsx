@@ -21,6 +21,8 @@ import {ReactComponent as Tags} from "../../svgs/tags.svg";
 import {ReactComponent as StatusSvg} from "../../svgs/status.svg";
 import {ReactComponent as Ruble} from "../../svgs/ruble.svg";
 import {ReactComponent as Remove} from "../../svgs/remove.svg";
+import SelectGroup from "../select/selectGroup";
+import {IOption} from "../select/select";
 
 
 interface INavigationTab {
@@ -32,12 +34,16 @@ interface INavigationTab {
     IsAssignTag?: boolean,
     IsRemovePrice?: boolean,
     IsAssignStatus?: boolean,
+    IsSelectCategory?: boolean,
     tableRef: any,
     setQuery: any,
     setLoading: any,
     loading: any,
     setOpen: any,
+    category?: any,
+    selectedCategory?: any,
     handlerAction: (action: string) => void;
+    setFieldValue?: (action: string, dataValue: any) => void;
 
 }
 
@@ -51,7 +57,11 @@ const NavigationTab: React.FC<INavigationTab> = (
         setOpen,
         IsAssignPrice,
         IsRemovePrice,
+        IsSelectCategory = false,
         handlerAction,
+        selectedCategory,
+        setFieldValue,
+        category = [],
         isDelete = true,
         IsAssignTag = false,
         IsAssignStatus = false,
@@ -70,7 +80,7 @@ const NavigationTab: React.FC<INavigationTab> = (
     };
     return (
         <div style={{display: "flex", flexDirection: 'row'}}>
-            <div style={{display: "flex", gap: "10px", padding: 20}}>
+            <div style={{display: "flex", gap: "20px", padding: 20}}>
                 {isDelete && <div className={s.import_block} onClick={() => handlerAction('groupDelete')}>
                     <div className={s.iconAbbr}>
                         удалить
@@ -79,7 +89,7 @@ const NavigationTab: React.FC<INavigationTab> = (
                         height="24px"
                     />
                 </div>}
-                {IsAssignTag && <div className={s.import_block}  onClick={() => handlerAction("addTag")}>
+                {IsAssignTag && <div className={s.import_block} onClick={() => handlerAction("addTag")}>
                     <div className={s.iconAbbr}>
                         добавить метку
                     </div>
@@ -88,7 +98,7 @@ const NavigationTab: React.FC<INavigationTab> = (
                         className={` ${s.iconTest} `}
                     />
                 </div>}
-                {IsAssignStatus && <div className={s.import_block}  onClick={() => handlerAction("changeStatus")}>
+                {IsAssignStatus && <div className={s.import_block} onClick={() => handlerAction("changeStatus")}>
                     <div className={s.iconAbbr}>
                         изменить статус
                     </div>
@@ -115,6 +125,8 @@ const NavigationTab: React.FC<INavigationTab> = (
                         className={` ${s.iconTest} `}
                     />
                 </div>}
+
+
                 <div className={s.import_block}>
                     <div className={s.iconAbbr}>
                         скачать Excel
@@ -137,6 +149,23 @@ const NavigationTab: React.FC<INavigationTab> = (
                     </div>
                     {open ? <Close className={s.iconTest}/> : <Search className={s.iconTest}/>}
                 </div>
+                {IsSelectCategory && setFieldValue && <div style={{minWidth:250, maxWidth:700}} >
+                    <SelectGroup
+                        value={selectedCategory}
+                        getOptionValue={(option: IOption) => option.value}
+                        getOptionLabel={(option: IOption) => option.label}
+                        options={category}
+                        onChange={(option: IOption) => setFieldValue('SelectGroup', option)}
+                        label={''}
+                        isSearchable={true}
+                        name={'SelectGroup'}
+                        isMulti={false}
+                        placeholder={''}
+                        allowValueClear={true}
+
+                    />
+                </div>
+                }
             </div>
             <div
                 className={`${s.header_input_block} ${open ? s.active : s.passive}`}
