@@ -15,6 +15,7 @@ import DataPicker from "../../../../components/data-picker/data-picker";
 import Autocomplete from "../../../../components/autocomplate/autocomplete";
 import Password from "../../../../components/password/password";
 import SelectGroup from "../../../../components/select/selectGroup";
+import FileManager from "../../../../components/file";
 
 export interface IItem {
     type: "input" | "password" | "selectGroup" | "autocomplete" | "address" | "timePicker" | "checkbox" | "richText" | "textarea" | "select" | "file" | "textField" | "radio" | "datepicker" | "multiSelect" | "attributes" | "hidden";
@@ -159,17 +160,30 @@ const FormikHandler: React.FC<IFormikHandler> = (
         case "file":
             return (
                 <div style={{width: "100%"}}>
-                    <SingleFileUpload
+                    <FileManager
                         name={item.name}
                         oldImage={values[item.name]}
-                        onChange={(event) => {
-                            setFieldValue(item.name, event.currentTarget.files[0]);
+                        onChange={(files: any) => {
+                            console.log(files,'files')
+                            setFieldValue(item.name, files);
                         }}
                         type={item.inputType}
                         label={getFieldLabel(t, item.label, item.name, requiredFields)}
                         value={values}
                         error={errors[item.name]}
+
                     />
+                    {/*<SingleFileUpload*/}
+                    {/*    name={item.name}*/}
+                    {/*    oldImage={values[item.name]}*/}
+                    {/*    onChange={(event) => {*/}
+                    {/*        setFieldValue(item.name, event.currentTarget.files[0]);*/}
+                    {/*    }}*/}
+                    {/*    type={item.inputType}*/}
+                    {/*    label={getFieldLabel(t, item.label, item.name, requiredFields)}*/}
+                    {/*    value={values}*/}
+                    {/*    error={errors[item.name]}*/}
+                    {/*/>*/}
                 </div>
             );
         case "textField":

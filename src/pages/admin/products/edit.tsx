@@ -4,7 +4,6 @@ import {useTranslation} from "react-i18next";
 import {AdminApi} from "../../../api/admin-api/admin-api";
 import {IPageEdit} from "../../../types/admin";
 import MultiFile from "../../../components/multi-file/multi-file";
-import {MyButton} from "../../../components/file";
 
 
 const ProductEdit: React.FC<IPageEdit> = ({id, path}) => {
@@ -71,7 +70,7 @@ const ProductEdit: React.FC<IPageEdit> = ({id, path}) => {
         data &&
         <>
             {id && <MultiFile loading={loading} setLoading={setLoading} data={data.images} id={id}/>}
-            <MyButton/>
+
             <Edit
                 crudKey={crudKey}
                 data={data}
