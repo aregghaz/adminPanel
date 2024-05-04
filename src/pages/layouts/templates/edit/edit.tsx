@@ -45,15 +45,6 @@ const Edit: React.FC<IEdit> = (
     const submit = async (values: FormikValues, {setSubmitting}: FormikHelpers<FormikValues>) => {
         setSubmitting(true);
         const formData: FormData = new FormData();
-        for (let property in values) {
-            if (property === 'image') {
-                formData.append("image", values[property]);
-            } else if (property === 'banner') {
-                formData.append("banner", values[property]);
-            }else if (property === 'icon') {
-                formData.append("icon", values[property]);
-            }
-        }
         formData.append("_method", "put");
         formData.append("value", JSON.stringify(values));
         const res: any = await AdminApi.update(formData, crudKey, values.id);
