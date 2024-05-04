@@ -25,7 +25,7 @@ const MultiFile: React.FC<ISingleFileUpload> = ({
                                                     data,
                                                     setLoading,
                                                     loading
-}
+                                                }
 ) => {
 
     const [selectedfile, SetSelectedFile] = useState<Array<any>>([]);
@@ -53,44 +53,27 @@ const MultiFile: React.FC<ISingleFileUpload> = ({
     }
 
 
-
     const InputChange =
         (e: any) => {
-
-           // for (let i = 0; i < e.target.files.length; i++) {
-                let reader = new FileReader();
-                let file = e;
-                reader.onloadend = () => {
-                    setImages((preValue: any) => {
-                        return [
-                            ...preValue,
-                            {
-                                id: selectedfile.length+1,
-                                img: e,
-                            }
-                        ]
-                    });
-                    SetSelectedFile((preValue: any) => {
-                        return [
-                            ...preValue,
-                            {
-                                id: selectedfile.length+1,
-                              //  filename: e.target.files[selectedfile.length+1].name,
-                                ///filetype: e.target.files[selectedfile.length+1].type,
-                                fileimage: reader.result,
-                                // datetime: e.target.files[i].lastModifiedDate.toLocaleString('en-IN'),
-                                ///filesize: filesizes(e.size)
-                            }
-                        ]
-                    });
-                }
-                if (e) {
-                    console.log(e,'asdasds')
-                    reader.readAsText(file);
-                }
-            ///}
-
-            // }
+            const file = e;
+            setImages((preValue: any) => {
+                return [
+                    ...preValue,
+                    {
+                        id: selectedfile.length + 1,
+                        img: e,
+                    }
+                ]
+            });
+            SetSelectedFile((preValue: any) => {
+                return [
+                    ...preValue,
+                    {
+                        id: selectedfile.length + 1,
+                        fileimage: file,
+                    }
+                ]
+            });
         }
 
     const deleteOldImage = async (id: number) => {
@@ -110,11 +93,8 @@ const MultiFile: React.FC<ISingleFileUpload> = ({
     const FileUploadSubmit = async (e: any) => {
         e.preventDefault();
         e.target.reset();
-
         if (selectedfile.length > 0) {
-            ////FIXME ADD NOTIFICATION
-           const data = await AdminApi.saveImages({images: images, id: id})
-            // setLoading(!loading)
+            const data = await AdminApi.saveImages({images: images, id: id})
             setOldImage(data.data);
             SetSelectedFile([])
         } else {
@@ -136,8 +116,6 @@ const MultiFile: React.FC<ISingleFileUpload> = ({
                             <form onSubmit={FileUploadSubmit}>
                                 <div className={s.kb_file_upload}>
                                     <div className={s.file_upload_box}>
-                                        {/*<input type="file" id="fileupload" className={s.file_upload_input}*/}
-                                        {/*       onChange={InputChange} multiple/>*/}
                                         <FileManager
                                             // name={item.name}
                                             isMulti={false}
@@ -153,30 +131,19 @@ const MultiFile: React.FC<ISingleFileUpload> = ({
                                         selectedfile.map((data, index) => {
                                             const {
                                                 id,
-                                                filename,
-                                                filetype,
                                                 fileimage,
-                                                datetime,
-                                                filesize
                                             } = data;
-
                                             return (
                                                 <div className={s.file_atc_box} key={id}>
                                                     {
-                                                        filename.match(/.(jpg|jpeg|png|gif|svg)$/i) ?
+                                                        fileimage.match(/.(jpg|jpeg|png|gif|svg)$/i) ?
                                                             <div className={s.file_image}><img src={fileimage}
                                                                                                alt=""/></div> :
                                                             <div className={s.file_image}><i
                                                             ></i></div>
                                                     }
                                                     <div className={s.file_detail}>
-                                                        <h6>{filename}</h6>
-                                                        <p></p>
-                                                        <p>
-                                                            <span>Size: {filesize}</span>
-                                                            <span>Modified Time : {datetime}
-                                                                    </span>
-                                                        </p>
+                                                        <h6>{fileimage}</h6>
                                                         <div className={s.file_actions}>
                                                             <button type="button" className={s.file_action_btn}
                                                                     onClick={() => DeleteSelectFile(id)}>Delete
