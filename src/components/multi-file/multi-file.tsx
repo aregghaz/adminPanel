@@ -75,16 +75,16 @@ const MultiFile: React.FC<ISingleFileUpload> = ({
                             ...preValue,
                             {
                                 id: selectedfile.length+1,
-                                filename: e.target.files[selectedfile.length+1].name,
-                                filetype: e.target.files[selectedfile.length+1].type,
+                              //  filename: e.target.files[selectedfile.length+1].name,
+                                ///filetype: e.target.files[selectedfile.length+1].type,
                                 fileimage: reader.result,
                                 // datetime: e.target.files[i].lastModifiedDate.toLocaleString('en-IN'),
-                                filesize: filesizes(e.target.files[selectedfile.length+1].size)
+                                ///filesize: filesizes(e.size)
                             }
                         ]
                     });
                 }
-                if (e.target.files[selectedfile.length+1]) {
+                if (e) {
                     reader.readAsDataURL(file);
                 }
             ///}
