@@ -60,17 +60,19 @@ const UsersList: React.FC<IProductsList> = () => {
                 setLoading={setLoading}
                 setOpen={setOpen}
                 setQuery={setQuery}
+                isDelete={false}
                 handlerAction={handlerAction}
 
             />
             <CrudTable
                 data={data}
                 titles={titles}
-                isDelete={true}
+                isDelete={false}
                 isEdit={true}
                 className={"pagination"}
                 handlerAction={handlerAction}
                 tableRef={tableRef}
+                selectedIds={ids}
                 fetchMoreData={fetchMoreData}
                 action={false}
                 isInfo={false}

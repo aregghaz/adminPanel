@@ -35,6 +35,7 @@ const OrdersList: React.FC<IProductsList> = () => {
         'orderId',
         'user',
         'status',
+        'quantity',
         'total',
         'updated',
     ];
@@ -43,7 +44,6 @@ const OrdersList: React.FC<IProductsList> = () => {
     const [ids, setIds] = useState([]);
     const handlerAction = async (action: string, id?: number) => {
         setActionType(action)
-        console.log(    action,'action')
         if(action === "addItem" && id){
            const singleDataOrder = await AdminApi.getSingleOrder(id)
             setSingleData(singleDataOrder)
@@ -67,6 +67,7 @@ const OrdersList: React.FC<IProductsList> = () => {
                 IsAssignStatus={true}
                 tableRef={tableRef}
                 loading={loading}
+                isDelete={false}
                 IsAssignTag={false}
                 setLoading={setLoading}
                 setOpen={setOpen}

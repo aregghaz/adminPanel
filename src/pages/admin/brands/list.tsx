@@ -61,6 +61,7 @@ const BrandsList: React.FC<IProductsList> = () => {
                 tableRef={tableRef}
                 loading={loading}
                 setLoading={setLoading}
+                isDelete={false}
                 setOpen={setOpen}
                 setQuery={setQuery}
                 handlerAction={handlerAction}
@@ -69,7 +70,7 @@ const BrandsList: React.FC<IProductsList> = () => {
             <CrudTable
                 data={data}
                 titles={titles}
-                isDelete={true}
+                isDelete={false}
                 isEdit={true}
                 className={"pagination"}
                 handlerAction={handlerAction}

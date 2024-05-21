@@ -14,7 +14,6 @@ const TagsList: React.FC<ITagsList> = () => {
     const [data, setData] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [loading, setLoading] = useState(false);
-    const [open, setOpen] = useState<boolean>(false);
     const [query, setQuery] = useState("");
     useEffect(() => {
         (
@@ -54,7 +53,7 @@ const TagsList: React.FC<ITagsList> = () => {
             <CrudTable
                 data={data}
                 titles={titles}
-                isDelete={true}
+                isDelete={false}
                 isEdit={true}
                 className={"pagination"}
                 handlerAction={handlerAction}
