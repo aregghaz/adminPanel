@@ -103,7 +103,7 @@
 }
 
 .header_input_block.active {
-  width: 600px;
+  width: 300px;
   transition: 1s;
   opacity: 1;
   visibility: visible;
@@ -165,6 +165,31 @@
 
 .import_block:hover .iconCar {
   stroke: white;
+}
+
+.search_block {
+  min-width: 50px;
+  height: 60px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s ease-in-out;
+}
+.search_block .search_block_icon {
+  width: 50px;
+  min-width: 40px;
+  height: 15px;
+  font-size: 10px;
+  color: white;
+  padding: 2px 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  transition: 0.2s;
+  white-space: nowrap;
 }
 
 /*# sourceMappingURL=navigationTab.module.css.map */

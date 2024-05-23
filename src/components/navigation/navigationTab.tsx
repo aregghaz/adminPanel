@@ -70,7 +70,7 @@ const NavigationTab: React.FC<INavigationTab> = (
     const openSearch = () => {
         if (open) {
             setQuery("");
-            setLoading(true);
+            setLoading(!loading)
         }
         setOpen(!open);
     };
@@ -87,6 +87,7 @@ const NavigationTab: React.FC<INavigationTab> = (
                     </div>
                     <TrashIcon
                         height="24px"
+                        className={` ${s.iconTest} `}
                     />
                 </div>}
                 {IsAssignTag && <div className={s.import_block} onClick={() => handlerAction("addTag")}>
@@ -141,13 +142,20 @@ const NavigationTab: React.FC<INavigationTab> = (
                         </DownloadTableExcel>
                     </label>
                 </div>
-                <div className={s.import_block} onClick={() => {
-                    openSearch();
-                }}>
-                    <div className={s.iconAbbr}>
-                        {open ? "Закрыть" : "поиск"}
+                <div className={s.search_block} >
+                    <div className={s.search_block_icon} onClick={() => {
+                        openSearch();
+                    }}>
+                        {open ? <Close className={s.iconTest}/> : <Search className={s.iconTest}/>}
                     </div>
-                    {open ? <Close className={s.iconTest}/> : <Search className={s.iconTest}/>}
+
+                    <div
+                        className={`${s.header_input_block} ${open ? s.active : s.passive}`}
+                    >
+                        <div style={{width: "100%"}}>
+                            <BackDropSearch handlerSubmit={onSearchInput}/>
+                        </div>
+                    </div>
                 </div>
                 {IsSelectCategory && setFieldValue && <div style={{minWidth:250, maxWidth:700}} >
                     <SelectGroup
@@ -167,13 +175,7 @@ const NavigationTab: React.FC<INavigationTab> = (
                 </div>
                 }
             </div>
-            <div
-                className={`${s.header_input_block} ${open ? s.active : s.passive}`}
-            >
-                <div style={{width: "100%"}}>
-                    <BackDropSearch handlerSubmit={onSearchInput}/>
-                </div>
-            </div>
+
         </div>
     );
 };
