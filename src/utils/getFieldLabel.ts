@@ -11,4 +11,4 @@ export default getFieldLabel;
 
 
 //export const fakeUrl = 'http://127.0.0.1:8000'
-export const fakeUrl = 'https://api.kinomino.ru'
+export const fakeUrl = 'https://kinomino.ru'
